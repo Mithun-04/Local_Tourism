@@ -3,89 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
 
-        .login-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 300px;
-        }
-
-        .login-header {
-            background-color:rgb(97, 71, 71);
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .login-form {
-            padding: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .form-group button {
-            background-color:rgb(97, 71, 71);
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-       
-    </style>
+        <!-- FLATICON -->
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>       
+        <!--  CSS  -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="img/student-e-connect-high-resolution-logo-white.png" type="image/x-icon">
+        <title>Login/Sign-Up</title>
 </head>
-<body>
-    
+    <!-- HEADER -->
+    <header class="header-landing">
+        <nav class="nav container">
+            <div href="home.html" class="header__statement">
+                <p class="header__paragraph">Register</p>
+            </div>
+        </nav>
+    </header>
 
-<div class="login-container">
-    <div class="login-header">
-        <h2>Login</h2>
-    </div>
-    <div class="login-form">
-        <form>
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+    <!-- MAIN -->
+    <main class="main">
+        <!--LOGIN-REGISTER  -->
+        <section class="login-register section--lg">
+            <div class="login-register__container container container grid">
+                <div class="login">
+                    <h3 class="section__title">Login</h3>
+                    <form action="" class="form grid">
+                        <input type="email" placeholder="Your Email" class="form__input">
+
+                        <input type="password" placeholder="Your Password" class="form__input">
+                        <div class="form__btn">
+                            <button class="btn">Login</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="register">
+                    <h3 class="section__title">Create an Account</h3>
+
+                    <form action="" class="form grid">
+                        <input type="text" placeholder="Username" class="form__input">
+
+                        <input type="email" placeholder="Your Email" class="form__input">
+
+                        <input type="password" placeholder="Your Password" class="form__input">
+
+                        <input type="password" placeholder="Confirm Password" class="form__input">
+                        <div class="form__btn">
+                            <button class="btn">Submit & Register</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="social__login-btns">
+                    <button class="social__login-fb-btn">
+                        <img src="img/Facebook Logo.svg" alt="">Continue with Facebook
+                    </button>
+                    <button class="social__login-gg-btn">
+                        <img src="img/Google Logo.svg" alt="">Continue with Google
+                    </button>
+                    <button class="social__login-apple-btn">
+                        <img src="img/Apple Logo.svg" alt="">Continue with Apple
+                    </button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Login</button>
-            </div>
-        </form>
-    </div>
-</div>
+        </section>
+
+
+    </main>
+
+        
 
 </body>
-</html>

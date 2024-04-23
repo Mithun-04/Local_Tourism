@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Rental</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('car.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .content {
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .context {
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #030303;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+
+        .button {
+            background-color: #ff9800;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        .strip {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 0 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .strip:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .selected {
+            background-color: rgba(255, 165, 0, 0.8);
+        }
+        #vech{
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content" id="questionContent">
+            <h1 id ="vech">Vehicle Rental</h1>
+            <p>Would you like to rent a vehicle?</p>
+            <button class="button" onclick="showContent()">Yes</button>
+            <button class="button" onclick="showNearbyPlaces()">No, show nearby places</button>
+        </div>
+        <div class="context" id="vehicleDetails" style="display: none;">
+            <h1 id = "vech">Vehicle Rental</h1>
+            <div class="details">
+                <!-- Rental Details -->
+                <!-- Car Rental Details -->
+                <div class="strip" onclick="selectStrip(this)">
+                    <h2>Rental Car 1</h2>
+                    <p>Model: Toyota Camry</p>
+                    <p>Color: Black</p>
+                    <p>Rent per day: ₹3500</p>
+                    <p>Total for 3 days: ₹10500</p>
+                </div>
+                <div class="strip" onclick="selectStrip(this)">
+                    <h2>Rental Car 2</h2>
+                    <p>Model: Honda Civic</p>
+                    <p>Color: White</p>
+                    <p>Rent per day: ₹3200</p>
+                    <p>Total for 3 days: ₹9600</p>
+                </div>
+                <!-- Bike Rental Details -->
+                <div class="strip" onclick="selectStrip(this)">
+                    <h2>Rental Bike 1</h2>
+                    <p>Brand: Yamaha R1</p>
+                    <p>Color: Blue</p>
+                    <p>Rent per day: ₹2500</p>
+                    <p>Total for 3 days: ₹7500</p>
+                </div>
+                <div class="strip" onclick="selectStrip(this)">
+                    <h2>Rental Bike 2</h2>
+                    <p>Brand: Suzuki Hayabusa</p>
+                    <p>Color: Silver</p>
+                    <p>Rent per day: ₹2800</p>
+                    <p>Total for 3 days: ₹8400</p>
+                </div>
+                <!-- Add more rental vehicle strips here -->
+            </div>
+            <button class="button" onclick="showQuestion()">Back</button>
+            <button class="button">Book Now</button>
+        </div>
+        <div class="content" id="nearbyPlaces" style="display: none;">
+            <h2>Nearby Places</h2>
+            <p>Nearest Petrol Bunk: ABC Petrol Bunk</p>
+            <p>Nearest Puncture Shop: XYZ Puncture Shop</p>
+            <button class="button" onclick="showQuestion()">Back</button>
+        </div>
+    </div>
+
+    <script>
+        function showContent() {
+            document.getElementById('questionContent').style.display = 'none';
+            document.getElementById('vehicleDetails').style.display = 'block';
+            document.getElementById('nearbyPlaces').style.display = 'none';
+        }
+
+        function showNearbyPlaces() {
+            document.getElementById('questionContent').style.display = 'none';
+            document.getElementById('vehicleDetails').style.display = 'none';
+            document.getElementById('nearbyPlaces').style.display = 'block';
+        }
+
+        function showQuestion() {
+            document.getElementById('questionContent').style.display = 'block';
+            document.getElementById('vehicleDetails').style.display = 'none';
+            document.getElementById('nearbyPlaces').style.display = 'none';
+        }
+
+        function selectStrip(element) {
+            // Remove 'selected' class from all strips
+            let strips = document.querySelectorAll('.strip');
+            strips.forEach(strip => {
+                strip.classList.remove('selected');
+            });
+
+            // Add 'selected' class to the clicked strip
+            element.classList.add('selected');
+        }
+    </script>
+</body>
+</html>

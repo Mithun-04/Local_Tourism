@@ -30,8 +30,9 @@
         padding-right: 20px; /* Add some space for the scrollbar */
     }
     .hotel {
+        position: relative;
         display: flex;
-        align-items: center;
+        flex-direction: column; /* Stack items vertically */
         margin-bottom: 20px;
         padding: 10px;
         border-radius: 5px;
@@ -40,14 +41,37 @@
     .hotel img {
         width: 100px; /* Adjust image width as needed */
         height: auto; /* Maintain aspect ratio */
-        margin-right: 20px;
         border-radius: 5px;
     }
+    .hotel-name {
+        margin-left: 20px;
+        flex: 1;
+    }
     .hotel-details {
-        flex: 1; /* Take remaining space */
+        margin-top: 10px;
     }
     .hotel-description h3 {
         margin-top: 0;
+    }
+    .booking-button {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .booking-button:hover {
+        background-color: #45a049;
+    }
+
+    .hotel-header{
+        display: flex;
+        flex-direction: row;
     }
 </style>
 </head>
@@ -56,8 +80,13 @@
     <h1 style="text-align: center;">Hotels and Accommodation</h1>
     <div class="hotel-dialog">
         <div class="hotel">
-            <img src="img 1.png" alt="Hotel 1">
+            <div class="hotel-header">
+                <img src="img 1.png" alt="Hotel 1">
+            <div class="hotel-name"><h3>Hotel 1</h3></div>
+            </div>
+            
             <div class="hotel-details">
+<<<<<<< HEAD
                 <h3>The Mountain Courtyard:</h3>
                 <p><b>Description:</b> Experience unparalleled luxury at this award-winning property offering well-appointed rooms, incredible restaurants and easy access to IT parks and corporate hubs.
 
@@ -65,22 +94,37 @@
                     2. Wake up to the picturesque views of the lush green valley.
                     3. Relish a wide range of global and Indian delicacies at the on-site restaurants.</p>
                 <p><b>Address:</b> Spring Valley, 66th mile Kottayam-Kumily Road, Springvalley, Thekkady, India, 685509.</p>
+=======
+                <p>Description of Hotel 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                <p>Details: AC, 2 persons/room</p>
+>>>>>>> f1c469fb31adfe1bf597150b34c4447661ff4fd8
                 <p>Cost for 3 days: $XXX</p>
             </div>
+            <a href="mod5.html" class="booking-button">Book Now</a>
         </div>
         <div class="hotel">
-            <img src="img 2.png" alt="Hotel 2">
+            <div class="hotel-header">
+                <img src="img 2.png" alt="Hotel 2">
+                <div class="hotel-name"><h3>Hotel 2</h3></div>
+            </div>
             <div class="hotel-details">
+<<<<<<< HEAD
                 <h3>Keys Prima By Lemon Tree Hotels, Thekkady:</h3>
                 <p><b>Description:</b> Keys Prima by Lemon Tree Hotels, Thekaddy is strategically located near Kumily, a gateway town into Kerala from Tamil Nadu. It is close to the Periyar National Park and Wildlife Sanctuary (PNP), India's largest wildlife sanctuary.
 
                     The name Thekaddy is derived from the word ‘thekku’ which means teak. The sanctuary is famous for its dense evergreen, semi-evergreen, moist, deciduous forests and savanna grasslands.
                     </p>
                 <p><b>Address:</b> Keys Prima by Lemon Tree Hotels, Thekkady, Thekkady Road,Anavachal,Kumily PO, Idukki,, Vazhayil, Thekkady, India, 685509.</p>
+=======
+                <p>Description of Hotel 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                <p>Details: NON-AC, 3 persons/room</p>
+>>>>>>> f1c469fb31adfe1bf597150b34c4447661ff4fd8
                 <p>Cost for 3 days: $XXX</p>
             </div>
+            <a href="mod5.html" class="booking-button">Book Now</a>
         </div>
         <div class="hotel">
+<<<<<<< HEAD
             <img src="img 3.png" alt="Hotel 3">
             <div class="hotel-details">
                 <h3>Greenwoods Resort, Thekkady:</h3>
@@ -90,10 +134,22 @@
                     2. Start your day with a refreshing workout session at the on-site gym featuring state-of-the-art equipment at Green Woods Resort.
                     3. Relish a wide range of cuisines at the on-site restaurant, Amrutham.</p>
                 <p><b>Address:</b> Kottayam - Kumily Rd, Vazhayil, Thekkady, India, 685509.</p>
+=======
+            <div class="hotel-header">
+                <img src="img 3.png" alt="Hotel 3">
+                <div class="hotel-name"><h3>Hotel 3</h3></div>
+            </div>
+
+            <div class="hotel-details">
+                <p>Description of Hotel 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                <p>Details: AC, 4 persons/room</p>
+>>>>>>> f1c469fb31adfe1bf597150b34c4447661ff4fd8
                 <p>Cost for 3 days: $XXX</p>
             </div>
+            <a href="mod5.html" class="booking-button">Book Now</a>
         </div>
         <div class="hotel">
+<<<<<<< HEAD
             <img src="img 4.png" alt="Hotel 4">
             <div class="hotel-details">
                 <h3>The Elephant Court Resort:</h3>
@@ -103,8 +159,19 @@
                     2. Swim a few laps in the sparkling swimming pool.
                     3. Relish traditional and Mediterranean dishes at the on-site restaurant, Patio Restaurant.</p>
                 <p><b>Address:</b> Amalambika road, Thekkady P.O Idukki District, Vazhayil, Thekkady, India, 685536.</p>
+=======
+            <div class="hotel-header">
+                <img src="img 4.png" alt="Hotel 4">
+                <div class="hotel-name"><h3>Hotel 4</h3></div>
+            </div>
+
+            <div class="hotel-details">
+                <p>Description of Hotel 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                <p>Details: NON-AC, 2 persons/room</p>
+>>>>>>> f1c469fb31adfe1bf597150b34c4447661ff4fd8
                 <p>Cost for 3 days: $XXX</p>
             </div>
+            <a href="mod5.html" class="booking-button">Book Now</a>
         </div>
     </div>
 </div>

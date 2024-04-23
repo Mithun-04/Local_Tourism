@@ -15,7 +15,7 @@
         background-attachment: fixed;
     }
     .details-box {
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.5); /* Reduce opacity for a transparent effect */
         border-radius: 10px;
         width: 80%;
         max-width: 600px;
@@ -25,8 +25,8 @@
         overflow: hidden; /* Hide overflowing content */
     }
     .hotel-dialog {
-        height: 300px; /* Set the height of the scrolling frame */
-        overflow-y: auto; /* Enable vertical scrolling */
+        height: auto; /* Let it adjust its height automatically */
+        overflow-y: hidden; /* Hide vertical scrolling */
         padding-right: 20px; /* Add some space for the scrollbar */
     }
     .hotel {
@@ -53,13 +53,15 @@
 </head>
 <body>
 <div class="details-box">
-    <h2>Hotel Details :</h2>
+    <h1 style="text-align: center;">Hotels and Accommodation</h1>
     <div class="hotel-dialog">
         <div class="hotel">
             <img src="img 1.png" alt="Hotel 1">
             <div class="hotel-details">
                 <h3>Hotel 1</h3>
                 <p>Description of Hotel 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                <p>Details: AC, 2 persons/room</p>
+                <p>Cost for 3 days: $XXX</p>
             </div>
         </div>
         <div class="hotel">
@@ -67,9 +69,28 @@
             <div class="hotel-details">
                 <h3>Hotel 2</h3>
                 <p>Description of Hotel 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                <p>Details: NON-AC, 3 persons/room</p>
+                <p>Cost for 3 days: $XXX</p>
             </div>
         </div>
-        <!-- Add more hotels as needed -->
+        <div class="hotel">
+            <img src="img3.png" alt="Hotel 3">
+            <div class="hotel-details">
+                <h3>Hotel 3</h3>
+                <p>Description of Hotel 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                <p>Details: AC, 4 persons/room</p>
+                <p>Cost for 3 days: $XXX</p>
+            </div>
+        </div>
+        <div class="hotel">
+            <img src="img4.png" alt="Hotel 4">
+            <div class="hotel-details">
+                <h3>Hotel 4</h3>
+                <p>Description of Hotel 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                <p>Details: NON-AC, 2 persons/room</p>
+                <p>Cost for 3 days: $XXX</p>
+            </div>
+        </div>
     </div>
 </div>
 </body>

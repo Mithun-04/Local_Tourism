@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Planner</title>
+    <link rel="icon" type="PNG" href="img/TripIcon.png">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('trip1.webp');
+            background-image: url('img/trip1.webp');
             background-size: cover;
             background-repeat: no-repeat;
             margin: 0;
@@ -69,6 +70,7 @@ button:hover {
     background: linear-gradient(rgba(85, 85, 85, 0.8), rgba(85, 85, 85, 0.5)); /* Adjust the opacity here */
 }
 
+
     </style>
 </head>
 <body>
@@ -78,7 +80,7 @@ button:hover {
     </header>
 
     <main>
-        <form>
+        <form id="tripForm">
             <label for="location">Location:</label>
             <input type="text" id="location" name="location" required>
 
@@ -91,9 +93,20 @@ button:hover {
             <label for="days">Number of Days:</label>
             <input type="number" id="days" name="days" required>
 
-            <button type="submit">Plan My Trip</button>
+            <button type="button" onclick="validateForm()">Plan My Trip</button>
         </form>
     </main>
+
+    <script>
+        function validateForm() {
+            var form = document.getElementById("tripForm");
+            if (form.checkValidity()) {
+                window.location.href = 'mod4.html';
+            } else {
+                alert("Please fill in all the requirements.");
+            }
+        }
+    </script>
 
 </body>
 </html>

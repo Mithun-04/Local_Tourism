@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Planner</title>
     <link rel="icon" type="PNG" href="img/TripIcon.png">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('img/trip1.webp');
-            background-size: cover;
-            background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
-        }
+        
 
         header {
             color: #fff;
@@ -31,6 +25,17 @@
 
 
 
+    body {
+    font-family: Arial, sans-serif;
+    background-image: url('img/trip2.webp');
+    position: relative;
+    background-size: cover,auto; /* Change background-size to auto */
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    }
+
+
 
     main {
     max-width: 500px;
@@ -38,48 +43,113 @@
     background-color: rgba(254, 254, 254, 0.5); /* fallback for browsers that do not support backdrop-filter */
     backdrop-filter: blur(2px); /* Adjust the blur radius here */
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Add position relative to prevent overlapping */
 }
 
 
+        label {
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.8);
+            /* Adjust the opacity here */
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Adjust the opacity here */
+        }
+
+        button {
+            padding: 10px;
+            
+            background: rgba(0, 0, 0);
+            /* Adjust the opacity here */
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            
+        }
+
+        button:hover {
+            background: rgb(255, 255, 255);
+            /* Adjust the opacity here */
+            color: #000000;
+        }
+
+        .tripPlannerHeader {
+            
+            animation-duration: 3s;
+            animation-name: slidein;
+            margin-right: 80%;
+
+        }
+        .button_cont{
+           
+            margin-left: 3rem;
+            margin-top: 15px;
+        }
+        @font-face {
+            font-family: "cust";
+            src: url(Font/SFPRODISPLAYLIGHTITALIC.OTF);
+        }
+
+        header{
+            font-family: "cust";
+            font-size: large;
+            
+        }
+       
+        
+
+        @keyframes slidein {
+            from {
+                margin-left: -100%;
+                ;
+            }
+
+            to {
+                margin-right: 80%;
+            }
+        }
+        @keyframes slideup {
+    from {
+        opacity: 0; /* Start with opacity 0 for a fade-in effect */
+        transform: translateY(100%); /* Start from below the viewport */
+    }
+    to {
+        opacity: 1; /* Fade in fully */
+        transform: translateY(0); /* Move to its original position */
+    }
+}
 label {
     font-weight: bold;
-    color: rgba(0, 0, 0, 0.8); /* Adjust the opacity here */
+    color:#fff; 
+    
 }
-
-input, select {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.8); /* Adjust the opacity here */
+.total_main{
+animation-duration: 3s;
+animation-name: slideup;
 }
-
-button {
-    padding: 10px;
-    background: linear-gradient(rgba(97, 71, 71, 0.8), rgba(97, 71, 71, 0.5)); /* Adjust the opacity here */
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: linear-gradient(rgba(85, 85, 85, 0.8), rgba(85, 85, 85, 0.5)); /* Adjust the opacity here */
-}
-
 
     </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Trip Planner</h1>
+    <header style="position: relative">
+        <h1 class="tripPlannerHeader">Trip Planner</h1>
     </header>
-
+    <div class="total_main">
     <main>
+        
         <form id="tripForm">
             <label for="location">Location:</label>
             <input type="text" id="location" name="location" required>
@@ -93,9 +163,15 @@ button:hover {
             <label for="days">Number of Days:</label>
             <input type="number" id="days" name="days" required>
 
-            <button type="button" onclick="validateForm()">Plan My Trip</button>
+            
         </form>
     </main>
+
+        <div class ="button_cont">
+        <button type="button" onclick="validateForm()">Plan My Trip</button>
+        </div>
+       
+    </div>
 
     <script>
         function validateForm() {
@@ -109,4 +185,5 @@ button:hover {
     </script>
 
 </body>
+
 </html>

@@ -36,6 +36,11 @@
             background-color: #008CBA; /* Blue */
             color: white;
         }
+        .restaurant-img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -104,10 +109,18 @@
 
         function showOptions(criteria) {
             let message = "";
+            let imagesHTML = ""; // Variable to store HTML for images
+
             if (criteria === 'budget') {
                 message = "Budget-Friendly restaurants";
             } else if (criteria === 'popular') {
                 message = "Popular restaurants";
+                // Add images dynamically
+                imagesHTML += `
+                    <img src="img/restaurant1.png" alt="Restaurant 1" class="restaurant-img">
+                    <img src="restaurant2.jpg" alt="Restaurant 2" class="restaurant-img">
+                    <img src="restaurant3.jpg" alt="Restaurant 3" class="restaurant-img">
+                `;
             } else if (criteria === 'ambience') {
                 message = "Restaurants based on Ambience";
             }
@@ -116,7 +129,7 @@
                 <div class="container">
                     <h2>${message}</h2>
                     <p>Here are your restaurant options.</p>
-                    <!-- Add restaurant options here -->
+                    ${imagesHTML} <!-- Display images -->
                 </div>`;
         }
     </script>

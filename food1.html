@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Preferences</title>
+    <link rel="icon" type="PNG" href="img/food_icon.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('img/restaurant_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .content {
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #ff9800;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        .strip {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 0 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .strip:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .selected {
+            background-color: rgba(255, 165, 0, 0.8);
+        }
+
+        .image-container {
+            margin: 10px; /* Add margin to provide spacing between images */
+            display: inline-block; /* Ensure containers are displayed inline */
+            overflow: hidden; /* Hide any overflow from the images */
+        }
+
+        .image-container img {
+            width: 200px; /* Adjust width as needed */
+            height: 150px; /* Adjust height as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content" id="questionContent">
+            <h1>Food Preferences</h1>
+            <p>Do you have any food preferences?</p>
+            <button class="button" onclick="showFoodPreferences('veg')">Veg</button>
+            <button class="button" onclick="showFoodPreferences('nonveg')">Non-Veg</button>
+            <button class="button" onclick="showFoodPreferences('both')">Both</button>
+            <button class="button" onclick="showSuggestions()">No, show suggestions</button>
+        </div>
+        <div class="content" id="foodPreferences" style="display: none;">
+            <h1>Food Preferences</h1>
+            <p>What are your food preferences?</p>
+            <button class="button" onclick="showRestaurants('budget')">Budget</button>
+            <button class="button" onclick="showRestaurants('popular')">Popular</button>
+            <button class="button" onclick="showRestaurants('ambience')">Ambience</button>
+            <button class="button" onclick="showQuestion()">Back</button>
+        </div>
+        <div class="content" id="suggestions" style="display: none;">
+            <h1>Suggestions</h1>
+            <p>Here are some nearby suggestions:</p>
+            <p>Nearest Cafe: XYZ Cafe</p>
+            <p>Nearest Pizza Place: ABC Pizza</p>
+            <button class="button" onclick="showQuestion()">Back</button>
+        </div>
+        <div class="content" id="restaurantDetails" style="display: none;">
+            <h1>Restaurant Details</h1>
+            <div class="details" id="restaurantImagesContainer">
+                <!-- Restaurant Images Will Be Added Dynamically Here -->
+            </div>
+            <button class="button" onclick="showFoodPreferences()">Back</button>
+        </div>
+    </div>
+
+    <script>
+        // Data for different types of restaurants (budget, popular, ambience) for veg and non-veg options
+        const vegRestaurants = {
+            budget: ['img/restaurant1.png', 'img/restaurant1.png'],
+            popular: ['img/veg_popular_restaurant1.jpg', 'img/veg_popular_restaurant2.jpg'],
+            ambience: ['img/veg_ambience_restaurant1.jpg', 'img/veg_ambience_restaurant2.jpg']
+        };
+
+        const nonVegRestaurants = {
+            budget: ['img/nonveg_budget_restaurant1.jpg', 'img/nonveg_budget_restaurant2.jpg'],
+            popular: ['img/nonveg_popular_restaurant1.jpg', 'img/nonveg_popular_restaurant2.jpg'],
+            ambience: ['img/nonveg_ambience_restaurant1.jpg', 'img/nonveg_ambience_restaurant2.jpg']
+        };
+
+        function showFoodPreferences(pref) {
+            document.getElementById('questionContent').style.display = 'none';
+            if (pref === 'veg' || pref === 'nonveg' || pref === 'both') {
+                document.getElementById('foodPreferences').style.display = 'block';
+                // Set preference for further use
+                localStorage.setItem('preference', pref);
+            } else {
+                document.getElementById('suggestions').style.display = 'block';
+            }
+        }
+
+        function showSuggestions() {
+            document.getElementById('questionContent').style.display = 'none';
+            document.getElementById('suggestions').style.display = 'block';
+        }
+
+        function showRestaurants(option) {
+            document.getElementById('foodPreferences').style.display = 'none';
+            document.getElementById('restaurantDetails').style.display = 'block';
+            var detailsContainer = document.getElementById('restaurantImagesContainer');
+            detailsContainer.innerHTML = ''; // Clear existing images
+
+            const pref = localStorage.getItem('preference');
+
+            // Logic to fetch and add restaurant images based on the selected option and preference
+            if (pref === 'veg') {
+                addRestaurantImages(vegRestaurants[option]);
+            } else if (pref === 'nonveg') {
+                addRestaurantImages(nonVegRestaurants[option]);
+            } else if (pref === 'both') {
+                addRestaurantImages(vegRestaurants[option]);
+                addRestaurantImages(nonVegRestaurants[option]);
+            }
+        }
+
+        function addRestaurantImages(images) {
+            var detailsContainer = document.getElementById('restaurantImagesContainer');
+            images.forEach(image => {
+                var imgContainer = document.createElement('div'); // Create a container for the image
+                imgContainer.classList.add('image-container'); // Apply CSS class for styling (optional)
+                
+                var img = document.createElement('img');
+                img.src = image;
+                img.alt = 'Restaurant Image';
+                
+                // Set width and height of the image container
+                imgContainer.style.width = '200px'; // Adjust width as needed
+                imgContainer.style.height = '150px'; // Adjust height as needed
+                
+                imgContainer.appendChild(img); // Append the image to the container
+                detailsContainer.appendChild(imgContainer); // Append the container to the details container
+            });
+        }
+
+        function showQuestion() {
+            document.getElementById('questionContent').style.display = 'block';
+            document.getElementById('foodPreferences').style.display = 'none';
+            document.getElementById('suggestions').style.display = 'none';
+            document.getElementById('restaurantDetails').style.display = 'none';
+            localStorage.removeItem('preference'); // Clear preference on going back
+        }
+    </script>
+</body>
+</html>

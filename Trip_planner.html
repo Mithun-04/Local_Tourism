@@ -13,9 +13,25 @@
             color: #fff;
             text-align: center;
             padding: 1em;
+            z-index: -1;
+        }
+        .content{
+            display: flex;
+            flex-direction: row;
         }
 
-
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/nature.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0.9; /* Adjust the opacity value as needed */
+            z-index: -1; /* Ensure the overlay is behind other content */
+        }
 
 
         form {
@@ -24,21 +40,15 @@
         }
 
 
-
-    body {
-    font-family: Arial, sans-serif;
-    background-image: url('img/nature.jpg');
-    position: relative;
-    background-size: cover,auto; /* Change background-size to auto */
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    }
-
-
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
 
     main {
-    max-width: 500px;
+    width: 500px;
     margin: 20px auto;
     
     backdrop-filter: blur(2px); /* Adjust the blur radius here */
@@ -55,6 +65,7 @@
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative; /* Add position relative to prevent overlapping */
+    z-index: -1;
 }
 
 
@@ -76,25 +87,28 @@
             /* Adjust the opacity here */
         }
 
-        button {
-            padding: 10px;
-            
-            background: rgba(0, 0, 0);
-            /* Adjust the opacity here */
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            
-        }
+        .b1 {
+    width: 125px;
+    height: 45px;
+    background: rgba(0, 0, 0);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 0 #FF8700;
+    transition: ease-out 0.5s;
+    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
+}
 
-        button:hover {
-            background: rgb(255, 255, 255);
-            /* Adjust the opacity here */
-            color: #000000;
-        }
+.b1:hover {
+    cursor: pointer;
+    box-shadow: inset 125px 0 0 0 #FF8700; /* Added 'px' unit */
+    color: #000000;
+}
 
-        .tripPlannerHeader {
+
+        .head{
             
             animation-duration: 3s;
             animation-name: slidein;
@@ -114,7 +128,8 @@
         header{
             font-family: "cust";
             font-size: large;
-            
+           
+          
         }
         input{
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -153,17 +168,85 @@ label {
 .total_main{
 animation-duration: 3s;
 animation-name: slideup;
+display: flex;
+flex-direction: column;
+}
+.main_div{
+    background-image: url();
+}
+.para{
+    margin-left: 150px;
+    font-family: 'cust';
+    color: #fff;
+    font-size: 45px;
+    margin-top: 100px;
+}
+.one{
+    padding: 110px;
+}
+.ex,
+.pr{
+    font-weight: bold;
+    color: #00ffee;
+}
+.para{
+    display: flex;
+    flex-direction: column;
+    
+}
+.learn{
+    width: 125px;
+    height: 45px;
+    border-radius: 4px;
+    margin-left: 645px;
+    margin-top:10px;
+    font-size: 1rem;
+    border: 3px solid black;
+    box-shadow: inset 0 0 0 0 #ffb300;
+    transition: ease-out 0.3s;
+    cursor: pointer;
+
+}
+
+.para{
+    animation-duration: 4s;
+    animation-name: slide_into;
+}
+
+@keyframes slide_into{
+    from{
+        transform: translateX(100%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+
+.logo{
+   width: 50px;
+   height: 50px;
+   margin-top: 20px;
+}
+.head{
+    display: flex;
+    flex-direction: row;
 }
 
     </style>
 </head>
 
+
 <body>
 
-    <header style="position: relative">
-        <h1 class="tripPlannerHeader">Trip Planner</h1>
+    <div class="background-overlay"></div>
+    <header>
+        <div class="head">
+        <img class="logo" src="img/logo-removebg-preview.png" alt=""><h1 class="tripPlannerHeader">Trip Planner</h1></div>
     </header>
-    <div class="total_main">
+    <div class="content">
+     
+    
+        <div class="total_main">
     <main>
         
         <form id="tripForm">
@@ -184,9 +267,15 @@ animation-name: slideup;
     </main>
 
         <div class ="button_cont">
-        <button type="button" onclick="validateForm()">Plan My Trip</button>
+        <button class ="b1" type="button" onclick="validateForm()">Plan My Trip</button>
         </div>
        
+    </div>
+       <div class="para">
+        
+        <p><span class="one">Unlock <span class="ex">exclusive </span>adventures with us</span><br><span class="two">Your trip, your way. Our <span class="pr">personalized</span> touch ensures every detail fits just right</span></p>
+        <div class="bt"><button class="learn">Learn More</button></div>
+        </div>
     </div>
 
     <script>
@@ -201,5 +290,6 @@ animation-name: slideup;
     </script>
 
 </body>
+
 
 </html>

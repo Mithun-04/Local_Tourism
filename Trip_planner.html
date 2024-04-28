@@ -7,31 +7,22 @@
     <title>Trip Planner</title>
     <link rel="icon" type="PNG" href="img/TripIcon.png">
     <style>
-        
-
+      
         header {
             color: #fff;
             text-align: center;
             padding: 1em;
+          
             z-index: -1;
         }
-        .content{
+ 
+
+      
+        .content {
             display: flex;
             flex-direction: row;
         }
 
-        .background-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('img/nature.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            opacity: 0.9; /* Adjust the opacity value as needed */
-            z-index: -1; /* Ensure the overlay is behind other content */
-        }
 
 
         form {
@@ -44,29 +35,36 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            position: relative;
+          
+           
+            
+         background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('img/nature.jpg');
+         background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        width: 100%; /* Add width for the background */
+        height: 100vh; /* Set a height, e.g., 100 viewport height */
+
+         
         }
 
-    main {
-    width: 500px;
-    margin: 20px auto;
-    
-    backdrop-filter: blur(2px); /* Adjust the blur radius here */
+        main {
+            width: 500px;
+            margin: 20px auto;
 
-    max-width: 400px;
-    margin-left: 25px;
-    /* fallback for browsers that do not support backdrop-filter */
+            backdrop-filter: blur(2px);
+            
+            
 
-    backdrop-filter: blur(2px); /* Adjust the blur radius here */
-
-
-
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative; /* Add position relative to prevent overlapping */
-    z-index: -1;
-}
+            max-width: 400px;
+            margin-left: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            /* Add position relative to prevent overlapping */
+            z-index: -1;
+        }
 
 
         label {
@@ -88,56 +86,60 @@
         }
 
         .b1 {
-    width: 125px;
-    height: 45px;
-    background: rgba(0, 0, 0);
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    box-shadow: inset 0 0 0 0 #FF8700;
-    transition: ease-out 0.5s;
-    cursor: pointer;
-    font-size: 1rem;
-    outline: none;
-}
+            width: 125px;
+            height: 45px;
+            background: rgba(0, 0, 0);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            box-shadow: inset 0 0 0 0 #ff9800;
+            transition: ease-out 0.5s;
+            cursor: pointer;
+            font-size: 1rem;
+            outline: none;
+        }
 
-.b1:hover {
-    cursor: pointer;
-    box-shadow: inset 125px 0 0 0 #FF8700; /* Added 'px' unit */
-    color: #000000;
-}
+        .b1:hover {
+            cursor: pointer;
+            box-shadow: inset 125px 0 0 0 #ff9800;
+            /* Added 'px' unit */
+            color: #000000;
+        }
 
 
-        .head{
-            
+        .head {
+
             animation-duration: 3s;
             animation-name: slidein;
             margin-right: 80%;
 
         }
-        .button_cont{
-           
+
+        .button_cont {
+
             margin-left: 3rem;
             margin-top: 15px;
         }
+
         @font-face {
             font-family: "cust";
             src: url(Font/SFPRODISPLAYLIGHTITALIC.OTF);
         }
 
-        header{
+        header {
             font-family: "cust";
             font-size: large;
-           
-          
-        }
-        input{
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-            
+
 
         }
-        
+
+        input {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+
+
+        }
+
 
         @keyframes slidein {
             from {
@@ -149,132 +151,163 @@
                 margin-right: 80%;
             }
         }
+
         @keyframes slideup {
-    from {
-        opacity: 0; /* Start with opacity 0 for a fade-in effect */
-        transform: translateY(100%); /* Start from below the viewport */
-    }
-    to {
-        opacity: 1; /* Fade in fully */
-        transform: translateY(0); /* Move to its original position */
-    }
-}
-label {
-    font-weight: bold;
-    color:#e8e8e8; 
+            from {
+                opacity: 0;
+                /* Start with opacity 0 for a fade-in effect */
+                transform: translateY(100%);
+                /* Start from below the viewport */
+            }
 
-    
-}
-.total_main{
-animation-duration: 3s;
-animation-name: slideup;
-display: flex;
-flex-direction: column;
-}
-.main_div{
-    background-image: url();
-}
-.para{
-    margin-left: 150px;
-    font-family: 'cust';
-    color: #fff;
-    font-size: 45px;
-    margin-top: 100px;
-}
-.one{
-    padding: 110px;
-}
-.ex,
-.pr{
-    font-weight: bold;
-    color: #00ffee;
-}
-.para{
-    display: flex;
-    flex-direction: column;
-    
-}
-.learn{
-    width: 125px;
-    height: 45px;
-    border-radius: 4px;
-    margin-left: 645px;
-    margin-top:10px;
-    font-size: 1rem;
-    border: 3px solid black;
-    box-shadow: inset 0 0 0 0 #ffb300;
-    transition: ease-out 0.3s;
-    cursor: pointer;
+            to {
+                opacity: 1;
+                /* Fade in fully */
+                transform: translateY(0);
+                /* Move to its original position */
+            }
+        }
 
-}
+        label {
+            font-weight: bold;
+            color: #e8e8e8;
 
-.para{
-    animation-duration: 4s;
-    animation-name: slide_into;
-}
 
-@keyframes slide_into{
-    from{
-        transform: translateX(100%);
-    }
-    to{
-        transform: translateX(0);
-    }
-}
+        }
 
-.logo{
-   width: 50px;
-   height: 50px;
-   margin-top: 20px;
-}
-.head{
-    display: flex;
-    flex-direction: row;
-}
+        .total_main {
+            animation-duration: 3s;
+            animation-name: slideup;
+            display: flex;
+            flex-direction: column;
+        }
 
+        .main_div {
+            background-image: url();
+        }
+
+        .para {
+            margin-left: 150px;
+            font-family: 'cust';
+            color: #fff;
+            font-size: 45px;
+            margin-top: 100px;
+        }
+
+        .one {
+            padding: 110px;
+        }
+
+        .ex,
+        .pr {
+            font-weight: bold;
+            /* Gradient background */
+           
+            
+            /* Set text color to transparent to allow the gradient to show through */
+            color:#ff9800;   
+        }
+
+        .para {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .learn {
+            width: 125px;
+            height: 45px;
+            border-radius: 4px;
+            margin-left: 645px;
+            margin-top: 10px;
+            font-size: 1rem;
+            background-color: white;
+            box-shadow: inset 0 0 0 0 #ff9800;
+            transition: ease-out 0.3s;
+            cursor: pointer;
+            color: black;
+            border: none;
+
+
+        }
+
+        .learn:hover{
+            box-shadow: inset 125px 0 0 0 #ff9800;
+            cursor: 1;
+            color: white;
+        }
+
+        .para {
+            animation-duration: 4s;
+            animation-name: slide_into;
+        }
+
+        @keyframes slide_into {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-top: 25px;
+        }
+
+        .head {
+            display: flex;
+            flex-direction: row;
+        }
     </style>
 </head>
 
-
 <body>
-
-    <div class="background-overlay"></div>
+    
+<div class="bg"></div>
     <header>
         <div class="head">
-        <img class="logo" src="img/logo-removebg-preview.png" alt=""><h1 class="tripPlannerHeader">Trip Planner</h1></div>
+            <img class="logo" src="img/logo-removebg-preview.png" alt="">
+            <h1 class="tripPlannerHeader">Trip Planner</h1>
+        </div>
     </header>
     <div class="content">
-     
-    
+
+
         <div class="total_main">
-    <main>
-        
-        <form id="tripForm">
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required placeholder="--- Theni ---">
+            <main>
 
-            <label for="budget">Budget:</label>
-            <input type="number" id="budget" name="budget" required placeholder="--- 5000 ---">
+                <form id="tripForm">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required placeholder="--- Theni ---">
 
-            <label for="people">Number of People:</label>
-            <input type="number" id="people" name="people" required placeholder="--- 3 ---">
+                    <label for="budget">Budget:</label>
+                    <input type="number" id="budget" name="budget" required placeholder="--- 5000 ---">
 
-            <label for="days">Number of Days:</label>
-            <input type="number" id="days" name="days" required placeholder="--- 2 ---">
+                    <label for="people">Number of People:</label>
+                    <input type="number" id="people" name="people" required placeholder="--- 3 ---">
 
-            
-        </form>
-    </main>
+                    <label for="days">Number of Days:</label>
+                    <input type="number" id="days" name="days" required placeholder="--- 2 ---">
 
-        <div class ="button_cont">
-        <button class ="b1" type="button" onclick="validateForm()">Plan My Trip</button>
+
+                </form>
+            </main>
+
+            <div class="button_cont">
+                <button class="b1" type="button" onclick="validateForm()">Plan My Trip</button>
+            </div>
+
         </div>
-       
-    </div>
-       <div class="para">
-        
-        <p><span class="one">Unlock <span class="ex">exclusive </span>adventures with us</span><br><span class="two">Your trip, your way. Our <span class="pr">personalized</span> touch ensures every detail fits just right</span></p>
-        <div class="bt"><button class="learn">Learn More</button></div>
+        <div class="para">
+
+            <p><span class="one">Unlock <span class="ex">exclusive </span>adventures with us</span><br><span
+                    class="two">Your trip, your way. Our <span class="pr">personalized</span> touch ensures every detail
+                    fits just right</span></p>
+            <div class="bt"><button class="learn">Learn More</button></div>
         </div>
     </div>
 
@@ -290,6 +323,7 @@ flex-direction: column;
     </script>
 
 </body>
+
 
 
 </html>

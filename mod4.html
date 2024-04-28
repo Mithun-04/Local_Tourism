@@ -4,40 +4,59 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hotels and Accommodation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="icon" type="PNG" href="img/HotelIcon.png">
 <style>
     body {
         margin: 0;
         padding: 0;
-        font-family: Arial, sans-serif;
+        font-family: roboto, Arial;
         background-image: url('img/hotel.jpg'); /* Replace 'hotel-background.jpg' with your actual background image */
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
     }
     .details-box {
-        background-color: rgba(255, 255, 255, 0.5); /* Reduce opacity for a transparent effect */
+
+        background-color: rgba(177, 124, 124, 0.596); /* Reduce opacity for a transparent effect */
         border-radius: 10px;
-        width: 80%;
-        max-width: 600px;
+        width: 1100px;
         margin: 50px auto;
         padding: 20px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 20px 20px 10px rgba(1, 1, 1, 0.7);
         overflow: hidden; /* Hide overflowing content */
+    }
+    .header {
+        display: flex;
+        flex-direction: row;
+        max-height: 150px;
+    }
+    .logo {
+        flex: 1;
+        width: 125px;
+        height: 125px;
+    }
+    .heading {
+        flex: 2;
+        text-align: center;
     }
     .hotel-dialog {
         height: auto; /* Let it adjust its height automatically */
         overflow-y: hidden; /* Hide vertical scrolling */
         padding-right: 20px; /* Add some space for the scrollbar */
+        padding-left: 20px; /* Add some space for the scrollbar */
+
     }
     .hotel {
         position: relative;
         display: flex;
         flex-direction: column; /* Stack items vertically */
         margin-bottom: 20px;
-        padding: 10px;
-        border-radius: 5px;
-        background-color: white; /* White strip background color */
+        padding: 20px;
+        border-radius: 15px;
+        background-color: rgba(199, 199, 199, 0.573); /* White strip background color */
     }
     .hotel img {
         width: 100px; /* Adjust image width as needed */
@@ -59,7 +78,7 @@
         bottom: 10px;
         right: 10px;
         padding: 10px 20px;
-        background-color: #4CAF50;
+        background-color: #3c7a3e;
         color: white;
         border: none;
         border-radius: 5px;
@@ -67,88 +86,106 @@
         text-decoration: none;
     }
     .booking-button:hover {
-        background-color: #45a049;
+        background-color: #45a0498b;
     }
 
     .hotel-header{
         display: flex;
         flex-direction: row;
     }
+    .fonting {
+        font-family: 'Times New Roman', Times, serif, sans-serif;
+        font-size:x-large;
+    }
 </style>
 </head>
 <body>
 <div class="details-box">
-    <h1 style="text-align: center;">Hotels and Accommodation</h1>
-    <div class="hotel-dialog">
-        <div class="hotel">
-            <div class="hotel-header">
-                <img src="img/img 1.png" alt="Hotel 1">
-            <div class="hotel-name"><h3>The Mountain Courtyar</h3></div>
-            </div>
-            
-            <div class="hotel-details">
-                <h3></h3>
-                <p><b>Description:</b> Experience unparalleled luxury at this award-winning property offering well-appointed rooms, incredible restaurants and easy access to IT parks and corporate hubs.
-
-                    1. Enjoy a refreshing swim in the sparkling swimming pool.
-                    2. Wake up to the picturesque views of the lush green valley.
-                    3. Relish a wide range of global and Indian delicacies at the on-site restaurants.</p>
-                <p><b>Address:</b> Spring Valley, 66th mile Kottayam-Kumily Road, Springvalley, Thekkady, India, 685509.</p>
-                <p><b>Cost for 3 days: </b>$XXX</p>
-            </div>
-            <a href="mod5.html" class="booking-button">Book Now</a>
+    <div class="header">
+        <div>
+            <img class="logo" src="img/logo-removebg-preview.png">
         </div>
-        <div class="hotel">
-            <div class="hotel-header">
-                <img src="img/img 2.png" alt="Hotel 2">
-                <div class="hotel-name"><h3>Keys Prima By Lemon Tree Hotels</h3></div>
-            </div>
-            <div class="hotel-details">
-                <h3></h3>
-                <p><b>Description:</b> Keys Prima by Lemon Tree Hotels, Thekaddy is strategically located near Kumily, a gateway town into Kerala from Tamil Nadu. It is close to the Periyar National Park and Wildlife Sanctuary (PNP), India's largest wildlife sanctuary.
-
-                    The name Thekaddy is derived from the word ‘thekku’ which means teak. The sanctuary is famous for its dense evergreen, semi-evergreen, moist, deciduous forests and savanna grasslands.
-                    </p>
-                <p><b>Address:</b> Keys Prima by Lemon Tree Hotels, Thekkady, Thekkady Road,Anavachal,Kumily PO, Idukki,, Vazhayil, Thekkady, India, 685509.</p>
-                <p><b>Cost for 3 days:</b> $XXX</p>
-            </div>
-            <a href="mod5.html" class="booking-button">Book Now</a>
+        <div class="heading">
+            <h1 style="color: rgb(0, 0, 0);">Hotels and Accommodation</h1>
         </div>
-        <div class="hotel">
-            <div class="hotel-header">
-                <img src="img/img 3.png" alt="Hotel ">
-                <div class="hotel-name"><h3>Greenwoods Resort, Thekkady</h3></div>
+        
+    </div>
+    <div class="details">
+        <div class="hotel-dialog">
+            <div class="hotel">
+                <div class="hotel-header">
+                    <img src="img/img 1.png" alt="Hotel 1">
+                    <div class="hotel-name"><h1>The Mountain Courtyar</h1></div>
+                </div>
+                
+                <div class="hotel-details">
+                    <h3></h3>
+                    <p><span class="fonting"><b>Description:</b></span> Experience unparalleled luxury at this award-winning property offering well-appointed rooms, incredible restaurants and easy access to IT parks and corporate hubs.
+    
+                        1. Enjoy a refreshing swim in the sparkling swimming pool.
+                        2. Wake up to the picturesque views of the lush green valley.
+                        3. Relish a wide range of global and Indian delicacies at the on-site restaurants.</p>
+                    <p><span class="fonting"><b>Address:</b></span> Spring Valley, 66th mile Kottayam-Kumily Road, Springvalley, Thekkady, India, 685509.</p>
+                    <p><span class="fonting"><b>Cost for 3 days: </b></span>$XXX</p>
+                </div>
+                <a href="mod5.html" class="booking-button">Book Now</a>
             </div>
-            <div class="hotel-details">
-                <h3></h3>
-                <p><b>Description:</b> Experience a comfortable stay at this lavish property featuring stylish rooms, a dining venue, a crystal-clear swimming pool and upscale amenities.
-
-                    1. Take a refreshing swim in the outdoor pool, and allow your children to have fun in the kids' pool at Green Woods Resort.
-                    2. Start your day with a refreshing workout session at the on-site gym featuring state-of-the-art equipment at Green Woods Resort.
-                    3. Relish a wide range of cuisines at the on-site restaurant, Amrutham.</p>
-                <p><b>Address:</b> Kottayam - Kumily Rd, Vazhayil, Thekkady, India, 685509.</p>
-                <p><b>Cost for 3 days:</b> $XXX</p>
+            <div class="hotel">
+                <div class="hotel-header">
+                    <img src="img/img 2.png" alt="Hotel 2">
+                    <div class="hotel-name"><h1>Keys Prima By Lemon Tree Hotels</h1></div>
+                </div>
+                <div class="hotel-details">
+                    <h3></h3>
+                    <p><span class="fonting"><b>Description:</b> </span>Keys Prima by Lemon Tree Hotels, Thekaddy is strategically located near Kumily, a gateway town into Kerala from Tamil Nadu. It is close to the Periyar National Park and Wildlife Sanctuary (PNP), India's largest wildlife sanctuary.
+    
+                        The name Thekaddy is derived from the word ‘thekku’ which means teak. The sanctuary is famous for its dense evergreen, semi-evergreen, moist, deciduous forests and savanna grasslands.
+                        </p>
+                    <p><span class="fonting"><b>Address:</b> </span>Keys Prima by Lemon Tree Hotels, Thekkady, Thekkady Road,Anavachal,Kumily PO, Idukki,, Vazhayil, Thekkady, India, 685509.</p>
+                    <p><span class="fonting"><b>Cost for 3 days:</b> </span>$XXX</p>
+                </div>
+                <a href="mod5.html" class="booking-button">Book Now</a>
             </div>
-            <a href="mod5.html" class="booking-button">Book Now</a>
-        </div>
-        <div class="hotel">
-            <div class="hotel-header">
-                <img src="img/img 4.png" alt="Hotel 4">
-                <div class="hotel-name"><h3>The Elephant Court Resort</h3></div>
+            <div class="hotel">
+                <div class="hotel-header">
+                    <img src="img/img 3.png" alt="Hotel ">
+                    <div class="hotel-name"><h1>Greenwoods Resort, Thekkady</h1></div>
+                </div>
+                <div class="hotel-details">
+                    <h3></h3>
+                    <p><span class="fonting"><b>Description:</b></span>Experience a comfortable stay at this lavish property featuring stylish rooms, a dining venue, a crystal-clear swimming pool and upscale amenities.
+    
+                        1. Take a refreshing swim in the outdoor pool, and allow your children to have fun in the kids' pool at Green Woods Resort.
+                        2. Start your day with a refreshing workout session at the on-site gym featuring state-of-the-art equipment at Green Woods Resort.
+                        3. Relish a wide range of cuisines at the on-site restaurant, Amrutham.</p>
+                    <p><span class="fonting"><b>Address:</b></span> Kottayam - Kumily Rd, Vazhayil, Thekkady, India, 685509.</p>
+                    <p><span class="fonting"><b>Cost for 3 days:</b></span> $XXX</p>
+                </div>
+                <a href="mod5.html" class="booking-button">Book Now</a>
             </div>
-            <div class="hotel-details">
-                <h3></h3>
-                <p><b>Description:</b> Indulge in unparalleled luxury at this premium property offering well-appointed rooms, incredible restaurants, a luxurious spa and upscale amenities.
-
-                    1. Treat yourself to luxury treatments and wellness therapies at the on-site spa.
-                    2. Swim a few laps in the sparkling swimming pool.
-                    3. Relish traditional and Mediterranean dishes at the on-site restaurant, Patio Restaurant.</p>
-                <p><b>Address:</b> Amalambika road, Thekkady P.O Idukki District, Vazhayil, Thekkady, India, 685536.</p>
-                <p><b>Cost for 3 days:</b> $XXX</p>
+            <div class="hotel">
+                <div class="hotel-header">
+                    <img src="img/img 4.png" alt="Hotel 4">
+                    <div class="hotel-name"><h1>The Elephant Court Resort</h1></div>
+                </div>
+                <div class="hotel-details">
+                    <h3></h3>
+                    <p><span class="fonting"><b>Description:</b> </span>Indulge in unparalleled luxury at this premium property offering well-appointed rooms, incredible restaurants, a luxurious spa and upscale amenities.
+    
+                        1. Treat yourself to luxury treatments and wellness therapies at the on-site spa.
+                        2. Swim a few laps in the sparkling swimming pool.
+                        3. Relish traditional and Mediterranean dishes at the on-site restaurant, Patio Restaurant.</p>
+                    <p><span class="fonting"><b>Address:</b></span> Amalambika road, Thekkady P.O Idukki District, Vazhayil, Thekkady, India, 685536.</p>
+                    <p><span class="fonting"><b>Cost for 3 days:</b></span>$XXX</p>
+                </div>
+                <a href="mod5.html" class="booking-button">Book Now</a>
             </div>
-            <a href="mod5.html" class="booking-button">Book Now</a>
         </div>
     </div>
+    
+    
+    
+    
 </div>
 </body>
 </html>

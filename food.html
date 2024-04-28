@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Preferences - Local Tourism</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button.yes {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        button.no {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+        button.pref {
+            background-color: #008CBA; /* Blue */
+            color: white;
+        }
+        .restaurant-img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Explore Local Cuisine</h1>
+        </div>
+    </header>
+
+    <section id="food-preferences">
+        <div class="container">
+            <h2>Food Preferences</h2>
+            <p>Do you have food preferences?</p>
+            <button class="yes" onclick="showPreferences('yes')">Yes</button>
+            <button class="no" onclick="showPreferences('no')">No</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPreferences(choice) {
+            if (choice === 'yes') {
+                document.getElementById("food-preferences").innerHTML = `
+                    <div class="container">
+                        <h2>Food Preferences</h2>
+                        <p>What type of food do you prefer?</p>
+                        <button class="pref" onclick="showRestaurants('veg')">Vegetarian</button>
+                        <button class="pref" onclick="showRestaurants('nonveg')">Non-Vegetarian</button>
+                        <button class="pref" onclick="showRestaurants('both')">Both</button>
+                    </div>`;
+            } else {
+                // Show suggestions
+                document.getElementById("food-preferences").innerHTML = `
+                    <div class="container">
+                        <h2>Food Suggestions</h2>
+                        <p>Here are some restaurant suggestions based on our popular picks.</p>
+                        <!-- Add suggestions here -->
+                    </div>`;
+            }
+        }
+
+        function showRestaurants(type) {
+            let message = "";
+            if (type === 'veg') {
+                message = "Vegetarian restaurants";
+            } else if (type === 'nonveg') {
+                message = "Non-Vegetarian restaurants";
+            } else if (type === 'both') {
+                message = "Vegetarian and Non-Vegetarian restaurants";
+            }
+
+            document.getElementById("food-preferences").innerHTML = `
+                <div class="container">
+                    <h2>${message}</h2>
+                    <p>What type of restaurant are you looking for?</p>
+                    <button class="pref" onclick="showOptions('budget')">Budget-Friendly</button>
+                    <button class="pref" onclick="showOptions('popular')">Popular</button>
+                    <button class="pref" onclick="showOptions('ambience')">Based on Ambience</button>
+                </div>`;
+        }
+
+        function showOptions(criteria) {
+            let message = "";
+            let imagesHTML = ""; // Variable to store HTML for images
+
+            if (criteria === 'budget') {
+                message = "Budget-Friendly restaurants";
+            } else if (criteria === 'popular') {
+                message = "Popular restaurants";
+                // Add images dynamically
+                imagesHTML += `
+                    <img src="img/restaurant1.png" alt="Restaurant 1" class="restaurant-img">
+                    <img src="restaurant2.jpg" alt="Restaurant 2" class="restaurant-img">
+                    <img src="restaurant3.jpg" alt="Restaurant 3" class="restaurant-img">
+                `;
+            } else if (criteria === 'ambience') {
+                message = "Restaurants based on Ambience";
+            }
+
+            document.getElementById("food-preferences").innerHTML = `
+                <div class="container">
+                    <h2>${message}</h2>
+                    <p>Here are your restaurant options.</p>
+                    ${imagesHTML} <!-- Display images -->
+                </div>`;
+        }
+    </script>
+</body>
+</html>

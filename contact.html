@@ -41,6 +41,11 @@
     padding: 20px;
     box-sizing: border-box;
     z-index: 2; /* Ensures form is on top if overlapping occurs */
+    
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px); /* Apply blur effect */
+    -webkit-backdrop-filter: blur(2px); /* For Safari */
 }
 .info-container i {
     color: #0f0101;  /* Sets the color of the icons */
@@ -132,6 +137,7 @@
         a:hover {
             text-decoration: blueviolet;
         }
+        
     </style>
 </head>
 <body>
@@ -155,7 +161,7 @@
                 <label for="address">EMAIL</label>
                 <input type="text" id="email" name=" email " placeholder="Enter valid email address">
                 <label for="message">QUERIES</label>
-                <textarea id="message" name="message" placeholder="Enter your queries here..." rows="2"></textarea>
+                <textarea id="message" name="message" placeholder="Enter your queries.." rows="2"></textarea>
                 <button type="submit" class="btn">Submit</button>
             </form>
             <p>Alternatively, you can send your queries <a href="https://mail.google.com/mail/u/0/?ogbl#inbox?compose=new">here</a>.</p>

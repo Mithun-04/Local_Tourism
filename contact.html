@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0,0,0,0.5)),url("img/background tree1.jpg");
+            background-image: linear-gradient(rgba(9, 9, 9, 0.5),rgba(0,0,0,0.5)),url("img/background tree1.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -38,12 +38,24 @@
           -webkit-backdrop-filter: blur(2px); /* For Safari */
            position: absolute;
            right: 450px;
+           font-size: 15px;
 
         }
         .info-container i {
          color: #100202;  /* Sets the color of the icons */
          margin-right: 8px;  /* Adds spacing between the icon and text */
         }
+        @keyframes fadeInLeft {
+          from {
+           opacity: 0;
+           transform: translateX(-50px); /* Start from left */
+        }
+        to {
+        opacity: 1;
+        transform: translateX(0);
+        }
+        }
+
 
         /* Specific styling can be applied to change icon size or color individually */
          .info-container .fa-phone-alt {
@@ -66,20 +78,23 @@
            padding: 10px;
            z-index: 1; /* Ensures it's behind other content if overlapping */
            font-size:15px; /* Increased font size for better readability */
-          }
+         }
 
           
             .info-container p {
             font-size: 25px; /* Size for paragraph text */
             color: #f3f9f7; /* Optional: dark color for text */
             }
-
-
-
-         
-        h2 {
+            .description {
+               animation: fadeInLeft 4s ease-out forwards; /* Customize duration and easing */
+               font-size: 1.2rem; /* Adjust size as needed */
+               color: #666; /* Adjust color as needed */
+               max-width: 600px; /* Restricts the width for better readability */
+               margin: 0 auto 20px; /* Centering and spacing */
+            }
+            h2 {
             text-align: center;
-        }
+            }
 
         input[type="text"], textarea {
             width: 100%;
@@ -89,6 +104,7 @@
             border: 1px solid #012e20;
             border-radius: 5px;
             box-sizing: border-box;
+            font-size: 15px;
             
         }
 
@@ -96,6 +112,7 @@
             display: block;
             text-align: left;
             margin-bottom: 10px;
+            font-size: 20px;
         }
 
         .btn-container {
@@ -107,7 +124,7 @@
 
         .btn {
             padding: 10px 20px;
-            background-color:#053c2d;
+            background-color:#26322f;
             color: #060606;
             border: none;
             border-radius: 15px;
@@ -129,7 +146,7 @@
         }
         .btn-back {
     padding: 10px 20px;
-    background-color:#053c2d; /* Example color: slate blue */
+    background-color:#26322f;/* Example color: slate blue */
     color: rgb(9, 6, 6);
     border: none;
     border-radius: 15px;
@@ -141,20 +158,14 @@
 .btn-back:hover {
     background-color: #6be393; /* Darker shade for hover effect */
 }
-
-        
-
-
-
-        
-    </style>
+</style>
 </head>
 <body>
     <div class="wrapper">
         <div class="info-container">
-
-            <p>Whether you have questions about our services, need assistance with your experience, or just want to provide feedback, we're here to help. Fill out the form and one of our team members will get back to you promptly. Your input is invaluable in helping us enhance your overall experience. Don't hesitate to reach out — <strong>let's connect!</strong></p>
-
+           <div class="description">
+            <p>Whether you have questions about our services, need <strong>assistance </strong> with your experience, or just want to provide <strong>feedback</strong>, we're here to help. Fill out the form and one of our team members will get back to you promptly. Your input is invaluable in helping us enhance your overall experience. Don't hesitate to reach out — <strong>let's connect!</strong></p>
+           </div>
                 
                 <p><i class="fas fa-phone-alt"></i> <strong>+123 456 7890</strong></p> 
                 
@@ -168,11 +179,11 @@
             <h1>LETS CONNECT</h1>
             
             <form>
-                <label for="name">NAME</label>
+                <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter Your name" required>
-                <label for="address">EMAIL</label>
+                <label for="address">Email</label>
                 <input type="text" id="email" name=" email " placeholder="Enter valid email address">
-                <label for="message">QUERIES/FEEDBACK</label>
+                <label for="message">Queries/Feedback</label>
                 <textarea id="message" name="message" placeholder="Enter your queries/feedback.." rows="2"></textarea>
                 <button type="submit" class="btn">Submit</button>
                 <button type="button" onclick="goBack()" class="btn-back">Back</button>

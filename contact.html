@@ -18,67 +18,61 @@
             padding: 0;
             color: #281010;
         }
-
-        
-        .header-bar {
-            background-color: #290f08;
-            color: rgb(245, 238, 238);
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
         .wrapper {
-    display: flex;
-    justify-content: center; /* Center children horizontally */
-    align-items: center; /* Center children vertically */
-    height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center; /* Center children horizontally */
+            align-items: center; /* Center children vertically */
+            height: 100vh; /* Full viewport height */
 }
 
-.form-container {
-    width: 100%;
-    max-width: 400px; /* Maximum width of the form */
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 2; /* Ensures form is on top if overlapping occurs */
-}
-.info-container i {
-    color: #333;  /* Sets the color of the icons */
-    margin-right: 8px;  /* Adds spacing between the icon and text */
-}
+        .form-container {
+           width: 100%;
+           max-width: 400px; /* Maximum width of the form */
+           padding: 20px;
+           box-sizing: border-box;
+           z-index: 2; /* Ensures form is on top if overlapping occurs */
+           border-radius: 20px;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+           backdrop-filter: blur(2px); /* Apply blur effect */
+          -webkit-backdrop-filter: blur(2px); /* For Safari */
+        }
+        .info-container i {
+         color: #0f0101;  /* Sets the color of the icons */
+         margin-right: 8px;  /* Adds spacing between the icon and text */
+        }
 
-/* Specific styling can be applied to change icon size or color individually */
-.info-container .fa-phone-alt {
-    color: green;
-}
+        /* Specific styling can be applied to change icon size or color individually */
+         .info-container .fa-phone-alt {
+         color: green;
+         }
 
-.info-container .fa-map-marker-alt {
-    color: red;
-}
+        .info-container .fa-map-marker-alt {
+          color: red;
+         }
 
-.info-container .fa-business-time {
-    color: blue;
-}
+         .info-container .fa-business-time {
+            color: blue;
+          }
 
-.info-container {
-    position: absolute; /* Keeps it out of the normal flow */
-    top: 140px; /* Position near the top of the viewport */
-    left: 75px; /* Position from the left of the viewport */
-    max-width: 200px; /* Limiting the width */
-    padding: 10px;
-    z-index: 1; /* Ensures it's behind other content if overlapping */
-    font-size: 25px; /* Increased font size for better readability */
-}
+          .info-container {
+           position: absolute; /* Keeps it out of the normal flow */
+           top: 150px; /* Position near the top of the viewport */
+           left: 75px; /* Position from the left of the viewport */
+           max-width: 300px; /* Limiting the width */
+           padding: 10px;
+           z-index: 1; /* Ensures it's behind other content if overlapping */
+           font-size:15px; /* Increased font size for better readability */
+          }
 
-.info-container h2 {
-    font-size: 25px; /* Slightly larger for headings */
-    color: #333; /* Optional: dark color for text */
-}
+            .info-container h2 {
+             font-size: 25px; /* Slightly larger for headings */
+            color: #0f0101; /* Optional: dark color for text */
+             }
 
-.info-container p {
-    font-size: 25px; /* Size for paragraph text */
-    color: #333; /* Optional: dark color for text */
-}
+            .info-container p {
+            font-size: 25px; /* Size for paragraph text */
+            color: #0f0202; /* Optional: dark color for text */
+            }
 
 
 
@@ -92,7 +86,7 @@
             padding: 10px;
             margin-top: 5px;
             margin-bottom: 20px;
-            border: 1px solid #0f0101;
+            border: 1px solid #160101;
             border-radius: 10px;
             box-sizing: border-box;
         }
@@ -112,7 +106,7 @@
 
         .btn {
             padding: 10px 20px;
-            background-color: #89c8d8;
+            background-color: #8aabe4;
             color: #060606;
             border: none;
             border-radius: 15px;
@@ -132,30 +126,32 @@
         a:hover {
             text-decoration: blueviolet;
         }
+        
     </style>
 </head>
 <body>
     <div class="wrapper">
         <div class="info-container">
-            <h2></h2>
-            <p><i class="fas fa-phone-alt"></i> <strong>Contact</strong></p> 
-                <p>+123 456 7890</p>
-            <p><i class="fas fa-map-marker-alt"></i><strong>Location</strong></p>
+
+            <h1> CONTACT US</h1>
+                
+                <p><i class="fas fa-phone-alt"></i> <strong>+123 456 7890</strong></p> 
+                
+            <p><i class="fas fa-map-marker-alt"></i><strong>coimbatore</strong> </p>
            
-            <p></p>Peelamedu,coimbatore</p>
-            <p><i class="fas fa-business-time"></i> <strong>Business Hours</strong></p> 
-                <p>9 AM-5 PM,Mon - Fri</p>
+            <p><i class="fas fa-business-time"></i> <strong>9 AM-5 PM,Mon - Fri</strong></p> 
+                
                 
         </div>
         <div class="form-container">
             <h1>LETS CONNECT</h1>
             <form>
-                <label for="name">NAME:</label>
+                <label for="name">NAME</label>
                 <input type="text" id="name" name="name" placeholder="Enter Your name" required>
-                <label for="address">ADDRESS:</label>
-                <input type="text" id="address" name="address" placeholder="Enter Your address">
-                <label for="message">QUERIES:</label>
-                <textarea id="message" name="message" placeholder="Enter your queries here..." rows="2"></textarea>
+                <label for="address">EMAIL</label>
+                <input type="text" id="email" name=" email " placeholder="Enter valid email address">
+                <label for="message">QUERIES</label>
+                <textarea id="message" name="message" placeholder="Enter your queries.." rows="2"></textarea>
                 <button type="submit" class="btn">Submit</button>
             </form>
             <p>Alternatively, you can send your queries <a href="https://mail.google.com/mail/u/0/?ogbl#inbox?compose=new">here</a>.</p>

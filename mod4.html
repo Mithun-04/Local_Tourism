@@ -19,7 +19,8 @@
         background-attachment: fixed;
     }
     .details-box {
-
+        animation-duration: 3s;
+        animation-name: slideup;
         background-color: rgba(177, 124, 124, 0.596); /* Reduce opacity for a transparent effect */
         border-radius: 10px;
         width: 1100px;
@@ -28,20 +29,64 @@
         box-shadow: 20px 20px 10px rgba(1, 1, 1, 0.7);
         overflow: hidden; /* Hide overflowing content */
     }
+    @keyframes slideup {
+            from {
+             
+                opacity: 0;
+                /* Start with opacity 0 for a fade-in effect */
+                transform: translateX(-500%);
+                /* Start from below the viewport */
+            }
+
+            to {
+                
+                opacity: 1;
+                /* Fade in fully */
+                transform: translatex(0);
+                /* Move to its original position */
+            }
+        }
     .header {
         display: flex;
         flex-direction: row;
         max-height: 150px;
     }
     .logo {
+        animation-duration: 5s;
+        animation-name: slidein1;
         flex: 1;
         width: 125px;
         height: 125px;
     }
+    @keyframes slidein1 {
+            from {
+                margin-left: -100%;
+                ;
+            }
+
+            to {
+                margin-right: 80%;
+            }
+        }
     .heading {
-        flex: 2;
+        animation-duration: 6s;
+        animation-name: slidein;
+        flex: 1;
+        padding-right: 50px;
         text-align: center;
+        text-decoration: underline;
+        
     }
+    @keyframes slidein {
+            from {
+                margin-left: -110%;
+                ;
+            }
+
+            to {
+                margin-bottom: 80%;
+            }
+        }
     .hotel-dialog {
         height: auto; /* Let it adjust its height automatically */
         overflow-y: hidden; /* Hide vertical scrolling */
@@ -49,6 +94,7 @@
         padding-left: 20px; /* Add some space for the scrollbar */
 
     }
+    
     .hotel {
         position: relative;
         display: flex;
@@ -106,7 +152,7 @@
             <img class="logo" src="img/logo-removebg-preview.png">
         </div>
         <div class="heading">
-            <h1 style="color: rgb(0, 0, 0);">Hotels and Accommodation</h1>
+            <h1 style="color: rgb(0, 0, 0);">HOTELS & ACCOMMODATION</h1>
         </div>
         
     </div>

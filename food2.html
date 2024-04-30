@@ -6,35 +6,37 @@
     <title>Food Preferences</title>
     <link rel="icon" type="PNG" href="img/food_icon.png">
     <style>
-      
-      body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-#questionContent, #foodPreferences {
-    background-size: cover; /* Cover entire viewport */
-    background-position: center;
-    background-attachment: fixed; /* Fixed background */
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#questionContent {
-    background-image: url('img/restaurant1.png'); /* Adjust the path to your image */
-}
-
-#foodPreferences {
-    background-image: url('img/restaurant.png'); /* Adjust the path to your image */
-}
-.
-
-
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('img/restaurant1.');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        #questionContent {
+            background-image: url('img/restaurant1.png'); /* Adjust the path to your image */
+            background-size: 100% 100%;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #foodPreferences {
+            background-image: url('img/restaurant.png'); /* Adjust the path to your image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
         .container {
             display: flex;
             flex-direction: column;
@@ -66,7 +68,7 @@
             margin-top: 10px;
             display: block; /* Display as block element */
             width: 100%; /* Occupy full width */
-}
+        }
 
         .details {
             display: flex;
@@ -86,8 +88,6 @@
 
         .restaurant img {
             width: 100%; /* Make the image fill the container */
-            border-radius: 10px;
-            margin-bottom: 10px;
         }
 
         .restaurant h2 {
@@ -106,9 +106,9 @@
         <div class="content" id="questionContent">
             <h1>Food Preferences</h1>
             <p>Do you have any food preferences?</p>
-            <button class="button" onclick="showFoodPreferences('veg')">Veg</button>
-            <button class="button" onclick="showFoodPreferences('nonveg')">Non-Veg</button>
-            <button class="button" onclick="showFoodPreferences('both')">Both</button>
+            <button class="button" onclick="showFoodPreferences('veg'); changeimg('img/veg.jpg')">Veg</button>
+            <button class="button" onclick="showFoodPreferences('nonveg');changeimg('img/veg.jpg')">Non-Veg</button>
+            <button class="button" onclick="showFoodPreferences('both');changeimg('img/veg.jpg')">Both</button>
             <button class="button" onclick="showSuggestions()">No, show suggestions</button>
         </div>
         <div class="content" id="foodPreferences" style="display: none;">
@@ -120,7 +120,7 @@
             <button class="button" onclick="showRestaurants('nonveg', 'budget')">Non-Veg - Budget</button>
             <button class="button" onclick="showRestaurants('nonveg', 'popular')">Non-Veg - Popular</button>
             <button class="button" onclick="showRestaurants('nonveg', 'ambience')">Non-Veg - Ambience</button>
-            <button class="button" onclick="showQuestion()">Back</button>
+            <button class="button" onclick="showQuestion()">Back;</button>
         </div>
         <div class="content" id="suggestions" style="display: none;">
             <h1>Suggestions</h1>
@@ -254,7 +254,7 @@
             document.getElementById('foodPreferences').style.display = 'block';
             document.getElementById('suggestions').style.display = 'none';
             document.getElementById('restaurantDetails').style.display = 'none';
-            document.body.style.backgroundImage = "url('img/restaurant1.png')";
+            document.body.style.backgroundImage = "url('img/restaurant2.png')";
         }
 
         function showSuggestions() {
@@ -313,6 +313,11 @@
             document.getElementById('foodPreferences').style.display = 'none';
             document.getElementById('suggestions').style.display = 'none';
             document.getElementById('restaurantDetails').style.display = 'none';
+            changeimg('img/restaurant1.png');
+        }
+
+        function changeimg(imageUrl) {
+            document.body.style.backgroundImage = "url('" + imageUrl + "')";
         }
     </script>
 </body>

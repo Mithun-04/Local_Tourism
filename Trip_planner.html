@@ -13,7 +13,7 @@
             text-align: center;
             padding: 1em;
           
-            z-index: -1;
+            z-index: 1;
         }
  
 
@@ -63,7 +63,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             position: relative;
             /* Add position relative to prevent overlapping */
-            z-index: -1;
+            z-index: 0;
         }
 
 
@@ -282,16 +282,16 @@
 
                 <form id="tripForm">
                     <label for="location">Location:</label>
-                    <input type="text" id="location" name="location" required placeholder="--- Theni ---">
+                    <input type="text" id="location" placeholder="--- Theni ---">
 
                     <label for="budget">Budget:</label>
-                    <input type="number" id="budget" name="budget" required placeholder="--- 5000 ---">
+                    <input type="number" id="budget"  placeholder="--- 5000 ---">
 
                     <label for="people">Number of People:</label>
-                    <input type="number" id="people" name="people" required placeholder="--- 3 ---">
+                    <input type="number" placeholder="--- 3 ---">
 
                     <label for="days">Number of Days:</label>
-                    <input type="number" id="days" name="days" required placeholder="--- 2 ---">
+                    <input type="number"  placeholder="--- 2 ---">
 
 
                 </form>

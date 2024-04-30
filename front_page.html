@@ -8,12 +8,53 @@
         <link rel="icon" href="img/Home_icon.png">
         <style>
             body{
-             background-image: url('img/fp1.jpg');
+             background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('img/fp1.jpg');
+
              background-repeat: no-repeat;
              background-size: cover;
              background-position: center;
+<<<<<<< HEAD
         background-attachment: fixed;
+=======
+            background-attachment: fixed;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            width:100%;
+
+>>>>>>> 4bb3dd6322bd951b1a1c22f42fcd9f437190ad8a
         
+            }
+            .head{
+                display: flex;
+                flex-direction: row;
+                background-color: transparent;
+                backdrop-filter: blur(20px);
+                box-shadow: 0 0 20px rgba(0,0,0,0.5);
+                margin-left: -1rem;
+                margin-top:-1rem;
+                
+                margin-bottom: 0px;
+                padding-top:12px;
+                padding-bottom:12px ;
+                padding-left: 20px;
+                color:white;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: 17px;
+                width:100%;
+                gap : 10px;
+                
+                
+                
+            }
+
+            .s{
+                display: flex;
+                flex-direction: row;
+                width: 20px;
+                height: 20px;
+                padding-top: 2px;
+                gap:20px;
             }
             
             a{
@@ -23,6 +64,7 @@
             a:hover{
                 color:white;
             }
+<<<<<<< HEAD
             .brown{
                 background-color: rgb(146, 78, 78);
                 margin-left: -1rem;
@@ -53,16 +95,24 @@
                 width:100%;
                 height:2.0rem
             }
+=======
+           
+            
+>>>>>>> 4bb3dd6322bd951b1a1c22f42fcd9f437190ad8a
             button:hover{
                 cursor:pointer;
                 background-color: grey;
                 color:white;
             }
-           .home{
+           .home,.abt,.cont,.log{
             border-radius: 30px;
+<<<<<<< HEAD
             background-color: white;
+=======
+            background-color: rgba(238, 231, 231, 0.619);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+>>>>>>> 4bb3dd6322bd951b1a1c22f42fcd9f437190ad8a
             color:black;
-            border:none;
             font-family: 'Times New Roman', Times, serif;
             font-weight: bold;
             padding-left: 35px;
@@ -70,9 +120,10 @@
             padding-top:15px;
             padding-bottom: 15px;
             font-size: 16px;
-    
+            border: none;
            }
            
+<<<<<<< HEAD
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -126,6 +177,10 @@
                 font-size: 16px;
     
             }
+=======
+        
+            
+>>>>>>> 4bb3dd6322bd951b1a1c22f42fcd9f437190ad8a
             .text{
                 text-align: center;
                 margin-top: 230px;
@@ -162,13 +217,14 @@
                 margin-left: 600px;
             }
             .gstart:hover{
-                background-color: white;
+                background-color: rgb(78, 72, 72);
                 color:black;
             }
             .gst:hover{
                 color:black;
             }
 
+<<<<<<< HEAD
             .nav__logo{
                 position: absolute;
                 top: 10px;
@@ -178,24 +234,68 @@
                 margin-top: 2rem;
                 
             }
+=======
+            .buttons{
+                margin-top: 2%;
+                display: flex;
+                flex-flow: row;
+                margin-left: 850px;
+                
+                gap: 50px;
+                
+            }
+            .nav__logo{
+                width: 50px;
+                height: 50px;
+                
+            }
+            
+            .so{
+                display: flex;
+                flex-direction: row;
+                padding-left: 79%;
+                gap: 100px;
+                margin-top: 15px;
+
+            }
+            .m{
+                margin-left: 5;
+            }
+>>>>>>> 4bb3dd6322bd951b1a1c22f42fcd9f437190ad8a
         </style>
     </head>
     <body>
        
-        <p class="brown">
-            &lt; OUR SOCIALS
-        </p>
+      
+        <div class="head">
+            <img class="nav__logo" src="img/logo-removebg-preview.png" alt="" srcset="">
+            <div class="so">
+            <div class="s">
+            <img class = "e"src="img/icon-twitter.svg" alt="">
+            <img class = "i" src="img/icon-instagram.svg" alt="">
+            <img class="f" src = "img/icon-facebook.svg" alt=""></div>
+            OUR SOCIALS
+        </div>
+        </div>
+     
         <div class="nav">
             <p class="whitbg">
+<<<<<<< HEAD
                 <img class="nav__logo" src="img/logo.jpg" alt="" srcset="">
                 <button class="home"><a href="C:\Users\MK\Desktop\APP-LT\Local_Tourism\front_page.html">HOME</a></button>
                 <button class="abt"> <a href="">ABOUT</a></button>
+=======
+                
+                <div class="buttons">
+                <button class="home"><a hre="front_page.html">HOME</a></button>
+                <button class="abt"> <a href="about.html">ABOUT</a></button>
+>>>>>>> 4bb3dd6322bd951b1a1c22f42fcd9f437190ad8a
                 <button class="cont"><a href="contact.html">CONTACT</a></button>
                 <button class="log"><a href="login.html">LOGIN</a></button>
     
             </p>
         </div>
-        
+        <div class="m">
         <p class="text">
             <span class="extra">"EXPERIENCE THE EXTRAORDINARY"</span> <span class="tourist">WITH THIS ASSURED TOURIST GUIDE </span>
         </p>
@@ -204,5 +304,6 @@
                 GET STARTED
             </a>
         </button>
+    </div>
     </body>
 </html>

@@ -12,7 +12,10 @@
              background-repeat: no-repeat;
              background-size: cover;
              background-position: center;
-        background-attachment: fixed;
+            background-attachment: fixed;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            width:100%;
         
             }
             
@@ -30,7 +33,7 @@
                 margin-bottom: 0px;
                 padding-top:12px;
                 padding-bottom:12px ;
-                padding-left: 1050px;
+                padding-left: 1080px;
                 color:white;
                 font-family: Arial, Helvetica, sans-serif;
                 font-weight: bold;
@@ -38,21 +41,7 @@
                 width:100%;
                 
             }
-            .whitbg{
-                background-color: white;
-                margin-left: -1rem;
-                color:black;
-                padding-top:30px;
-                padding-bottom:30px ;
-                margin-top: 0px;
-                margin-bottom: 0px;
-                padding-left: 650px;
-                font-family: Arial, Helvetica, sans-serif;
-                font-weight: bold;
-                font-size: 20px;
-                width:100%;
-                height:2.0rem
-            }
+            
             button:hover{
                 cursor:pointer;
                 background-color: grey;
@@ -61,6 +50,7 @@
            .home{
             border-radius: 30px;
             background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
             color:black;
             border:none;
             font-family: 'Times New Roman', Times, serif;
@@ -73,14 +63,11 @@
     
            }
            
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        
             .abt{
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
                 border-radius: 30px;
-                margin-left: 80px;
+                margin-left: 40px;
                 cursor:pointer;
                 border:none;
                 background-color:white;
@@ -95,8 +82,9 @@
     
             }
             .cont{
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
                 border-radius: 30px;
-                margin-left: 80px;
+                margin-left: 40px;
                 cursor: pointer;
                 border:none;
                 background-color:white;
@@ -111,8 +99,9 @@
     
             }
             .log{
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
                 border-radius: 30px;
-                margin-left: 80px;
+                margin-left: 40px;
                 cursor: pointer;
                 border:none;
                 background-color:white;
@@ -127,6 +116,7 @@
     
             }
             .text{
+                
                 text-align: center;
                 margin-top: 230px;
                 width:1100px;
@@ -178,6 +168,17 @@
                 margin-top: 2rem;
                 
             }
+            .buttons{
+                margin-top: 5%;
+                display: flex;
+                flex-flow: row;
+                margin-left: 850px;
+                
+                gap: 2px;
+                
+            }
+            
+            
         </style>
     </head>
     <body>
@@ -187,11 +188,13 @@
         </p>
         <div class="nav">
             <p class="whitbg">
-                <img class="nav__logo" src="img/logo.jpg" alt="" srcset="">
-                <button class="home"><a href="C:\Users\MK\Desktop\APP-LT\Local_Tourism\front_page.html">HOME</a></button>
+                <img class="nav__logo" src="img/logo-removebg-preview.png" alt="" srcset="">
+                <div class="buttons">
+                <button class="home"><a hre="front_page.html">HOME</a></button>
                 <button class="abt"> <a href="">ABOUT</a></button>
                 <button class="cont"><a href="contact.html">CONTACT</a></button>
                 <button class="log"><a href="login.html">LOGIN</a></button>
+                </div>
     
             </p>
         </div>

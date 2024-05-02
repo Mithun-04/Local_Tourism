@@ -27,11 +27,13 @@
         border-radius: 10px;
         width: 700px;
         margin-left: 100px;
-        margin-top: 100px;
+        margin-top: 70px;
         padding: 20px;
         box-shadow: 10px 10px 15px rgba(1, 1, 1, 0.7);
         overflow-y: auto;
         max-height: 450px;
+    
+        
          /* Hide overflowing content */
     }
     @keyframes slideup {
@@ -94,13 +96,32 @@
     }
 
     .para {
-            margin-top: 280px;
-            margin-left: 50px;
-            font-size: xx-large; 
-            color: azure;       
             animation-duration: 4s;
-            animation-name: slide_into;
+            animation-name: slidein2;
+            margin-top: 160px;
+            margin-bottom: 0px;
+            margin-left: 50px;
+            font-size: x-large; 
+            color: rgba(255, 255, 255, 0.777);     
+            line-height: 30px;
+            transition: 0.25s;
+            flex: 1;
+            font-style: italic;
+
+
         }
+        @keyframes slidein2 {
+        from {
+              transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0%);
+            }
+    }
+    .para:hover {
+        color: rgb(255, 255, 255);
+    }
     .hotel-dialog {
         height: auto; /* Let it adjust its height automatically */
         overflow-y: hidden; /* Hide vertical scrolling */
@@ -159,6 +180,10 @@
     }
     .main {
         display: flex;
+        flex-direction: row;
+    }
+    .str {
+        font-size: larger;
     }
 </style>
 </head>
@@ -250,13 +275,15 @@
     </div>
     <div class="para">
 
-            <p><span class="one">Unlock <span class="ex">exclusive </span>adventures with us</span><br><span
-                    class="two">Your trip, your way. Our <span class="pr">personalized</span> touch ensures every detail
-                    fits just right</span></p>
-            <div class="bt"><button class="learn" onclick="window.location.href = 'about.html'">Learn More</button></div>
-        </div>
+            <p>Welcome to the <strong class="str">cozy havens</strong> of hospitality where comfort meets adventure and indulgence intertwines with convenience.
+                Embark on a journey of luxury and leisure, where every room is a sanctuary, every bed a cloud, and every service a symphony of satisfaction.
+                From <strong class="str">chic boutique</strong> hideaways to towering <strong class="str">urban oases</strong>, our hotels and accommodations cater to every traveler's whims, offering a tapestry of experiences that beckon you to <strong class="str">unwind, explore</strong>, and <strong class="str">create unforgettable memories</strong>.
+                </p>
+    </div>
 
 </div>    
    
 </body>
 </html>
+
+

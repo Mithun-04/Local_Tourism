@@ -18,6 +18,7 @@
         }
 
         #questionContent {
+           
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             background-image: url('');
             background-size: cover;
@@ -33,6 +34,7 @@
         #foodPreferences {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
            
+
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -41,10 +43,10 @@
         }
 
         .container {
-            
+
             display: flex;
             flex-direction: column;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 10px rgba(65, 63, 63, 0.3);
             align-items: center;
             justify-content: center;
             min-height: 100vh;
@@ -52,20 +54,21 @@
         }
 
         .content {
-            
-            max-width: 800px;
-            background-color: rgba(0, 0, 0, 0.7);
+
+            max-width: 1000px;
+            background-color: rgba(37, 35, 35, 0.493);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
             color: #ffffff;
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
         }
 
         .button {
-            background-color: #ff9800;
-            color: #f0e7e7;
+            background-color: #f1ecec;
+            
+            color: #0a0000;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
@@ -74,30 +77,43 @@
             margin-top: 10px;
             display: block;
             /* Display as block element */
+            
+            max-width:500px;
             width: 100%;
             /* Occupy full width */
         }
-
+        .button:hover {
+            background-color: #ff9800;
+        }
         .details {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    justify-content: center; /* Center items horizontally */
+    margin-top: 20px;
+    max-width: fit-content;
+    width: auto; /* Allow the container to expand dynamically */
+    padding: 0 20px; /* Add padding to the sides to create space */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
 
-        .restaurant {
-            width: 33%;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+        
 
+
+
+.restaurant {
+    min-width: 200px;
+    max: width 300px;
+   
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px; /* Add some space between restaurants */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
         .restaurant img {
             width: 100%;
         }
@@ -112,6 +128,21 @@
             color: black;
             padding: 0 10px;
             /* Add padding to the text content */
+        }
+        .back-button {
+            background-color: #f0ebeb;
+            color: rgb(20, 1, 1);
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none; /* Ensure no underline for the button */
+        }
+
+        .back-button:hover {
+            background-color:  #ff9800;
         }
     </style>
 </head>
@@ -151,7 +182,7 @@
             <div class="details" id="restaurantImagesContainer">
                 <!-- Restaurant Details Will Be Added Dynamically Here -->
             </div>
-            <button class="button" onclick="showFoodPreferences()">Back</button>
+            <button class="back-button" onclick="showFoodPreferences()">Back</button>
         </div>
     </div>
 
@@ -161,31 +192,95 @@
             veg: {
                 budget: [
                     {
-                        image: 'img/restaurant1.png',
+                        image: 'img/restaurantbackground.png',
                         name: 'Veg Budget Restaurant 1',
                         description: 'Description of Veg Budget Restaurant 1.',
                         contact: '123-456-7890',
                         closingTime: '10:00 PM'
                     },
                     {
-                        image: 'img/restaurant1.png',
-                        name: 'Veg Budget Restaurant 2',
-                        description: 'Description of Veg Budget Restaurant 2.',
+                        image: 'img/restaurantbackground.png',
+                        name: 'Aarya Bhavan',
+                        description: 'Arya Bhavan offers a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey.',
                         contact: '987-654-3210',
                         closingTime: '11:00 PM'
                     },
+                    {
+                        image: 'img/restaurant3.png',
+                        name: 'Salt N Pepper',
+                        description: 'Here offer a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/dhanu sri hotel.png',
+                        name: 'Dhanu Shri Hotel',
+                        description: 'Dhanu Sri Hotel offers a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey..',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/hotel junior kuppan.png',
+                        name: 'Hotel Junior Kuppan ',
+                        description: 'Hotel Junior Kuppan offers a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/hotel aaryas.png',
+                        name: 'Hotel Aaryas',
+                        description: 'Hotel Aaryas offers a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey..',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    
                     // Add more veg-budget restaurant data as needed
                 ],
                 popular: [
                     {
-                        image: 'img/restaurant1.png',
-                        name: 'Veg Popular Restaurant 1',
+                        image: 'img/restaurantbackground.png',
+                        name: 'Hotel Aaryas',
                         description: 'Description of Veg Popular Restaurant 1.',
                         contact: '123-456-7890',
                         closingTime: '10:00 PM'
                     },
                     {
-                        image: 'img/restaurant1.png',
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
                         name: 'Veg Popular Restaurant 2',
                         description: 'Description of Veg Popular Restaurant 2.',
                         contact: '987-654-3210',
@@ -271,7 +366,7 @@
             document.getElementById('foodPreferences').style.display = 'block';
             document.getElementById('suggestions').style.display = 'none';
             document.getElementById('restaurantDetails').style.display = 'none';
-            document.body.style.backgroundImage = "url('img/restaurant1.png')";
+            changeimg('img/restaurantbackground.png'); // Change background image to default
         }
 
         function showSuggestions() {
@@ -279,6 +374,7 @@
             document.getElementById('foodPreferences').style.display = 'none';
             document.getElementById('suggestions').style.display = 'block';
             document.getElementById('restaurantDetails').style.display = 'none';
+            changeimg('img/restaurantbackground.png'); // Change background image to default
         }
 
         function showRestaurants(foodType, preference) {
@@ -330,7 +426,7 @@
             document.getElementById('foodPreferences').style.display = 'none';
             document.getElementById('suggestions').style.display = 'none';
             document.getElementById('restaurantDetails').style.display = 'none';
-            changeimg('img/restaurantbackground.png');
+            changeimg('img/restaurantbackground.png'); // Change background image to default
         }
 
         function changeimg(imageUrl) {

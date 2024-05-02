@@ -13,22 +13,26 @@
         margin: 0;
         padding: 0;
         font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif,Arial;
-        background-image: url('img/hotel.jpg'); /* Replace 'hotel-background.jpg' with your actual background image */
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),url('img/hotel.jpg'); /* Replace 'hotel-background.jpg' with your actual background image */
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
         line-height: 25px;
+        overflow: hidden;
     }
     .details-box {
         animation-duration: 3s;
         animation-name: slideup;
         background-color: rgba(255, 255, 255, 0.5); /* Reduce opacity for a transparent effect */
         border-radius: 10px;
-        width: 1100px;
-        margin: 50px auto;
+        width: 700px;
+        margin-left: 100px;
+        margin-top: 100px;
         padding: 20px;
         box-shadow: 10px 10px 15px rgba(1, 1, 1, 0.7);
-        overflow: hidden; /* Hide overflowing content */
+        overflow-y: auto;
+        max-height: 450px;
+         /* Hide overflowing content */
     }
     @keyframes slideup {
             from {
@@ -51,26 +55,27 @@
         display: flex;
         flex-direction: row;
         max-height: 150px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     }
     .logo {
         animation-duration: 5s;
         animation-name: slidein1;
         flex: 1;
-        width: 125px;
-        height: 125px;
+        width: 75px;
+        height: 75px;
     }
     @keyframes slidein1 {
             from {
-                margin-left: -100%;
-                ;
+              transform: translateX(-200%);
             }
 
             to {
-                margin-right: 80%;
+                transform: translateX(0%);
             }
-        }
+    }
     .heading {
-        animation-duration: 6s;
+        animation-duration: 4s;
         animation-name: slidein;
         flex: 1;
         padding-right: 50px;
@@ -79,14 +84,23 @@
         
     }
     @keyframes slidein {
-            from {
-                margin-left: -110%;
-                ;
+        from {
+              transform: translateX(-100%);
             }
 
             to {
-                margin-bottom: 80%;
+                transform: translateX(0%);
             }
+    }
+
+    .para {
+            margin-top: 280px;
+            margin-left: 50px;
+            font-size: xx-large; 
+            color: azure;       
+            
+            animation-duration: 4s;
+            animation-name: slide_into;
         }
     .hotel-dialog {
         height: auto; /* Let it adjust its height automatically */
@@ -144,20 +158,24 @@
         font-family: 'Times New Roman', Times, serif, sans-serif;
         font-size:x-large;
     }
+    .main {
+        display: flex;
+    }
 </style>
 </head>
 <body>
-<div class="details-box">
     <div class="header">
         <div>
             <img class="logo" src="img/logo-removebg-preview.png">
         </div>
         <div class="heading">
-            <h1 style="color: rgba(0, 0, 0);">HOTELS & ACCOMMODATION</h1>
+            <h1 style="color: rgb(250, 246, 246);">HOTELS & ACCOMMODATION</h1>
         </div>
         
     </div>
-    <div class="details">
+<div class="main">
+    <div class="details-box">
+ 
         <div class="hotel-dialog">
             <div class="hotel">
                 <div class="hotel-header">
@@ -228,11 +246,18 @@
                 <a href="mod5.html" class="booking-button">Book Now</a>
             </div>
         </div>
+        
+    
     </div>
-    
-    
-    
-    
-</div>
+    <div class="para">
+
+            <p><span class="one">Unlock <span class="ex">exclusive </span>adventures with us</span><br><span
+                    class="two">Your trip, your way. Our <span class="pr">personalized</span> touch ensures every detail
+                    fits just right</span></p>
+            <div class="bt"><button class="learn" onclick="window.location.href = 'about.html'">Learn More</button></div>
+        </div>
+
+</div>    
+   
 </body>
 </html>

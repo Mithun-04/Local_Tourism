@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="icon" href="img\login_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        
+        body{
+        
+            background-size: cover; /* Cover the entire page */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url("img/signup.jpg");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: transparent;
+            background-image: linear-gradient(rgba(241, 246, 244, 0.5),rgba(245, 252, 247, 0.5));
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 0px 25px rgba(11, 85, 120, 0.708);
+            width: 300px;
+            height: 380px;
+            
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #000b0e;
+        }
+
+        .input-group {
+            position: relative;
+
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            max-width: 270px;
+            padding: 10px 10px 10px 40px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            border: 2px solid #110101;
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #065c78;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            color: #aaa;
+            z-index: 10;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-container input {
+            margin-right: 5px;
+        }
+
+
+        .btn {
+            width: 100%;
+            max-width: 100px;
+            background: #2b99ba;
+            border:black;
+            padding: 10px;
+            font-size: 16px;
+            color: rgb(22, 0, 0);
+            border-radius: 10px;
+            cursor: pointer;
+            margin-left: 100px;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background: #9da3b1;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Sign Up</h2>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" name="username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="password" placeholder="Enter your email" name="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="New Password" name="New password" required>
+            </div>
+            <div class="input-group">
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Confirm Password" name=" password" required>
+                </div>
+            
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>

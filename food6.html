@@ -24,7 +24,8 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            min-height: 100vh;
+            margin-top: 150px;
+            height: 300px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,9 +34,10 @@
 
         #foodPreferences {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-           
+            margin-top: 100px;
+            height: 500px;
 
-            min-height: 100vh;
+           
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -49,7 +51,7 @@
             box-shadow: 0 0 10px rgba(65, 63, 63, 0.3);
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            min-height: 50vh;
             padding: 20px;
         }
 
@@ -102,7 +104,7 @@
 
 .restaurant {
     min-width: 200px;
-    max: width 300px;
+    max-width: 300px;
    
     background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
@@ -152,10 +154,7 @@
         <div class="content" id="questionContent">
             <h1>Food Preferences</h1>
             <p>Do you have any food preferences?</p>
-            <button class="button" onclick="showFoodPreferences('veg');">Veg</button>
-            <button class="button"
-                onclick="showFoodPreferences('nonveg');">Non-Veg</button>
-            <button class="button" onclick="showFoodPreferences('both');">Both</button>
+            <button class="button" onclick="showFoodPreferences('yes');">Yes</button>
             <button class="button" onclick="showSuggestions()">No, show suggestions</button>
         </div>
 
@@ -367,6 +366,7 @@
             document.getElementById('suggestions').style.display = 'none';
             document.getElementById('restaurantDetails').style.display = 'none';
             changeimg('img/restaurantbackground.png'); // Change background image to default
+            console.log("Food type selected:", foodType);
         }
 
         function showSuggestions() {

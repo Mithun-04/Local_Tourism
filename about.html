@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/abticon.png">
+    <title>About us</title>
+</head>
+<style>
+    body{
+        background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(img/about.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        width: 100vw; 
+        height: 100vh;
+    }
+    @font-face {
+            font-family: "cust";
+            src: url(Font/SFPRODISPLAYLIGHTITALIC.OTF);
+         
+    
+        }
+    @font-face {
+        font-family: "design";
+        src: url(Font/DESIGNER.otf);
+    }
+    .head{
+        padding-top: 1rem;
+        padding-left: 2px;
+        font-family: 'CUST';
+
+        
+        color: white;
+    }
+    .fullhead{
+        display: flex;
+        flex-direction: row;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 25px rgba(0,0,0,0.5);
+        margin-left: -1rem;
+        margin-top: -1rem;
+    }
+    .logo {
+            width: 50px;
+            height: 50px;
+            margin-top: 30px;
+            margin-left: 20px;
+            
+        }
+    .abt{
+        padding-left: 80%;
+        padding-top: 5px;
+        color: white;
+        font-size: 40pt;
+        font-family: 'design';
+    }
+    .content{
+        color: #ffffff;
+        font-size: 20pt;
+        padding-right: 400px;
+        font-family:'Times New Roman', Times, serif;
+        font-style: italic;
+        margin-left: 20px;
+        font-size: 35pt;
+    }
+    .secpara{
+        color: #ffffff;
+        font-size: 20pt;
+        padding-right: 400px;
+        font-family: 'Times New Roman', Times, serif;
+        margin-left: 20px; 
+        text-align: justify; 
+    }
+    .button{
+            width: 125px;
+            height: 45px;
+            border-radius: 4px;
+            margin-left: 20px;
+            margin-top: 10px;
+            font-size: 1rem;
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+            box-shadow: inset 0 0 0 0 #ff9800;
+            border-radius: 3px;
+            transition: ease-out 0.3s;
+            cursor: pointer;
+            color: white;
+            border-color: white; /* This line won't have any effect */
+    }
+
+        .button:hover{
+            box-shadow: inset 125px 0 0 0 #ff9800;
+            cursor: 1;
+            color: rgb(0, 0, 0);
+        }
+        .wn,.bt,.ac,.bu,.af,.un{
+            color: #ff9800;
+            font-weight: bold;
+        }
+        .content{
+            animation: 4s;
+            animation-name: slidein;
+        }
+        .bttom{
+            display: flex;
+            flex-direction: column;
+            animation: 4s;
+            animation-name: slideup;
+        }
+
+        @keyframes slidein{
+            from{
+                transform: translateX(-100%);
+            }
+            to{
+                transform: translateX(0%);
+            }
+        }
+        @keyframes slideup {
+            from{
+                transform: translateY(200%);
+
+            }
+            to{
+                transform: translateY(0%);
+            }
+        }
+
+</style>
+<body>
+    <header>
+        <div class="fullhead">
+        <img  class="logo"  src="img/logo-removebg-preview.png" alt="">
+        <h1 class="head">LOCAL TOURSIM</h1>
+        </div>
+       
+    </header>
+
+    <main>
+        <h1 class="abt">ABOUT US</h1>
+        
+        <p class="content">Welcome to <span class="wn">Local Tourism</span>, your ultimate guide to exploring the hidden gems of our local destinations!</p>
+            <div class="bttom">
+            <p class="secpara">At [Website Name], we are passionate about showcasing the <span class="bt">beauty,</span> culture, and experiences that our communities have to offer. Whether you're a seasoned traveler or a curious local looking for new adventures, we're here to help you <span class="un">uncover</span> the best that our region has to offer.
+            
+            Our mission is simple: to promote and support local tourism while making it <span class="ac">accessible</span> to everyone. We believe that travel should be enriching, <span class="af">affordable,</span>and sustainable. That's why we curate a wide range of experiences, from breathtaking natural landscapes to vibrant cultural festivals, all within reach of any <span class="bu"> budget.</span></span> </p>
+            <button class="button" onclick="window.location.href = 'Trip_planner.html'">Back</button>
+            </div>
+    </main>
+    
+    
+</body>
+
+</html>

@@ -8,32 +8,40 @@
         <link rel="icon" href="img/Home_icon.png">
         <style>
             body{
-             background-image: url('img/fp1.jpg');
+             background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('img/fp1.jpg');
              background-repeat: no-repeat;
              background-size: cover;
              background-position: center;
+<<<<<<< HEAD
             background-attachment: fixed;
             overflow-y: hidden;
             overflow-x: hidden;
             width:100%;
+=======
+                 background-attachment: fixed;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            width:100%;
+             overflow-y: hidden;
+             overflow-x: hidden;
+             width:100%;
+
+>>>>>>> 609d0f28b7e85d45580612cffdd3dbf1e8b3063a
         
             }
-            
-            a{
-                text-decoration:none;
-                color:black;
-            }
-            a:hover{
-                color:white;
-            }
-            .brown{
-                background-color: rgb(146, 78, 78);
+            .head{
+                
+                display: flex;
+                flex-direction: row;
+                background-color: transparent;
+                backdrop-filter: blur(20px);
+                box-shadow: 0 0 20px rgba(0,0,0,0.5);
                 margin-left: -1rem;
                 margin-top:-1rem;
                 margin-bottom: 0px;
                 padding-top:12px;
                 padding-bottom:12px ;
-                padding-left: 1080px;
+                padding-left: 1050px;
                 color:white;
                 font-family: Arial, Helvetica, sans-serif;
                 font-weight: bold;
@@ -41,16 +49,29 @@
                 width:100%;
                 
             }
-            
+            .whitbg{
+                background-color: white;
+                margin-left: -1rem;
+                color:black;
+                padding-top:30px;
+                padding-bottom:30px ;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                padding-left: 650px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: 20px;
+                width:100%;
+                height:2.0rem
+            }
             button:hover{
                 cursor:pointer;
                 background-color: grey;
                 color:white;
             }
-           .home{
+           .home,.abt,.cont,.log{
             border-radius: 30px;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
             color:black;
             border:none;
             font-family: 'Times New Roman', Times, serif;
@@ -63,11 +84,14 @@
     
            }
            
-        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
             .abt{
-                box-shadow: 0 0 10px rgba(0,0,0,0.5);
                 border-radius: 30px;
-                margin-left: 40px;
+                margin-left: 80px;
                 cursor:pointer;
                 border:none;
                 background-color:white;
@@ -82,9 +106,8 @@
     
             }
             .cont{
-                box-shadow: 0 0 10px rgba(0,0,0,0.5);
                 border-radius: 30px;
-                margin-left: 40px;
+                margin-left: 80px;
                 cursor: pointer;
                 border:none;
                 background-color:white;
@@ -99,9 +122,8 @@
     
             }
             .log{
-                box-shadow: 0 0 10px rgba(0,0,0,0.5);
                 border-radius: 30px;
-                margin-left: 40px;
+                margin-left: 80px;
                 cursor: pointer;
                 border:none;
                 background-color:white;
@@ -152,13 +174,21 @@
                 margin-left: 600px;
             }
             .gstart:hover{
-                background-color: white;
+                background-color: rgb(78, 72, 72);
                 color:black;
             }
             .gst:hover{
                 color:black;
             }
 
+            .buttons{
+                margin-top: 2%;
+                display: flex;
+                flex-flow: row;
+                margin-left: 850px;
+                gap: 50px;
+                
+            }
             .nav__logo{
                 position: absolute;
                 top: 10px;
@@ -168,29 +198,29 @@
                 margin-top: 2rem;
                 
             }
-            .buttons{
-                margin-top: 5%;
-                display: flex;
-                flex-flow: row;
-                margin-left: 850px;
-                
-                gap: 2px;
-                
-            }
-            
-            
         </style>
     </head>
     <body>
        
-        <p class="brown">
-            &lt; OUR SOCIALS
-        </p>
+      
+        <div class="head">
+            <div class="h1">
+            <img class="nav__logo" src="img/logo-removebg-preview.png" alt="" srcset="">
+            <p class="ti">LOCAL TOURISM</p>
+            </div>
+            <div class="so">
+            <div class="s">
+            <img class = "e"src="img/icon-twitter.svg" alt="">
+            <img class = "i" src="img/icon-instagram.svg" alt="">
+            <img class="f" src = "img/icon-facebook.svg" alt=""></div>
+            OUR SOCIALS
+        </div>
+        </div>
+     
         <div class="nav">
             <p class="whitbg">
-                <img class="nav__logo" src="img/logo-removebg-preview.png" alt="" srcset="">
-                <div class="buttons">
-                <button class="home"><a hre="front_page.html">HOME</a></button>
+                <img class="nav__logo" src="img/logo.jpg" alt="" srcset="">
+                <button class="home"><a href="C:\Users\MK\Desktop\APP-LT\Local_Tourism\front_page.html">HOME</a></button>
                 <button class="abt"> <a href="">ABOUT</a></button>
                 <button class="cont"><a href="contact.html">CONTACT</a></button>
                 <button class="log"><a href="login.html">LOGIN</a></button>
@@ -198,7 +228,7 @@
     
             </p>
         </div>
-        
+        <div class="m">
         <p class="text">
             <span class="extra">"EXPERIENCE THE EXTRAORDINARY"</span> <span class="tourist">WITH THIS ASSURED TOURIST GUIDE </span>
         </p>
@@ -207,5 +237,6 @@
                 GET STARTED
             </a>
         </button>
+    </div>
     </body>
 </html>

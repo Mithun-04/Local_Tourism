@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="icon" href="img\login_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        
+        body {
+            background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("img/Login_bg.jpg"); /* Add your background image here */
+            background-size: cover; /* Cover the entire page */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            margin-top: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: rgba(116, 167, 190, 0);
+            min-height:20px;
+            background-image: linear-gradient(rgba(84, 141, 118, 0.5),rgba(245, 252, 247, 0.5));
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 25px rgba(64, 67, 68, 0.632);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #000b0e;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            max-width: 270px;
+            padding: 10px 10px 10px 40px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            border: 2px solid #110101;
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #065c78;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            color: #aaa;
+            z-index: 10;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-container input {
+            margin-right: 5px;
+        }
+
+
+        .btn {
+            width: 100%;
+            max-width: 75px;
+            background:rgba(1, 15, 9, 0.5);
+            border:black;
+            padding: 10px;
+            font-size: 16px;
+            color: rgb(250, 244, 244);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-left: 120px;
+        }
+
+        .btn:hover {
+            background: #25803c;
+        }
+        .login-container p {
+           text-align: center;
+           margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" name="username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" name="password" required>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="remember-me" name="remember-me">
+                <label for="remember-me">Remember Me</label>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>New here? <a href="signup.html">Sign up</a></p>
+    </div>
+</body>
+</html>

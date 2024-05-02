@@ -4,103 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link rel="icon" href="C:\Users\91948\OneDrive\Desktop\APP1\Local_Tourism\img\contact1.png" type="image/x-icon">
+    <link rel="icon" href="img\contact1.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
-            background-image: url("C:\\Users\\91948\\OneDrive\\Desktop\\APP1\\Local_Tourism\\img\\contact4.png");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0,0,0,0.5)),url("img/background tree1.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             margin: 0;
             padding: 0;
-            color: #281010;
-        }
-
-        
-        .header-bar {
-            background-color: #290f08;
-            color: rgb(245, 238, 238);
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
+            color: #ece2e2;
+            overflow: hidden;
         }
         .wrapper {
-    display: flex;
-    justify-content: center; /* Center children horizontally */
-    align-items: center; /* Center children vertically */
-    height: 100vh; /* Full viewport height */
-}
+            display: flex;
+            justify-content: center; /* Center children horizontally */
+            align-items: center; /* Center children vertically */
+            height: 100vh; /* Full viewport height */
+            position:relative;}
 
-.form-container {
-    width: 100%;
-    max-width: 400px; /* Maximum width of the form */
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 2; /* Ensures form is on top if overlapping occurs */
-}
-.info-container i {
-    color: #333;  /* Sets the color of the icons */
-    margin-right: 8px;  /* Adds spacing between the icon and text */
-}
+        .form-container {
+           width: 100%;
+           max-width: 450px; /* Maximum width of the form */
+           right: 200px;
+           padding: 20px;
+           box-sizing: border-box;
+           z-index: 2; /* Ensures form is on top if overlapping occurs */
+           border-radius: 20px;
+           box-shadow: 4px 4px 8px rgb(64, 82, 76);
+           backdrop-filter: blur(5px); /* Apply blur effect */
+          -webkit-backdrop-filter: blur(2px); /* For Safari */
+           position: absolute;
+           right: 350px;
+           top: 30px;
+           font-size: 15px;
 
-/* Specific styling can be applied to change icon size or color individually */
-.info-container .fa-phone-alt {
-    color: green;
-}
-
-.info-container .fa-map-marker-alt {
-    color: red;
-}
-
-.info-container .fa-business-time {
-    color: blue;
-}
-
-.info-container {
-    position: absolute; /* Keeps it out of the normal flow */
-    top: 140px; /* Position near the top of the viewport */
-    left: 75px; /* Position from the left of the viewport */
-    max-width: 200px; /* Limiting the width */
-    padding: 10px;
-    z-index: 1; /* Ensures it's behind other content if overlapping */
-    font-size: 25px; /* Increased font size for better readability */
-}
-
-.info-container h2 {
-    font-size: 25px; /* Slightly larger for headings */
-    color: #333; /* Optional: dark color for text */
-}
-
-.info-container p {
-    font-size: 25px; /* Size for paragraph text */
-    color: #333; /* Optional: dark color for text */
-}
-
-
-
-         
-        h2 {
-            text-align: center;
         }
+        .info-container i {
+         color: #100202;  /* Sets the color of the icons */
+         margin-right: 8px;  /* Adds spacing between the icon and text */
+        }
+        @keyframes fadeInLeft {
+          from {
+           opacity: 0;
+           transform: translateX(-100px); /* Start from left */
+        }
+        to {
+        opacity: 1;
+        transform: translateX(0);
+        }
+        }
+
+
+        /* Specific styling can be applied to change icon size or color individually */
+         .info-container .fa-phone-alt {
+         color: green;
+         }
+
+        .info-container .fa-map-marker-alt {
+          color: red;
+         }
+
+         .info-container .fa-business-time {
+            color: rgb(0, 179, 255);
+          }
+
+          .info-container {
+           position: absolute; /* Keeps it out of the normal flow */
+           top: 45px; /* Position near the top of the viewport */
+           left: 100px; /* Position from the left of the viewport */
+           max-width: 500px; /* Limiting the width */
+           padding: 10px;
+           z-index: 1; /* Ensures it's behind other content if overlapping */
+           font-size:15px; /* Increased font size for better readability */
+         }
+
+          
+            .info-container p {
+            font-size: 25px; /* Size for paragraph text */
+            color: #f3f9f7; /* Optional: dark color for text */
+            }
+            .description {
+               animation: fadeInLeft 4s ease-out forwards; /* Customize duration and easing */
+               font-size: 1.2rem; /* Adjust size as needed */
+               color: #666; /* Adjust color as needed */
+               max-width: 600px; /* Restricts the width for better readability */
+               margin: 0 auto 20px; /* Centering and spacing */
+               
+            }
+            h2 {
+            text-align: center;
+            }
 
         input[type="text"], textarea {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
             margin-bottom: 20px;
-            border: 1px solid #0f0101;
-            border-radius: 10px;
+            border: 1px solid #012e20;
+            border-radius: 5px;
             box-sizing: border-box;
+            font-size: 15px;
+            
         }
 
         label {
             display: block;
             text-align: left;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 20px;
         }
 
         .btn-container {
@@ -111,55 +126,114 @@
         }
 
         .btn {
-            padding: 10px 20px;
-            background-color: #89c8d8;
+            padding: 10px 20px ;
+            background-color:#c6c5c5;
             color: #060606;
             border: none;
             border-radius: 15px;
             cursor: pointer;
             font-size: 15px;
-            align-self: center;
+            margin-left: 100px;        
         }
 
         .btn:hover {
-            background-color: #618bb4;
+            background-color: #ff9800;
         }
 
         a {
-            color: #220262;
+            color: #03300f;
         }
 
         a:hover {
-            text-decoration: blueviolet;
+            text-decoration: rgb(1, 50, 12);
         }
-    </style>
+        .btn-back {
+    padding: 10px 20px;
+    background-color:#c6c5c5;/* Example color: slate blue */
+    color: rgb(9, 6, 6);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 15px;
+    margin-top: 5px; /* Additional spacing */
+}
+
+.btn-back:hover {
+    background-color: #ff9800; /* Darker shade for hover effect */
+}
+.head{
+        padding-top: 1rem;
+        padding-left: 2px;
+        font-family: 'CUST';
+
+        
+        color: white;
+    }
+    .fullhead{
+        display: flex;
+        flex-direction: row;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 25px rgba(0,0,0,0.5);
+        margin-left: -5px;
+        margin-top: -5px;
+        height: 100px;
+    }
+    .abt{
+
+        padding-left:83%;
+        padding-top: 1px;
+        color: white;
+        font-size: 26pt;
+        font-family:'Times New Roman', Times, serif;
+    }
+</style>
 </head>
 <body>
+    <header>
+        <div class="fullhead">
+        <img  class="logo"  src="img/logo-removebg-preview.png" alt="">
+        <h1 class="head">LOCAL TOURSIM</h1>
+        </div>
+       
+    </header>
+    <h1 class="abt">CONTACT US</h1>
     <div class="wrapper">
         <div class="info-container">
-            <h2></h2>
-            <p><i class="fas fa-phone-alt"></i> <strong>Contact</strong></p> 
-                <p>+123 456 7890</p>
-            <p><i class="fas fa-map-marker-alt"></i><strong>Location</strong></p>
+           <div class="description">
+            <p>Whether you have questions about our services, need <strong>assistance </strong> with your experience, or just want to provide <strong>feedback</strong>, we're here to help. Fill out the form and one of our team members will get back to you promptly. Your input is invaluable in helping us enhance your overall experience. Don't hesitate to reach out — <strong>LET'S CONNECT!</strong></p>
+           </div>
+                
+                <p><i class="fas fa-phone-alt"></i> <strong>+91 7904693620</strong></p> 
+                
+            <p><i class="fas fa-map-marker-alt"></i><strong>Coimbatore</strong> </p>
            
-            <p></p>Peelamedu,coimbatore</p>
-            <p><i class="fas fa-business-time"></i> <strong>Business Hours</strong></p> 
-                <p>9 AM-5 PM,Mon - Fri</p>
+            <p><i class="fas fa-business-time"></i> <strong>9 AM-5 PM,Mon - Fri</strong></p> 
+            
                 
         </div>
         <div class="form-container">
             <h1>LETS CONNECT</h1>
+            
             <form>
-                <label for="name">NAME:</label>
+                <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter Your name" required>
-                <label for="address">ADDRESS:</label>
-                <input type="text" id="address" name="address" placeholder="Enter Your address">
-                <label for="message">QUERIES:</label>
-                <textarea id="message" name="message" placeholder="Enter your queries here..." rows="2"></textarea>
+                <label for="address">Email</label>
+                <input type="text" id="email" name=" email " placeholder="Enter valid email address">
+                <label for="message">Queries/Feedback</label>
+                <textarea id="message" name="message" placeholder="Enter your queries/feedback.." rows="2"></textarea>
                 <button type="submit" class="btn">Submit</button>
+                <button type="button" onclick="goBack()" class="btn-back">Back</button>
+
             </form>
-            <p>Alternatively, you can send your queries <a href="https://mail.google.com/mail/u/0/?ogbl#inbox?compose=new">here</a>.</p>
+    
         </div>
     </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
 </body>
 </html>

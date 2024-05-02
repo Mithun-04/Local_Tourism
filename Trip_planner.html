@@ -12,7 +12,6 @@
             color: #fff;
             text-align: center;
             padding: 1em;
-          
             z-index: 1;
         }
  
@@ -321,6 +320,24 @@
             }
         }
     </script>
+    <script>
+        function validateForm() {
+            var form = document.getElementById("tripForm");
+            if (form.checkValidity()) {
+                var hotelPreference = confirm("Do you have any hotel preferences?");
+                if (hotelPreference) {
+                    // Redirect to a page where hotel preferences can be provided
+                    window.location.href = 'mod4.html';
+                } else {
+                    // Redirect to the next step of trip planning
+                    window.location.href = 'food.html';
+                }
+            } else {
+                alert("Please fill in all the requirements.");
+            }
+        }
+    </script>
+    
 
 </body>
 

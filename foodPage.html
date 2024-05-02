@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Preferences</title>
+    <link rel="icon" type="image/png" href="img/restaurantbackground.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('img/restaurantbackground.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        #questionContent {
+           
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin-top: 150px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #foodPreferences {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin-top: 100px;
+            height: 500px;
+
+           
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 10px rgba(65, 63, 63, 0.3);
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            padding: 20px;
+        }
+
+        .content {
+
+            max-width: 1000px;
+            background-color: rgba(37, 35, 35, 0.493);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .button {
+            background-color: #f1ecec;
+            
+            color: #0a0000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            /* Display as block element */
+            
+            max-width:500px;
+            width: 100%;
+            /* Occupy full width */
+        }
+        .button:hover {
+            background-color: #ff9800;
+        }
+        .details {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    justify-content: center; /* Center items horizontally */
+    margin-top: 20px;
+    max-width: fit-content;
+    width: auto; /* Allow the container to expand dynamically */
+    padding: 0 20px; /* Add padding to the sides to create space */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+        
+
+
+
+.restaurant {
+    min-width: 200px;
+    max-width: 300px;
+   
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px; /* Add some space between restaurants */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+        .restaurant img {
+            width: 100%;
+        }
+
+        .restaurant h2 {
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .restaurant p {
+            margin-bottom: 5px;
+            color: black;
+            padding: 0 10px;
+            /* Add padding to the text content */
+        }
+        .back-button {
+            background-color: #f0ebeb;
+            color: rgb(20, 1, 1);
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none; /* Ensure no underline for the button */
+        }
+
+        .back-button:hover {
+            background-color:  #ff9800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content" id="questionContent">
+            <h1>Food Preferences</h1>
+            <p>Do you have any food preferences?</p>
+            <button class="button" onclick="showFoodPreferences('yes');">Yes</button>
+            <button class="button" onclick="showSuggestions()">No, show suggestions</button>
+        </div>
+
+        <div class="content" id="foodPreferences" style="display: none;">
+            <h1>Food Preferences</h1>
+            <p>What are your food preferences?</p>
+            <button class="button" onclick="showRestaurants('veg', 'budget')">Veg - Budget</button>
+            <button class="button" onclick="showRestaurants('veg', 'popular')">Veg - Popular</button>
+            <button class="button" onclick="showRestaurants('veg', 'ambience')">Veg - Ambience</button>
+            <button class="button" onclick="showRestaurants('nonveg', 'budget')">Non-Veg - Budget</button>
+            <button class="button" onclick="showRestaurants('nonveg', 'popular')">Non-Veg - Popular</button>
+            <button class="button" onclick="showRestaurants('nonveg', 'ambience')">Non-Veg - Ambience</button>
+            <button class="button" onclick="showQuestion()">Back</button>
+        </div>
+        <div class="content" id="suggestions" style="display: none;">
+            <h1>Suggestions</h1>
+            <p>Here are some nearby suggestions:</p>
+            <p>Nearest Cafe: XYZ Cafe</p>
+            <p>Nearest Pizza Place: ABC Pizza</p>
+            <button class="button" onclick="showQuestion()">Back</button>
+        </div>
+        <div class="content" id="restaurantDetails" style="display: none;">
+            <h1>Restaurant Details</h1>
+            <div class="details" id="restaurantImagesContainer">
+                <!-- Restaurant Details Will Be Added Dynamically Here -->
+            </div>
+            <button class="back-button" onclick="showFoodPreferences()">Back</button>
+            <button class="back-button" onclick="window.location.href = 'mod5.html'">Next</button>
+        </div>
+    </div>
+
+    <script>
+        // Sample restaurant data (replace with your actual data)
+        const restaurants = {
+            veg: {
+                budget: [
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Budget Restaurant 1',
+                        description: 'Description of Veg Budget Restaurant 1.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Aarya Bhavan',
+                        description: 'Arya Bhavan offers a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurant3.png',
+                        name: 'Salt N Pepper',
+                        description: 'Here offer a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/dhanu sri hotel.png',
+                        name: 'Dhanu Shri Hotel',
+                        description: 'Dhanu Sri Hotel offers a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey..',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/hotel junior kuppan.png',
+                        name: 'Hotel Junior Kuppan ',
+                        description: 'Hotel Junior Kuppan offers a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/hotel aaryas.png',
+                        name: 'Hotel Aaryas',
+                        description: 'Hotel Aaryas offers a wide selection of South India Dishes for our esteemed patrons. All the South Indian delicacies are prepared by our expert chefs who use South Indian ingredients. Step into a tasteful journey..',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    
+                    // Add more veg-budget restaurant data as needed
+                ],
+                popular: [
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Hotel Aaryas',
+                        description: 'Description of Veg Popular Restaurant 1.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    {
+                        image: 'img/restaurantbackground.png',
+                        name: 'Veg Popular Restaurant 2',
+                        description: 'Description of Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    // Add more veg-popular restaurant data as needed
+                ],
+                ambience: [
+                    {
+                        image: 'img/restaurant1.png',
+                        name: 'Veg Ambience Restaurant 1',
+                        description: 'Description of Veg Ambience Restaurant 1.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/restaurant1.png',
+                        name: 'Veg Ambience Restaurant 2',
+                        description: 'Description of Veg Ambience Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    // Add more veg-ambience restaurant data as needed
+                ]
+            },
+            nonveg: {
+                budget: [
+                    {
+                        image: 'img/restaurant1.png',
+                        name: 'Non-Veg Budget Restaurant 1',
+                        description: 'Description of Non-Veg Budget Restaurant 1.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/restaurant1.png',
+                        name: 'Non-Veg Budget Restaurant 2',
+                        description: 'Description of Non-Veg Budget Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    // Add more nonveg-budget restaurant data as needed
+                ],
+                popular: [
+                    {
+                        image: 'img/nonveg_popular_restaurant1.jpg',
+                        name: 'Non-Veg Popular Restaurant 1',
+                        description: 'Description of Non-Veg Popular Restaurant 1.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/nonveg_popular_restaurant2.jpg',
+                        name: 'Non-Veg Popular Restaurant 2',
+                        description: 'Description of Non-Veg Popular Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    // Add more nonveg-popular restaurant data as needed
+                ],
+                ambience: [
+                    {
+                        image: 'img/nonveg_ambience_restaurant1.jpg',
+                        name: 'Non-Veg Ambience Restaurant 1',
+                        description: 'Description of Non-Veg Ambience Restaurant 1.',
+                        contact: '123-456-7890',
+                        closingTime: '10:00 PM'
+                    },
+                    {
+                        image: 'img/nonveg_ambience_restaurant2.jpg',
+                        name: 'Non-Veg Ambience Restaurant 2',
+                        description: 'Description of Non-Veg Ambience Restaurant 2.',
+                        contact: '987-654-3210',
+                        closingTime: '11:00 PM'
+                    },
+                    // Add more nonveg-ambience restaurant data as needed
+                ]
+            }
+        };
+
+        function showFoodPreferences(foodType) {
+            document.getElementById('questionContent').style.display = 'none';
+            document.getElementById('foodPreferences').style.display = 'block';
+            document.getElementById('suggestions').style.display = 'none';
+            document.getElementById('restaurantDetails').style.display = 'none';
+            changeimg('img/restaurantbackground.png'); // Change background image to default
+            console.log("Food type selected:", foodType);
+        }
+
+        function showSuggestions() {
+            document.getElementById('questionContent').style.display = 'none';
+            document.getElementById('foodPreferences').style.display = 'none';
+            document.getElementById('suggestions').style.display = 'block';
+            document.getElementById('restaurantDetails').style.display = 'none';
+            changeimg('img/restaurantbackground.png'); // Change background image to default
+        }
+
+        function showRestaurants(foodType, preference) {
+            document.getElementById('foodPreferences').style.display = 'none';
+            document.getElementById('restaurantDetails').style.display = 'block';
+            var detailsContainer = document.getElementById('restaurantImagesContainer');
+            detailsContainer.innerHTML = ''; // Clear existing content
+
+            // Get the restaurants based on food type and preference
+            const selectedRestaurants = restaurants[foodType][preference];
+
+            // Iterate through the selected restaurants and create HTML for each
+            selectedRestaurants.forEach(restaurant => {
+                var restaurantDiv = document.createElement('div');
+                restaurantDiv.classList.add('restaurant');
+
+                var img = document.createElement('img');
+                img.src = restaurant.image;
+                img.alt = restaurant.name;
+
+                var name = document.createElement('h2');
+                name.textContent = restaurant.name;
+                name.style.color = 'black'; // Set the color to black
+
+                var description = document.createElement('p');
+                description.textContent = restaurant.description;
+                description.style.color = 'black'; // Set the color to black
+
+                var contact = document.createElement('p');
+                contact.textContent = 'Contact: ' + restaurant.contact;
+                contact.style.color = 'black'; // Set the color to black
+
+                var closingTime = document.createElement('p');
+                closingTime.textContent = 'Closing Time: ' + restaurant.closingTime;
+                closingTime.style.color = 'black'; // Set the color to black
+
+                restaurantDiv.appendChild(img);
+                restaurantDiv.appendChild(name);
+                restaurantDiv.appendChild(description);
+                restaurantDiv.appendChild(contact);
+                restaurantDiv.appendChild(closingTime);
+
+                detailsContainer.appendChild(restaurantDiv);
+            });
+        }
+
+        function showQuestion() {
+            document.getElementById('questionContent').style.display = 'block';
+            document.getElementById('foodPreferences').style.display = 'none';
+            document.getElementById('suggestions').style.display = 'none';
+            document.getElementById('restaurantDetails').style.display = 'none';
+            changeimg('img/restaurantbackground.png'); // Change background image to default
+        }
+
+        function changeimg(imageUrl) {
+            document.body.style.backgroundImage = "url('" + imageUrl + "')";
+        }
+    </script>
+</body>
+
+</html>

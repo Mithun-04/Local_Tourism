@@ -7,16 +7,15 @@
     <title>Trip Planner</title>
     <link rel="icon" type="PNG" href="img/TripIcon.png">
     <style>
-      
         header {
             color: #fff;
             text-align: center;
             padding: 1em;
             z-index: 1;
         }
- 
 
-      
+
+
         .content {
             display: flex;
             flex-direction: row;
@@ -34,17 +33,19 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-          
-           
-            
-         background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('img/nature.jpg');
-         background-size: cover;
-        background-repeat: no-repeat;
-        overflow: hidden;
-        width: 100%; /* Add width for the background */
-        height: 100vh; /* Set a height, e.g., 100 viewport height */
 
-         
+
+
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/nature.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            width: 100%;
+            /* Add width for the background */
+            height: 100vh;
+            /* Set a height, e.g., 100 viewport height */
+
+
         }
 
         main {
@@ -52,8 +53,8 @@
             margin: 20px auto;
 
             backdrop-filter: blur(2px);
-            
-            
+
+
 
             max-width: 400px;
             margin-left: 25px;
@@ -201,10 +202,10 @@
         .pr {
             font-weight: bold;
             /* Gradient background */
-           
-            
+
+
             /* Set text color to transparent to allow the gradient to show through */
-            color:#ff9800;   
+            color: #ff9800;
         }
 
         .para {
@@ -230,7 +231,7 @@
 
         }
 
-        .learn:hover{
+        .learn:hover {
             box-shadow: inset 125px 0 0 0 #ff9800;
             cursor: 1;
             color: white;
@@ -265,8 +266,8 @@
 </head>
 
 <body>
-    
-<div class="bg"></div>
+
+    <div class="bg"></div>
     <header>
         <div class="head">
             <img class="logo" src="img/logo-removebg-preview.png" alt="">
@@ -284,10 +285,10 @@
                     <input type="text" id="location" required placeholder="--- Theni ---">
 
                     <label for="budget">Budget:</label>
-                    <input type="number" id="budget"  required placeholder="--- 5000 ---">
+                    <input type="number" id="budget" required placeholder="--- 5000 ---">
 
                     <label for="people">Number of People:</label>
-                    <input type="number"required placeholder="--- 3 ---">
+                    <input type="number" required placeholder="--- 3 ---">
 
                     <label for="days">Number of Days:</label>
                     <input type="number" required placeholder="--- 2 ---">
@@ -306,7 +307,8 @@
             <p><span class="one">Unlock <span class="ex">exclusive </span>adventures with us</span><br><span
                     class="two">Your trip, your way. Our <span class="pr">personalized</span> touch ensures every detail
                     fits just right</span></p>
-            <div class="bt"><button class="learn" onclick="window.location.href = 'about.html'">Learn More</button></div>
+            <div class="bt"><button class="learn" onclick="window.location.href = 'about.html'">Learn More</button>
+            </div>
         </div>
     </div>
 
@@ -337,7 +339,7 @@
             }
         }
     </script>
-    
+
 
 </body>
 

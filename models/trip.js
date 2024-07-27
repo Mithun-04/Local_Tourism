@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const planner = new mongoose.Schema({
-    place: {
+    location: {
         type: String,
 
     },

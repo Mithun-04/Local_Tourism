@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Planner</title>
-    <link rel="icon" type="PNG" href="img/TripIcon.png">
+    <link rel="icon" type="PNG" href="/img/TripIcon.png">
     <style>
         header {
             color: #fff;
@@ -36,7 +36,7 @@
 
 
 
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/nature.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/nature.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             overflow: hidden;
@@ -123,7 +123,7 @@
 
         @font-face {
             font-family: "cust";
-            src: url(Font/SFPRODISPLAYLIGHTITALIC.OTF);
+            src: url(/Font/SFPRODISPLAYLIGHTITALIC.OTF);
         }
 
         header {
@@ -288,17 +288,17 @@
                     <input type="number" id="budget" required placeholder="--- 5000 ---">
 
                     <label for="people">Number of People:</label>
-                    <input type="number" required placeholder="--- 3 ---">
+                    <input type="number" id="nop" required placeholder="--- 3 ---">
 
                     <label for="days">Number of Days:</label>
-                    <input type="number" required placeholder="--- 2 ---">
+                    <input type="number" id="nod" required placeholder="--- 2 ---">
 
 
                 </form>
             </main>
 
             <div class="button_cont">
-                <button class="b1" type="button" onclick="validateForm()">Plan My Trip</button>
+                <button class="b1" type="button" onclick="handleFormSubmit()">Plan My Trip</button>
             </div>
 
         </div>
@@ -313,16 +313,42 @@
     </div>
 
     <script>
-        function validateForm() {
-            var form = document.getElementById("tripForm");
-            if (form.checkValidity()) {
-                window.location.href = 'mod4.html';
-            } else {
-                alert("Please fill in all the requirements.");
-            }
+        function handleFormSubmit() {
+            // Get values from input fields
+            const location = document.getElementById('location').value;
+            const budget = document.getElementById('budget').value;
+            const nop = document.getElementById('nop').value;
+            const nod = document.getElementById('nod').value;
+
+            // Debug: Log values to console
+            console.log({ location, budget, nop, nod });
+
+            // Send data to the server using Fetch API
+            fetch('/plan', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    location: location,
+                    budget: budget,
+                    no_of_people: nop,
+                    no_of_days: nod
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+
+                    alert("The form is Saved")
+                    console.log("Reply :", data);
+                })
+                .catch(error => {
+                    alert("error in saving the form")
+                    console.error('Error:', error);
+                });
         }
     </script>
-    <script>
+    <!-- <script>
         function validateForm() {
             var form = document.getElementById("tripForm");
             if (form.checkValidity()) {
@@ -338,7 +364,7 @@
                 alert("Please fill in all the requirements.");
             }
         }
-    </script>
+    </script> -->
 
 
 </body>

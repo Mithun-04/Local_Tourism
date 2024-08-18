@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Planner</title>
-    <link rel="icon" type="PNG" href="/img/TripIcon.png">
+    <link rel="icon" type="PNG" href="public/img/TripIcon.png">
     <style>
         header {
             color: #fff;
@@ -36,7 +36,7 @@
 
 
 
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/nature.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/img/nature.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             overflow: hidden;
@@ -270,7 +270,7 @@
     <div class="bg"></div>
     <header>
         <div class="head">
-            <img class="logo" src="img/logo-removebg-preview.png" alt="">
+            <img class="logo" src="public/img/logo-removebg-preview.png" alt="">
             <h1 class="tripPlannerHeader">Trip Planner</h1>
         </div>
     </header>
@@ -314,16 +314,16 @@
 
     <script>
         function handleFormSubmit() {
-            // Get values from input fields
+           // Get values from input fields
             const location = document.getElementById('location').value;
             const budget = document.getElementById('budget').value;
             const nop = document.getElementById('nop').value;
             const nod = document.getElementById('nod').value;
 
-            // Debug: Log values to console
+            
             console.log({ location, budget, nop, nod });
 
-            // Send data to the server using Fetch API
+            
             fetch('/plan', {
                 method: 'POST',
                 headers: {

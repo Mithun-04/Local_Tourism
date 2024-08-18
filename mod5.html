@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicle Rental</title>
-    <link rel="icon" type="PNG" href="img/car_icon.png">
+    <link rel="icon" type="PNG" href="public/img/car_icon.png">
     <style>
         body {
             margin: 0;
@@ -162,12 +162,11 @@
         }
 
         function selectStrip(element) {
-            // Remove 'selected' class from all strips
+            // Remove 'selected' class from all strip
             let strips = document.querySelectorAll('.strip');
             strips.forEach(strip => {
                 strip.classList.remove('selected');
             });
-
             // Add 'selected' class to the clicked strip
             element.classList.add('selected');
         }

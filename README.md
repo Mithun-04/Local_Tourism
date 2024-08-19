@@ -9,12 +9,19 @@ The Local Tourism project focuses on enhancing the travel planning process by in
 Project Description
 Local Tourism is built with modern web technologies, offering the following features:
 •	Home Page: Introduces the platform and its key features.
+
 •	Login Page: Secure user access for personalized planning.
+
 •	Contact Page: Easy communication with support for feedback and inquiries.
+
 •	About Us Page: Overview of the platform's mission and vision.
+
 •	Trip Planner: Centralized itinerary management based on user preferences.
+
 •	Hotel Preferences: Browsing and selecting accommodations by location and price.
+
 •	Restaurant Choices: Discovering dining options tailored to user preferences.
+
 •	Vehicle Hiring: Simple rental process with options suited to travel needs.
 
 

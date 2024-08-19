@@ -1,14 +1,14 @@
 # LOCAL TOURISM
 
-## ABSTRACT
+### ABSTRACT
 
 Local Tourism is a web application that provides a comprehensive platform for travelers to plan their trips efficiently. It offers personalized itineraries based on user preferences, including local attractions, hotel accommodations, dining options, and vehicle hiring services. The application aims to simplify the travel experience by delivering tailored suggestions through an intuitive and user-friendly interface.
 
-## OVERVIEW
+### OVERVIEW
 
 The Local Tourism project focuses on enhancing the travel planning process by integrating various essential services into a single platform. Users can access information about popular tourist spots, choose from a range of hotels and restaurants, and arrange for vehicle rentals all in one place. The application is designed to cater to the diverse needs of travelers, ensuring a smooth and enjoyable journey from start to finish.
 
-## PROJECT DESCRIPTION
+### PROJECT DESCRIPTION
 
 Local Tourism is built with modern web technologies, offering the following features:
 •	Home Page: Introduces the platform and its key features.

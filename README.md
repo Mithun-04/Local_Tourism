@@ -1,4 +1,4 @@
-#1 LOCAL TOURISM
+#LOCAL TOURISM
 
 Abstract
 

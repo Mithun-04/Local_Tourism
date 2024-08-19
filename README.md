@@ -1,3 +1,5 @@
+Local Tourism
+Local Tourism is a web application designed to enhance travel planning by offering personalized itineraries. Users can explore local attractions, select accommodations, discover dining options, and hire vehicles for their trips through a user-friendly interface. Key features include a Trip Planner, Hotel Preferences, Restaurant Choices, and Vehicle Hiring options, all aimed at making travel easier and more enjoyable. The platform integrates modern web technologies to deliver a seamless experience.
 ![IMG-20240818-WA0001](https://github.com/user-attachments/assets/31522669-18a8-4687-abf1-9479de7f1454)![IMG-20240818-WA0016](https://github.com/user-attachments/assets/a0d794ef-7666-4a8d-879a-9ab75e18153e)
 ![IMG-20240818-WA0015](https://github.com/user-attachments/assets/d4903903-69b1-4e92-bc0a-61d84b8985dd)
 ![IMG-20240818-WA0014](https://github.com/user-attachments/assets/8f05f76b-c952-4692-9c48-083296d85caa)

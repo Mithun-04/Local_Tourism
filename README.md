@@ -1,7 +1,23 @@
-LOCAL TOURISM
-      
-Local Tourism is a web application designed to enhance travel planning by offering personalized itineraries. Users can explore local attractions, select accommodations, discover dining options, and hire vehicles for their trips through a user-friendly interface. Key features include a Trip Planner, Hotel Preferences, Restaurant Choices, and Vehicle Hiring options, all aimed at making travel easier and more enjoyable. The platform integrates modern web technologies to deliver a seamless experience.
-        
+Local Tourism
+
+Abstract
+Local Tourism is a web application that provides a comprehensive platform for travelers to plan their trips efficiently. It offers personalized itineraries based on user preferences, including local attractions, hotel accommodations, dining options, and vehicle hiring services. The application aims to simplify the travel experience by delivering tailored suggestions through an intuitive and user-friendly interface.
+
+Overview
+The Local Tourism project focuses on enhancing the travel planning process by integrating various essential services into a single platform. Users can access information about popular tourist spots, choose from a range of hotels and restaurants, and arrange for vehicle rentals all in one place. The application is designed to cater to the diverse needs of travelers, ensuring a smooth and enjoyable journey from start to finish.
+
+Project Description
+Local Tourism is built with modern web technologies, offering the following features:
+•	Home Page: Introduces the platform and its key features.
+•	Login Page: Secure user access for personalized planning.
+•	Contact Page: Easy communication with support for feedback and inquiries.
+•	About Us Page: Overview of the platform's mission and vision.
+•	Trip Planner: Centralized itinerary management based on user preferences.
+•	Hotel Preferences: Browsing and selecting accommodations by location and price.
+•	Restaurant Choices: Discovering dining options tailored to user preferences.
+•	Vehicle Hiring: Simple rental process with options suited to travel needs.
+
+
 ![IMG-20240818-WA0001](https://github.com/user-attachments/assets/31522669-18a8-4687-abf1-9479de7f1454)![IMG-20240818-WA0016](https://github.com/user-attachments/assets/a0d794ef-7666-4a8d-879a-9ab75e18153e)
 ![IMG-20240818-WA0015](https://github.com/user-attachments/assets/d4903903-69b1-4e92-bc0a-61d84b8985dd)
 ![IMG-20240818-WA0014](https://github.com/user-attachments/assets/8f05f76b-c952-4692-9c48-083296d85caa)

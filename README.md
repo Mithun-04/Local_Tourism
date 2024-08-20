@@ -75,7 +75,7 @@ Simple rental process with options suited to travel needs.
 
 Once the backend is complete, these features will be fully functional, making travel planning efficient and enjoyable.
 
-### TECHNOLOGIES USED
+## TECHNOLOGIES USED
 
 + Frontend: HTML, CSS, JavaScript
 + Backend: Node.js, Express.js

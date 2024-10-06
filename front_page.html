@@ -5,10 +5,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&family=Poppins:ital,wght@1,100&family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
         <title>Home</title>
-        <link rel="icon" href="public/img/Home_icon.png">
+        <link rel="icon" href="/img/Home_icon.png">
         <style>
             body{
-             background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('public/img/fp1.jpg');
+             background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('/img/fp1.jpg');
              background-repeat: no-repeat;
              background-size: cover;
              background-position: center;
@@ -171,14 +171,14 @@
       
         <div class="head">
             <div class="h1">
-            <img class="nav__logo" src="public/img/logo-removebg-preview.png" alt="" srcset="">
+            <img class="nav__logo" src="/img/logo-removebg-preview.png" alt="" srcset="">
             <p class="ti">LOCAL TOURISM</p>
             </div>
             <div class="so">
             <div class="s">
-            <img class = "e"src="public/img/icon-twitter.svg" alt="">
-            <img class = "i" src="public/img/icon-instagram.svg" alt="">
-            <img class="f" src = "public/img/icon-facebook.svg" alt=""></div>
+            <img class = "e"src="/img/icon-twitter.svg" alt="">
+            <img class = "i" src="/img/icon-instagram.svg" alt="">
+            <img class="f" src = "/img/icon-facebook.svg" alt=""></div>
             OUR SOCIALS
         </div>
         </div>
@@ -190,7 +190,7 @@
                 <button class="home"><a href="front_page.html">HOME</a></button>
                 <button class="abt"> <a href="about.html">ABOUT</a></button>
                 <button class="cont"><a href="contact.html">CONTACT</a></button>
-                <button class="log"><a href="t4.html">LOGIN</a></button>
+                <button class="log" onclick="window.location.href='/login';">LOGIN</a></button>
     
             </p>
         </div>
@@ -198,11 +198,10 @@
         <p class="text">
             <span class="extra">"EXPERIENCE THE EXTRAORDINARY"</span> <span class="tourist">WITH THIS ASSURED TOURIST GUIDE </span>
         </p>
-        <button class="gstart">
-            <a class="gst" href="Trip_planner.html">
-                GET STARTED
-            </a>
+        <button class="gstart" onclick="window.location.href='/login';">
+            GET STARTED
         </button>
+        
     </div>
     </body>
 </html>

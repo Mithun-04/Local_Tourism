@@ -6,6 +6,7 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const trip = require('./models/trip.js');
+const rent = require('./models/rentals.js');
 const { log } = require('console');
 
 const app = express();
@@ -34,6 +35,21 @@ connect();
 app.get('/trip', (req, res) => {
     res.sendFile(path.join(__dirname, 'Trip_planner.html'));
 });
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'front_page.html'));
+});
+app.get('/rentals', (req, res) => {
+    res.sendFile(path.join(__dirname, 'mod5.html'));
+});
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 't4.html'));
+});
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname, 'signup.html'));
+});
+app.get('/hotels', (req, res) => {
+    res.sendFile(path.join(__dirname, 'mod4.html'));
+});
 
 app.post('/plan', async (req, res) => {
     try{
@@ -48,6 +64,17 @@ app.post('/plan', async (req, res) => {
     }
     
 
+})
+
+app.post('/rentals',async (req, res) =>{
+    try{
+        const data = await rent.create(req.body);
+        console.log(data);
+        
+    }
+    catch(e){
+        console.log(e.message)
+    }
 })
 
 

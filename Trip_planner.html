@@ -313,17 +313,31 @@
     </div>
 
     <script>
+        // auth.js
+
+        window.onload = function () {
+            const token = localStorage.getItem('token');
+
+            // If there is no token, redirect to the login page
+            if (!token) {
+                window.location.href = '/login';
+                return;
+            }
+
+            // Token is valid, proceed to the page
+        };
+        
         function handleFormSubmit() {
-           // Get values from input fields
+
             const location = document.getElementById('location').value;
             const budget = document.getElementById('budget').value;
             const nop = document.getElementById('nop').value;
             const nod = document.getElementById('nod').value;
 
-            
+
             console.log({ location, budget, nop, nod });
 
-            
+
             fetch('/plan', {
                 method: 'POST',
                 headers: {
@@ -341,13 +355,14 @@
 
                     alert("The form is Saved")
                     console.log("Reply :", data);
+                    window.location.href = "/hotels";
                 })
                 .catch(error => {
                     alert("error in saving the form")
                     console.error('Error:', error);
                 });
 
-            window.location.href = "/hotels";
+
         }
     </script>
     <!-- <script>

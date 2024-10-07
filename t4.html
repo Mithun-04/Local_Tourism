@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,13 @@
     <link rel="icon" href="/img/login_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        
         body {
-            background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("/img/Login_bg.jpg"); /* Add your background image here */
-            background-size: cover; /* Cover the entire page */
-            background-position: center; /* Center the background image */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/Login_bg.jpg");
+            /* Add your background image here */
+            background-size: cover;
+            /* Cover the entire page */
+            background-position: center;
+            /* Center the background image */
             background-repeat: no-repeat;
             height: 100vh;
             overflow: hidden;
@@ -25,9 +28,9 @@
 
         .login-container {
             background: rgba(116, 167, 190, 0);
-            min-height:20px;
-            background-image: linear-gradient(rgba(47, 66, 58, 0.5),rgba(245, 252, 247, 0.5));
-            padding-top:20px;
+            min-height: 20px;
+            background-image: linear-gradient(rgba(47, 66, 58, 0.5), rgba(245, 252, 247, 0.5));
+            padding-top: 20px;
             padding-left: 30px;
             border-radius: 30px;
             padding-right: 40px;
@@ -69,6 +72,7 @@
             color: #aaa;
             z-index: 10;
         }
+
         .checkbox-container {
             display: flex;
             align-items: center;
@@ -83,8 +87,8 @@
         .btn {
             width: 100%;
             max-width: 75px;
-            background:rgba(1, 15, 9, 0.5);
-            border:black;
+            background: rgba(1, 15, 9, 0.5);
+            border: black;
             padding: 10px;
             font-size: 16px;
             color: rgb(250, 244, 244);
@@ -95,33 +99,98 @@
         }
 
         .btn:hover {
-            background:#ff9800;
+            background: #ff9800;
         }
+
         .login-container p {
-           text-align: center;
-           margin-top: 20px;
-}
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <h2>Login</h2>
         <form action="#" method="POST">
             <div class="input-group">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Username" name="username" required>
+                <input type="text" id="username" placeholder="Username" name="username" required>
             </div>
             <div class="input-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" name="password" required>
+                <input type="password" id="password" placeholder="Password" name="password" required>
+                <i class="fas fa-eye" id="togglePassword"
+                    style="cursor: pointer; position: absolute; left : 285px;"></i>
+
             </div>
             <div class="checkbox-container">
                 <input type="checkbox" id="remember-me" name="remember-me">
                 <label for="remember-me">Remember Me</label>
             </div>
-            <button type="submit" class="btn"><a href="/trip">Login</a></button>
+            <button type="submit" class="btn" onclick="login(event)">Login</button>
         </form>
         <p>New here? <a href="/signup">Sign up</a></p>
     </div>
 </body>
+
 </html>
+
+<script>
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
+
+    togglePassword.addEventListener("click", function () {
+        // Toggle the type attribute of the password field
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+
+        // Toggle the eye icon class
+        this.classList.toggle("fa-eye-slash");
+    });
+
+    async function login(event) {
+        event.preventDefault(); // Corrected to prevent default behavior
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (!username || !password) {
+            alert("Please fill all Fields");
+            return;
+        }
+
+        try {
+            const response = await fetch('/login', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            });
+
+            const data = await response.json();
+
+            // Check if the login was successful
+            if (!response.ok) {
+                throw new Error(data.error || 'Login failed');
+            }
+
+            // Store JWT token in localStorage if login is successful
+            localStorage.setItem('token', data.token);
+
+            alert("Logged in successfully");
+            console.log("Reply:", data);
+            window.location.href = "/trip"; // Redirect to trip page on success
+        } catch (error) {
+            // Handle any errors that occur during the form submission
+            alert("Error in logging in: " + error.message);
+            console.error('Error:', error);
+        }
+    }
+
+
+</script>

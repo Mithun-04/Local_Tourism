@@ -323,10 +323,30 @@
                 window.location.href = '/login';
                 return;
             }
+            fetch('/trip', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`, // Attach token in Authorization header
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    // Check if the response is unauthorized
+                    if (response.status === 401 || response.status === 403) {
+                        window.location.href = '/login'; // Redirect to login if unauthorized
+                    } else if (response.ok) {
+                        // Proceed with rendering the page if authorized
+                        console.log('Access granted');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching trip data:', error);
+                    window.location.href = '/login'; // Redirect to login on error
+                });
 
-            // Token is valid, proceed to the page
+
         };
-        
+
         function handleFormSubmit() {
 
             const location = document.getElementById('location').value;
@@ -334,13 +354,14 @@
             const nop = document.getElementById('nop').value;
             const nod = document.getElementById('nod').value;
 
-
+            const token = localStorage.getItem('token');    
             console.log({ location, budget, nop, nod });
 
 
             fetch('/plan', {
                 method: 'POST',
                 headers: {
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({

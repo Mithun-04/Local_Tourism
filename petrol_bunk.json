@@ -1,0 +1,39 @@
+[
+    {
+      "name": "Ramajeyam Agency",
+      "address": "No 327, Madurai Road, T Nagar, Theni - 625531",
+      "latitude": 10.0142,
+      "longitude": 77.4748,
+      "services": ["Oil Change", "Diesel", "CNG", "Car Wash & Spa", "Interior Vacuum Cleaning"],
+      "features": ["Wheel Chair Accessible Entrance", "Toilet", "E-Wallets Accepted"]
+    },
+    {
+      "name": "Hp Petrol Pump - Shri Gopi Karthikeya Agency",
+      "address": "Uthamapalaym Village, S No 52 Kumuli Periyakulam Road, Periyakulam, Theni - 625601",
+      "latitude": 10.0179,
+      "longitude": 77.3829,
+      "services": ["Diesel"]
+    },
+    {
+      "name": "J Mount Fuel Center",
+      "address": "No 215/B, Genguvarpatti, Theni - 625203",
+      "latitude": 10.1115,
+      "longitude": 77.4889,
+      "services": ["Diesel"]
+    },
+    {
+      "name": "Ananya Petrol Bunk",
+      "address": "Madurai Hwy, Sidco Thoz, Nrt Nagar, Theni - 625531",
+      "latitude": 10.0101,
+      "longitude": 77.4779,
+      "services": ["Diesel"]
+    },
+    {
+      "name": "Bharat Petroleum",
+      "address": "Theni - 625203",
+      "latitude": 10.1000,
+      "longitude": 77.5200,
+      "services": ["Diesel"]
+    }
+  ]
+  

@@ -9,6 +9,7 @@ const trip = require('./models/trip.js');
 const rent = require('./models/rentals.js');
 const { log } = require('console');
 const User = require('./models/user.js');
+const booking = require('./models/vehiclebook.js');
 
 const app = express();
 const port = 3000;
@@ -160,3 +161,47 @@ app.post('/login', async (req, res) => {
         })
     }
 })
+
+app.get('/vehicles', async (req, res) => {
+    try {
+        const vehicles = await rent.find();  // This assumes 'rent' is a Mongoose model
+        res.json(vehicles);                  // Send the result as JSON response
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+app.post('/vehiclebook', authenticateJWT, async (req, res) => {
+    try {
+        const { model, number, rent_per_day } = req.body;
+        const userId = req.user.id;
+        const days = req.body.days || 1;
+        const total_price = rent_per_day * days;
+
+        const newBooking = {
+            user_id: userId,
+            model: model,
+            number: number,
+            rent_per_day: rent_per_day,
+            days: days,
+            total_price: total_price,
+            bookedAt: new Date()
+        };
+
+       const data = await booking.create(newBooking);
+       console.log(data);
+       
+
+        res.json({
+            message: 'Booking successful!',
+            model: model,
+            total_price: total_price
+        });
+    } catch (error) {
+        console.error('Error while processing the booking:', error);
+        res.status(500).json({ error: 'There was a problem with the booking. Please try again.' });
+    }
+});
+

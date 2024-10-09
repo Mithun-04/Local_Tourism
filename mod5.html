@@ -35,6 +35,7 @@
             position: relative;
             margin-bottom: 20px;
         }
+        
         .context {
             max-width: 800px;
             background-color: rgba(0, 0, 0, 0.7);
@@ -45,7 +46,6 @@
             position: relative;
             margin-bottom: 20px;
         }
-
 
         .button {
             background-color: #ff9800;
@@ -82,24 +82,38 @@
         .selected {
             background-color: rgba(255, 165, 0, 0.8);
         }
-        #vech{
-            color:#fff
+        
+        #vech {
+            color: #fff;
+        }
+
+        .input-field {
+            margin-bottom: 15px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 14px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="content" id="questionContent">
-            <h1 id ="vech">Vehicle Rental</h1>
+            <h1 id="vech">Vehicle Rental</h1>
             <p>Would you like to rent a vehicle?</p>
             <button class="button" onclick="showContent()">Yes</button>
-            <button class="button" onclick="showNearbyPlaces()">No, show nearby places</button>
+            <button class="button" onclick="showLocationForm()">No, show nearby places</button>
         </div>
+
+        <!-- Vehicle Details Section -->
         <div class="context" id="vehicleDetails" style="display: none;">
-            <h1 id = "vech">Vehicle Rental</h1>
+            <h1 id="vech">Vehicle Rental</h1>
             <div class="details">
-                <!-- Rental Details -->
-                <!-- Car Rental Details -->
                 <div class="strip" onclick="selectStrip(this)">
                     <h2>Rental Car 1</h2>
                     <p>Model: Toyota Camry</p>
@@ -114,7 +128,6 @@
                     <p>Rent per day: ₹3200</p>
                     <p>Total for 3 days: ₹9600</p>
                 </div>
-                <!-- Bike Rental Details -->
                 <div class="strip" onclick="selectStrip(this)">
                     <h2>Rental Bike 1</h2>
                     <p>Brand: Yamaha R1</p>
@@ -129,46 +142,130 @@
                     <p>Rent per day: ₹2800</p>
                     <p>Total for 3 days: ₹8400</p>
                 </div>
-                <!-- Add more rental vehicle strips here -->
             </div>
             <button class="button" onclick="showQuestion()">Back</button>
             <button class="button">Book Now</button>
         </div>
+
+        <!-- Location Input Section -->
+        <div class="content" id="locationForm" style="display: none;">
+            <h2>Enter Location</h2>
+            <div class="input-field">
+                <input type="text" id="latitude" placeholder="Enter Latitude">
+            </div>
+            <div class="input-field">
+                <input type="text" id="longitude" placeholder="Enter Longitude">
+            </div>
+            <button class="button" onclick="showNearbyPlaces()">Show Nearby Places</button>
+            <button class="button" onclick="showQuestion()">Back</button>
+        </div>
+
+        <!-- Nearby Places Section -->
         <div class="content" id="nearbyPlaces" style="display: none;">
             <h2>Nearby Places</h2>
-            <p>Nearest Petrol Bunk: ABC Petrol Bunk</p>
-            <p>Nearest Puncture Shop: XYZ Puncture Shop</p>
+            <ul id="bunkList"></ul>
             <button class="button" onclick="showQuestion()">Back</button>
         </div>
     </div>
 
     <script>
+        function haversineDistance(lat1, lon1, lat2, lon2) {
+            const toRad = (x) => x * Math.PI / 180;
+            const R = 6371; // Radius of the Earth in km
+            const dLat = toRad(lat2 - lat1);
+            const dLon = toRad(lon2 - lon1);
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const d = R * c; // Distance in km
+            return d;
+        }
+
         function showContent() {
             document.getElementById('questionContent').style.display = 'none';
             document.getElementById('vehicleDetails').style.display = 'block';
+            document.getElementById('locationForm').style.display = 'none';
+            document.getElementById('nearbyPlaces').style.display = 'none';
+        }
+
+        function showLocationForm() {
+            document.getElementById('questionContent').style.display = 'none';
+            document.getElementById('vehicleDetails').style.display = 'none';
+            document.getElementById('locationForm').style.display = 'block';
             document.getElementById('nearbyPlaces').style.display = 'none';
         }
 
         function showNearbyPlaces() {
-            document.getElementById('questionContent').style.display = 'none';
-            document.getElementById('vehicleDetails').style.display = 'none';
+            const userLat = parseFloat(document.getElementById('latitude').value);
+            const userLon = parseFloat(document.getElementById('longitude').value);
+
+            // Petrol bunks data with addresses
+            const petrolBunks = [
+                {
+                    name: "Ramajeyam Agency",
+                    latitude: 10.0142,
+                    longitude: 77.4748,
+                    services: ["Oil Change", "Diesel", "CNG", "Car Wash & Spa", "Interior Vacuum Cleaning"],
+                    address: "123 Main St, City, State"
+                },
+                {
+                    name: "Hp Petrol Pump - Shri Gopi Karthikeya Agency",
+                    latitude: 10.0179,
+                    longitude: 77.3829,
+                    services: ["Diesel"],
+                    address: "456 Elm St, City, State"
+                },
+                {
+                    name: "J Mount Fuel Center",
+                    latitude: 10.1115,
+                    longitude: 77.4889,
+                    services: ["Diesel"],
+                    address: "789 Oak St, City, State"
+                },
+                {
+                    name: "Ananya Petrol Bunk",
+                    latitude: 10.0101,
+                    longitude: 77.4779,
+                    services: ["Diesel"],
+                    address: "321 Pine St, City, State"
+                },
+                {
+                    name: "Bharat Petroleum",
+                    latitude: 10.1000,
+                    longitude: 77.5200,
+                    services: ["Diesel"],
+                    address: "654 Maple St, City, State"
+                }
+            ];
+
+            const nearbyList = document.getElementById('bunkList');
+            nearbyList.innerHTML = ''; // Clear previous results
+
+            petrolBunks.forEach(bunk => {
+                const distance = haversineDistance(userLat, userLon, bunk.latitude, bunk.longitude);
+                if (distance <= 5) { // Check if within 5 km
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${bunk.name}</strong> - Address: ${bunk.address}<br>Services: ${bunk.services.join(', ')}`;
+                    nearbyList.appendChild(li);
+                }
+            });
+
+            document.getElementById('locationForm').style.display = 'none';
             document.getElementById('nearbyPlaces').style.display = 'block';
+        }
+
+        function selectStrip(element) {
+            const strips = document.querySelectorAll('.strip');
+            strips.forEach(strip => strip.classList.remove('selected'));
+            element.classList.add('selected');
         }
 
         function showQuestion() {
             document.getElementById('questionContent').style.display = 'block';
             document.getElementById('vehicleDetails').style.display = 'none';
+            document.getElementById('locationForm').style.display = 'none';
             document.getElementById('nearbyPlaces').style.display = 'none';
-        }
-
-        function selectStrip(element) {
-            // Remove 'selected' class from all strip
-            let strips = document.querySelectorAll('.strip');
-            strips.forEach(strip => {
-                strip.classList.remove('selected');
-            });
-            // Add 'selected' class to the clicked strip
-            element.classList.add('selected');  
         }
     </script>
 </body>

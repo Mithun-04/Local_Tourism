@@ -10,16 +10,19 @@
 <link rel="icon" type="PNG" href="/img/HotelIcon.png">
 <style>
     body {
-        margin: 0;
-        padding: 0;
-        font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif,Arial;
-        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),url('/img/hotel.jpg'); /* Replace 'hotel-background.jpg' with your actual background image */
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        line-height: 25px;
-        overflow: hidden;
-    }
+    margin: 0;
+    padding: 0;
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif,Arial;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)), url('/img/hotel.jpg');
+    background-size: cover; /* This makes the background image cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    height: 100vh; /* Ensures the body covers the entire viewport height */
+    width: 100vw; /* Ensures the body covers the entire viewport width */
+    line-height: 25px;
+    overflow: hidden;
+}
     .details-box {
         animation-duration: 3s;
         animation-name: slideup;

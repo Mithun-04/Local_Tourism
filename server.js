@@ -9,6 +9,7 @@ const trip = require('./models/trip.js');
 const rent = require('./models/rentals.js');
 const { log } = require('console');
 const User = require('./models/user.js');
+// const Addr = require('./data/address.js');
 
 const app = express();
 const port = 3000;

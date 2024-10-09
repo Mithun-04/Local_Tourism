@@ -33,27 +33,30 @@ const connect = async () => {
 }
 
 connect();
-const authenticateJWT = (req, res, next) => {
-    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
+    const authenticateJWT = (req, res, next) => {
+        const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
 
-    if (token) {
-        jwt.verify(token, SECRET_KEY, (err, user) => {
-            if (err) {
-                return res.sendStatus(403); // Invalid token
-            }
+        if (token) {
+            jwt.verify(token, SECRET_KEY, (err, user) => {
+                if (err) {
+                    return res.sendStatus(403); // Invalid token
+                }
 
-            req.user = user; // Attach user data to request
-            next();
-        });
-    } else {
-        res.sendStatus(401); // No token provided
-    }
-};
+                req.user = user; // Attach user data to request
+                next();
+            });
+        } else {
+            res.sendStatus(401); // No token provided
+        }
+    };
 
-app.get('/trip', (req, res) => {
+app.get('/trip',(req, res) => {
     res.sendFile(path.join(__dirname, 'Trip_planner.html'));
 });
 
+app.get('/contact',(req, res) => {
+    res.sendFile(path.join(__dirname, 'contact.html'));
+});
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'front_page.html'));
 });
@@ -70,10 +73,19 @@ app.get('/hotels', (req, res) => {
     res.sendFile(path.join(__dirname, 'mod4.html'));
 });
 
-app.post('/plan', async (req, res) => {
+app.post('/plan',authenticateJWT, async (req, res) => {
     try {
-
-        const data = await trip.create(req.body)
+        const userId = req.user.id;
+        const {loaction , budget , no_of_people , no_of_days} = req.body
+        
+        const data = await trip.create({
+            user_id : userId,
+            loaction,
+            budget,
+            no_of_people,
+            no_of_days
+        })
+        
         console.log(data);
         res.status(200).json({ message: 'Data saved successfully', data: data });
     }
@@ -139,7 +151,7 @@ app.post('/login', async (req, res) => {
                 error: "Invalid Password"
             })
         }
-        const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id , username : user.username}, SECRET_KEY, { expiresIn: '1h' });
         res.json({ token });
     }
     catch (e) {
@@ -147,6 +159,4 @@ app.post('/login', async (req, res) => {
             error: e.message
         })
     }
-
-
 })

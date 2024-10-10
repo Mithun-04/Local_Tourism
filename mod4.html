@@ -10,28 +10,51 @@
 <link rel="icon" type="PNG" href="/img/HotelIcon.png">
 <style>
     body {
-        margin: 0;
-        padding: 0;
-        font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif,Arial;
-        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),url('/img/hotel.jpg'); /* Replace 'hotel-background.jpg' with your actual background image */
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        line-height: 25px;
-        overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif,Arial;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)), url('/img/hotel.jpg');
+    background-size: cover; /* This makes the background image cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    height: 100vh; /* Ensures the body covers the entire viewport height */
+    width: 100vw; /* Ensures the body covers the entire viewport width */
+    line-height: 25px;
+    overflow: hidden;
+}
+    .booking-button {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        background-color: #3c7a3e;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
     }
+    .booking-button:hover {
+        background-color: #45a0498b;
+    }
+
     .details-box {
         animation-duration: 3s;
         animation-name: slideup;
         background-color: rgba(255, 255, 255, 0.5); /* Reduce opacity for a transparent effect */
         border-radius: 10px;
-        width: 700px;
-        margin-left: 100px;
-        margin-top: 70px;
+        /* width: 700px; */
+        flex: 1;
+        margin-left: 70px;
+        margin-right: 70px;
+        margin-top: 50px;
         padding: 20px;
         box-shadow: 10px 10px 15px rgba(1, 1, 1, 0.7);
+        box-shadow: inset 0px -10px 10px rgba(0, 0, 0, 0.6); /* Inner shadow at the bottom */
+
         overflow-y: auto;
-        max-height: 450px;
+        max-height: 400px;
     
         
          /* Hide overflowing content */
@@ -41,7 +64,7 @@
              
                 opacity: 0;
                 /* Start with opacity 0 for a fade-in effect */
-                transform: translateX(-500%);
+                transform: translateY(500%);
                 /* Start from below the viewport */
             }
 
@@ -49,7 +72,7 @@
                 
                 opacity: 1;
                 /* Fade in fully */
-                transform: translatex(0);
+                transform: translatey(0);
                 /* Move to its original position */
             }
         }
@@ -98,7 +121,7 @@
     .para {
             animation-duration: 4s;
             animation-name: slidein2;
-            margin-top: 160px;
+            margin-top: 60px;
             margin-bottom: 0px;
             margin-left: 50px;
             font-size: x-large; 
@@ -130,15 +153,17 @@
 
     }
     
-    .hotel {
-        position: relative;
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        margin-bottom: 20px;
-        padding: 20px;
-        border-radius: 15px;
-        background-color: rgb(255, 255, 255); /* White strip background color */
-    }
+   
+     .hotel {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255); /* White strip background color */
+    box-shadow: inset 0px -10px 10px rgba(0, 0, 0, 0.3); /* Inner shadow at the bottom */
+}
     .hotel img {
         width: 100px; /* Adjust image width as needed */
         height: auto; /* Maintain aspect ratio */
@@ -154,22 +179,7 @@
     .hotel-description h3 {
         margin-top: 0;
     }
-    .booking-button {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        padding: 10px 20px;
-        background-color: #3c7a3e;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-decoration: none;
-    }
-    .booking-button:hover {
-        background-color: #45a0498b;
-    }
-
+    
     .hotel-header{
         display: flex;
         flex-direction: row;
@@ -180,10 +190,144 @@
     }
     .main {
         display: flex;
-        flex-direction: row;
+        flex-direction: column-reverse;
     }
     .str {
         font-size: larger;
+    }
+    .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        }
+
+        /* Modal Content (the image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Add Animation - Zoom in the Modal */
+        .modal-content {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    /* Left and right arrows */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 24px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev {
+        left: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a background color */
+    .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .booking-form-modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        background-color: rgba(0, 0, 0, 0.9); /* Black background with transparency */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .booking-form-content {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        width: 960px;
+    }
+
+    .booking-form-content h2 {
+        margin-top: 0;
+    }
+
+    .booking-form-content input, .booking-form-content label {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .close-booking-form {
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+        color: red;
     }
 </style>
 </head>
@@ -197,93 +341,247 @@
         </div>
         
     </div>
+    <div class="para">
+
+            <p> Welcome to the <strong class="str">cozy havens</strong> of hospitality where comfort meets adventure and indulgence intertwines with convenience.
+                Embark on a journey of luxury and leisure, where every room is a sanctuary, every bed a cloud, and every service a symphony of satisfaction.
+                From <strong class="str">chic boutique</strong> hideaways to towering <strong class="str">urban oases</strong>, our hotels and accommodations cater to every traveler's whims, offering a tapestry of experiences that beckon you to <strong class="str">unwind, explore</strong>, and <strong class="str">create unforgettable memories</strong>.
+                </p>
+    </div>
 <div class="main">
     <div class="details-box">
  
         <div class="hotel-dialog">
             <div class="hotel">
                 <div class="hotel-header">
-                    <img src="/img/img 1.png" alt="Hotel 1">
-                    <div class="hotel-name"><h1>The Mountain Courtyar</h1></div>
-                </div>
-                
-                <div class="hotel-details">
-                    <h3></h3>
-                    <p><span class="fonting"><b>Description:</b></span> Experience unparalleled luxury at this award-winning property offering well-appointed rooms, incredible restaurants and easy access to IT parks and corporate hubs.
-    
-                        1. Enjoy a refreshing swim in the sparkling swimming pool.
-                        2. Wake up to the picturesque views of the lush green valley.
-                        3. Relish a wide range of global and Indian delicacies at the on-site restaurants.</p>
-                    <p><span class="fonting"><b>Address:</b></span> Spring Valley, 66th mile Kottayam-Kumily Road, Springvalley, Thekkady, India, 685509.</p>
-                    <p><span class="fonting"><b>Cost for 3 days: </b></span>$XXX</p>
-                </div>
-                <a href="foodPage.html" class="booking-button">Book Now</a>
-            </div>
-            <div class="hotel">
-                <div class="hotel-header">
-                    <img src="/img/img 2.png" alt="Hotel 2">
-                    <div class="hotel-name"><h1>Keys Prima By Lemon Tree Hotels</h1></div>
-                </div>
-                <div class="hotel-details">
-                    <h3></h3>
-                    <p><span class="fonting"><b>Description:</b> </span>Keys Prima by Lemon Tree Hotels, Thekaddy is strategically located near Kumily, a gateway town into Kerala from Tamil Nadu. It is close to the Periyar National Park and Wildlife Sanctuary (PNP), India's largest wildlife sanctuary.
-    
-                        The name Thekaddy is derived from the word ‘thekku’ which means teak. The sanctuary is famous for its dense evergreen, semi-evergreen, moist, deciduous forests and savanna grasslands.
-                        </p>
-                    <p><span class="fonting"><b>Address:</b> </span>Keys Prima by Lemon Tree Hotels, Thekkady, Thekkady Road,Anavachal,Kumily PO, Idukki,, Vazhayil, Thekkady, India, 685509.</p>
-                    <p><span class="fonting"><b>Cost for 3 days:</b> </span>$XXX</p>
-                </div>
-                <a href="foodPage.html" class="booking-button">Book Now</a>
-            </div>
-            <div class="hotel">
-                <div class="hotel-header">
-                    <img src="/img/img 3.png" alt="Hotel ">
-                    <div class="hotel-name"><h1>Greenwoods Resort, Thekkady</h1></div>
-                </div>
-                <div class="hotel-details">
-                    <h3></h3>
-                    <p><span class="fonting"><b>Description:</b></span>Experience a comfortable stay at this lavish property featuring stylish rooms, a dining venue, a crystal-clear swimming pool and upscale amenities.
-    
-                        1. Take a refreshing swim in the outdoor pool, and allow your children to have fun in the kids' pool at Green Woods Resort.
-                        2. Start your day with a refreshing workout session at the on-site gym featuring state-of-the-art equipment at Green Woods Resort.
-                        3. Relish a wide range of cuisines at the on-site restaurant, Amrutham.</p>
-                    <p><span class="fonting"><b>Address:</b></span> Kottayam - Kumily Rd, Vazhayil, Thekkady, India, 685509.</p>
-                    <p><span class="fonting"><b>Cost for 3 days:</b></span> $XXX</p>
-                </div>
-                <a href="foodPage.html" class="booking-button">Book Now</a>
-            </div>
-            <div class="hotel">
-                <div class="hotel-header">
-                    <img src="/img/img 4.png" alt="Hotel 4">
-                    <div class="hotel-name"><h1>The Elephant Court Resort</h1></div>
-                </div>
-                <div class="hotel-details">
-                    <h3></h3>
-                    <p><span class="fonting"><b>Description:</b> </span>Indulge in unparalleled luxury at this premium property offering well-appointed rooms, incredible restaurants, a luxurious spa and upscale amenities.
-    
-                        1. Treat yourself to luxury treatments and wellness therapies at the on-site spa.
-                        2. Swim a few laps in the sparkling swimming pool.
-                        3. Relish traditional and Mediterranean dishes at the on-site restaurant, Patio Restaurant.</p>
-                    <p><span class="fonting"><b>Address:</b></span> Amalambika road, Thekkady P.O Idukki District, Vazhayil, Thekkady, India, 685536.</p>
-                    <p><span class="fonting"><b>Cost for 3 days:</b></span>$XXX</p>
-                </div>
-                <a href="foodPage.html" class="booking-button">Book Now</a>
-            </div>
+                   
+            <img src="/img/1_1.jpg" alt="Hotel 1" onclick="openModal('modal1', 0)">
+            <div class="hotel-name"><h1>Munnar Cottage</h1></div>
         </div>
-        
-    
-    </div>
-    <div class="para">
 
-            <p>Welcome to the <strong class="str">cozy havens</strong> of hospitality where comfort meets adventure and indulgence intertwines with convenience.
-                Embark on a journey of luxury and leisure, where every room is a sanctuary, every bed a cloud, and every service a symphony of satisfaction.
-                From <strong class="str">chic boutique</strong> hideaways to towering <strong class="str">urban oases</strong>, our hotels and accommodations cater to every traveler's whims, offering a tapestry of experiences that beckon you to <strong class="str">unwind, explore</strong>, and <strong class="str">create unforgettable memories</strong>.
-                </p>
+     <div class="hotel-details">
+         <h3></h3>
+         <p><span class="fonting"><b>Description:</b></span> Experience unparalleled luxury at this award-winning property offering well-appointed rooms, incredible restaurants and easy access to IT parks and corporate hubs.
+             <br>1. Enjoy a refreshing swim in the sparkling swimming pool.
+             <br>2. Wake up to the picturesque views of the lush green valley.
+             <br>3. Relish a wide range of global and Indian delicacies at the on-site restaurants.</p>
+         <p><span class="fonting"><b>Address:</b></span> Nullatanni, Munnar, Kerala 685612</p>
+         <p><span class="fonting"><b>Price:</b></span> ₹ 840/night</p>
+     </div>
+     <button class="booking-button" onclick="openBookingForm('Munnar Cottage')">Book Now</button>
+ </div>
+
+ <div class="hotel">
+     <div class="hotel-header">
+         <!-- <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal(this.src)">
+         <div class="hotel-name"><h1>Hotel Sunshine</h1></div>
+     </div> -->
+            <img src="/img/2_1.jpg" alt="Hotel 2" onclick="openModal('modal2', 1)">
+            <div class="hotel-name"><h1>Hotel Emerald Inn</h1></div>
+        </div>
+
+     <div class="hotel-details">
+   <h3></h3>
+   <p><span class="fonting"><b>Description:</b></span> Embrace the ultimate luxury at this renowned hotel offering well-appointed rooms, gourmet dining, and easy access to major IT hubs and corporate centers.
+      <br>1. Unwind with a swim in the sparkling outdoor pool.
+      <br>2. Wake up to breathtaking views of the scenic green valley.
+      <br>3. Savor an array of international and Indian dishes at the hotel's fine restaurants.</p>
+
+
+         <p><span class="fonting"><b>Address:</b></span> Silent Valley Road, Near, NH-49, Munnar, Kerala 685612</p>
+         <p><span class="fonting"><b>Price:</b></span> ₹ 880/night</p>
+     </div>
+     <button class="booking-button" onclick="openBookingForm('Hotel Emerald Inn')">Book Now</button>
+ </div>
+
+ <div class="hotel">
+     <div class="hotel-header">
+        <img src="/img/3_1.jpg" alt="Hotel 3" onclick="openModal('modal3', 2)">
+        <div class="hotel-name"><h1>Cloud Five Munnar</h1></div>
     </div>
+
+    <div class="hotel-details">
+        <h3></h3>
+        <p><span class="fonting"><b>Description:</b></span> Discover the epitome of luxury at this award-winning hotel featuring beautifully designed rooms, excellent dining options, and convenient proximity to IT parks and corporate areas.
+           <br>1. Take a dip in the pristine swimming pool for a refreshing experience.
+           <br>2. Start your day with stunning views of the lush green valley.
+           <br>3. Indulge in a variety of global and Indian cuisines at the on-site restaurants.</p>
+     
+     
+         <p><span class="fonting"><b>Address:</b></span> Temple, Road, Silent Valley, Munnar, Kerala 685612</p>
+         <p><span class="fonting"><b>Price:</b></span> ₹ 820/night</p>
+     </div>
+     <button class="booking-button" onclick="openBookingForm('Cloud Five Munnar')">Book Now</button>
+ </div>
+
+ <div class="hotel">
+    <div class="hotel-header">
+        <!-- <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal(this.src)">
+        <div class="hotel-name"><h1>Hotel Sunshine</h1></div>
+    </div> -->
+           <img src="/img/4_1.jpg" alt="Hotel 4" onclick="openModal('modal4', 3)">
+           <div class="hotel-name"><h1>Lumino Dwellings</h1></div>
+       </div>
+
+       <div class="hotel-details">
+        <h3></h3>
+        <p><span class="fonting"><b>Description:</b></span> Step into luxury at this award-winning property, featuring stylish rooms, outstanding dining options, and a location close to IT hubs and corporate offices.
+           <br>1. Rejuvenate with a swim in the crystal-clear swimming pool.
+           <br>2. Enjoy stunning views of the lush valley as you wake up each morning.
+           <br>3. Delight in a selection of global and Indian dishes at the hotel's restaurants.</p>
+        <p><span class="fonting"><b>Address:</b></span> Tea County Rd, near KTDC, Ikka Nagar, Munnar, Kerala 685612</p>
+        <p><span class="fonting"><b>Price:</b></span> ₹ 1000/night</p>
+    </div>
+    <button class="booking-button" onclick="openBookingForm('Lumino Dwellings')">Book Now</button>
+</div>
+
+<div class="hotel">
+    <div class="hotel-header">
+        <!-- <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal(this.src)">
+        <div class="hotel-name"><h1>Hotel Sunshine</h1></div>
+    </div> -->
+           <img src="/img/5_1.jpg" alt="Hotel 5" onclick="openModal('modal5', 4)">
+           <div class="hotel-name"><h1>Lumino Highrange</h1></div>
+       </div>
+
+       <div class="hotel-details">
+        <h3></h3>
+        <p><span class="fonting"><b>Description:</b></span> Enjoy world-class luxury at this prestigious hotel, known for its elegant rooms, top-tier dining experiences, and close proximity to IT parks and business centers.
+           <br>1. Refresh yourself with a swim in the shimmering pool.
+           <br>2. Wake up to serene views of the green valley.
+           <br>3. Treat yourself to a wide variety of global and Indian cuisines at the on-site restaurants.</p>
+        <p><span class="fonting"><b>Address:</b></span> Old Munnar Main road NH-49 Munnar Cochin Road, near Govt High School, Munnar, Kerala 685612</p>
+        <p><span class="fonting"><b>Price:</b></span> ₹ 900/night</p>
+    </div>
+    <button class="booking-button" onclick="openBookingForm('Lumino Highrange')">Book Now</button>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+<div id="modal1" class="modal">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <img class="modal-content" id="hotelImg1">
+    <a class="prev" onclick="prevImage('modal1', 0)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal1', 0)">&#10095;</a>
+</div>
+
+<div id="modal2" class="modal">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <img class="modal-content" id="hotelImg2">
+    <a class="prev" onclick="prevImage('modal2', 1)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal2', 1)">&#10095;</a>
+</div>
+
+<div id="modal3" class="modal">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <img class="modal-content" id="hotelImg3">
+    <a class="prev" onclick="prevImage('modal3', 2)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal3', 2)">&#10095;</a>
+</div>
+
+<div id="modal4" class="modal">
+    <span class="close" onclick="closeModal('modal4')">&times;</span>
+    <img class="modal-content" id="hotelImg4">
+    <a class="prev" onclick="prevImage('modal4', 3)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal4', 3)">&#10095;</a>
+</div>
+
+<div id="modal5" class="modal">
+    <span class="close" onclick="closeModal('modal5')">&times;</span>
+    <img class="modal-content" id="hotelImg5">
+    <a class="prev" onclick="prevImage('modal5', 4)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal5', 4)">&#10095;</a>
+</div>
+
+<!-- Booking Form Modal -->
+<div id="bookingFormModal" class="booking-form-modal">
+    <div class="booking-form-content">
+        <span class="close-booking-form" onclick="closeBookingForm()">×</span>
+        <h1 id="hotelNameDisplay"></h1>
+        <!-- <form id="bookingForm">
+            <label for="nameC">Name:</label>
+            <input type="text" id="nameC" name="nameC" required>
+            <label for="numPersons">No. of Persons:</label>
+            <input type="number" id="numPersons" name="numPersons" required>
+            <label for="numDays">No. of Days:</label>
+            <input type="number" id="numDays" name="numDays" required>
+            <label for="idProof">Upload Original ID Proof:</label>
+            <input type="file" id="idProof" name="idProof" required>
+            <button type="submit">Submit</button>
+        </form> -->
+        <form id="bookingForm" method="POST" enctype="multipart/form-data" action="http://localhost:5000/book">
+
+            <label for="nameC">Name:</label>
+            <input type="text" id="nameC" name="nameC" required>
+
+            <label for="numPersons">No. of Persons:</label>
+            <input type="number" id="numPersons" name="numPersons" required>
+          
+            <label for="numDays">No. of Days:</label>
+            <input type="number" id="numDays" name="numDays" required>
+          
+            <label for="idProof">Upload Original ID Proof:</label>
+            <input type="file" id="idProof" name="idProof" required>
+          
+            <button type="submit">Submit</button>
+          </form>
+          
+    </div>
+</div>
+
+<script>
+    // Define an array to hold all the hotel images for each modal
+const hotelImages = [
+    ["/img/1_2.jpg", "/img/1_3.jpg", "/img/1_4.jpg","/img/1_5.jpg"], // Images for Hotel 1
+    ["/img/2_1.jpg", "/img/2_2.jpg", "/img/2_4.jpg","/img/2_5.jpg"],  // Images for Hotel 2
+    ["/img/3_2.jpg", "/img/3_3.jpg", "/img/3_4.jpg","/img/3_5.jpg"],
+    ["/img/4_2.jpg", "/img/4_3.jpg", "/img/4_4.jpg","/img/4_5.jpg"],
+    ["/img/5_1.jpg", "/img/5_2.jpeg", "/img/5_4.jpg","/img/5_5.jpg"]
+];
+
+let currentImageIndex = 0;
+
+function openModal(modalId, hotelIndex) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = "block";
+    document.getElementById("hotelImg" + (hotelIndex + 1)).src = hotelImages[hotelIndex][currentImageIndex];
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = "none";
+    currentImageIndex = 0; // Reset to the first image when closed
+}
+
+function prevImage(modalId, hotelIndex) {
+    currentImageIndex = (currentImageIndex - 1 + hotelImages[hotelIndex].length) % hotelImages[hotelIndex].length;
+    document.getElementById("hotelImg" + (hotelIndex + 1)).src = hotelImages[hotelIndex][currentImageIndex];
+}
+
+function nextImage(modalId, hotelIndex) {
+    currentImageIndex = (currentImageIndex + 1) % hotelImages[hotelIndex].length;
+    document.getElementById("hotelImg" + (hotelIndex + 1)).src = hotelImages[hotelIndex][currentImageIndex];
+}
+
+</script>
+<script>
+        function openBookingForm(hotelName) {
+            document.getElementById('hotelNameDisplay').innerText = hotelName;
+            document.getElementById('bookingFormModal').style.display = 'flex';
+        }
+
+        function closeBookingForm() {
+            document.getElementById('bookingFormModal').style.display = 'none';
+        }
+    </script>
+    </div>
+    
 
 </div>    
    
 </body>
 </html>
-
-

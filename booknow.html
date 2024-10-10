@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"], input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3c7a3e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .hotel-name {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Booking Form</h2>
+        <div class="hotel-name" id="hotelName"></div>
+
+        <form>
+            <div class="form-group">
+                <label for="persons">No. of Persons:</label>
+                <input type="number" id="persons" name="persons" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="days">No. of Days:</label>
+                <input type="number" id="days" name="days" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="idProof">Attach ID Proof:</label>
+                <input type="file" id="idProof" name="idProof" accept=".jpg,.jpeg,.png,.pdf" required>
+            </div>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </div>
+
+    <script>
+        // Get hotel name from the URL query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const hotelName = urlParams.get('hotel');
+        
+        // Display hotel name in the form
+        document.getElementById('hotelName').textContent = hotelName ? hotelName : "Unknown Hotel";
+    </script>
+
+</body>
+</html>

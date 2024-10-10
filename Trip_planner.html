@@ -375,6 +375,8 @@
                 .then(data => {
 
                     alert("The form is Saved")
+                    localStorage.setItem('budget',budget);
+                    localStorage.setItem('days', nod);
                     console.log("Reply :", data);
                     window.location.href = "/hotels";
                 })

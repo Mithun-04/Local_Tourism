@@ -9,7 +9,7 @@ const trip = require('./models/trip.js');
 const rent = require('./models/rentals.js');
 const { log } = require('console');
 const User = require('./models/user.js');
-const Ind = require('./hotel-app/index.js');
+const Ind = require('./index.js');
 // const Addr = require('./data/address.js');
 
 const app = express();

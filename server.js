@@ -10,6 +10,7 @@ const rent = require('./models/rentals.js');
 const { log } = require('console');
 const User = require('./models/user.js');
 const booking = require('./models/vehiclebook.js');
+const hotel = require('./models/hotelbook.js');
 const Ind = require('./index.js');
 // const Addr = require('./data/address.js');
 
@@ -209,4 +210,31 @@ app.post('/vehiclebook', authenticateJWT, async (req, res) => {
         res.status(500).json({ error: 'There was a problem with the booking. Please try again.' });
     }
 });
+
+app.post('/hotelbook', authenticateJWT, async (req, res) => {
+    try {
+        const { bookingname, hotelname, no_of_peeple, no_of_days } = req.body;
+
+        // Create a new booking
+        const newBooking = {
+            user_id: req.user.id,  
+            bookingname,
+            hotelname,
+            no_of_peeple,
+            no_of_days,
+            bookedAt: new Date()
+        }   ;
+
+        const data = await hotel.create(newBooking);
+        console.log(data);
+
+        
+
+        res.status(200).json(data);
+    } catch (error) {
+        console.error('Error booking the hotel:', error);
+        res.status(500).json({ message: 'Error booking the hotel' });
+    }
+});
+
 

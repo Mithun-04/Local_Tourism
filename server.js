@@ -9,6 +9,7 @@ const trip = require('./models/trip.js');
 const rent = require('./models/rentals.js');
 const { log } = require('console');
 const User = require('./models/user.js');
+const Ind = require('./hotel-app/index.js');
 // const Addr = require('./data/address.js');
 
 const app = express();
@@ -72,6 +73,9 @@ app.get('/signup', (req, res) => {
 });
 app.get('/hotels', (req, res) => {
     res.sendFile(path.join(__dirname, 'mod4.html'));
+});
+app.get('/booknow', (req, res) => {
+    res.sendFile(path.join(__dirname, 'booknow.html'));
 });
 
 app.post('/plan',authenticateJWT, async (req, res) => {

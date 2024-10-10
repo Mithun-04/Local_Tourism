@@ -28,13 +28,17 @@
         animation-name: slideup;
         background-color: rgba(255, 255, 255, 0.5); /* Reduce opacity for a transparent effect */
         border-radius: 10px;
-        width: 700px;
-        margin-left: 100px;
-        margin-top: 70px;
+        /* width: 700px; */
+        flex: 1;
+        margin-left: 70px;
+        margin-right: 70px;
+        margin-top: 50px;
         padding: 20px;
         box-shadow: 10px 10px 15px rgba(1, 1, 1, 0.7);
+        box-shadow: inset 0px -10px 10px rgba(0, 0, 0, 0.6); /* Inner shadow at the bottom */
+
         overflow-y: auto;
-        max-height: 450px;
+        max-height: 400px;
     
         
          /* Hide overflowing content */
@@ -44,7 +48,7 @@
              
                 opacity: 0;
                 /* Start with opacity 0 for a fade-in effect */
-                transform: translateX(-500%);
+                transform: translateY(500%);
                 /* Start from below the viewport */
             }
 
@@ -52,7 +56,7 @@
                 
                 opacity: 1;
                 /* Fade in fully */
-                transform: translatex(0);
+                transform: translatey(0);
                 /* Move to its original position */
             }
         }
@@ -101,7 +105,7 @@
     .para {
             animation-duration: 4s;
             animation-name: slidein2;
-            margin-top: 160px;
+            margin-top: 60px;
             margin-bottom: 0px;
             margin-left: 50px;
             font-size: x-large; 
@@ -133,15 +137,25 @@
 
     }
     
-    .hotel {
+    /* .hotel {
         position: relative;
         display: flex;
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column; /* Stack items vertically 
         margin-bottom: 20px;
         padding: 20px;
         border-radius: 15px;
-        background-color: rgb(255, 255, 255); /* White strip background color */
-    }
+        background-color: rgb(255, 255, 255); /* White strip background color 
+    } */
+     .hotel {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255); /* White strip background color */
+    box-shadow: inset 0px -10px 10px rgba(0, 0, 0, 0.3); /* Inner shadow at the bottom */
+}
     .hotel img {
         width: 100px; /* Adjust image width as needed */
         height: auto; /* Maintain aspect ratio */
@@ -183,10 +197,107 @@
     }
     .main {
         display: flex;
-        flex-direction: row;
+        flex-direction: column-reverse;
     }
     .str {
         font-size: larger;
+    }
+    .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        }
+
+        /* Modal Content (the image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Add Animation - Zoom in the Modal */
+        .modal-content {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    /* Left and right arrows */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 24px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev {
+        left: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a background color */
+    .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
     }
 </style>
 </head>
@@ -200,13 +311,20 @@
         </div>
         
     </div>
+    <div class="para">
+
+            <p>Welcome to the <strong class="str">cozy havens</strong> of hospitality where comfort meets adventure and indulgence intertwines with convenience.
+                Embark on a journey of luxury and leisure, where every room is a sanctuary, every bed a cloud, and every service a symphony of satisfaction.
+                From <strong class="str">chic boutique</strong> hideaways to towering <strong class="str">urban oases</strong>, our hotels and accommodations cater to every traveler's whims, offering a tapestry of experiences that beckon you to <strong class="str">unwind, explore</strong>, and <strong class="str">create unforgettable memories</strong>.
+                </p>
+    </div>
 <div class="main">
     <div class="details-box">
  
         <div class="hotel-dialog">
             <div class="hotel">
                 <div class="hotel-header">
-                    <img src="/img/img 1.png" alt="Hotel 1">
+                    <!-- <img src="/img/img 1.png" alt="Hotel 1">
                     <div class="hotel-name"><h1>The Mountain Courtyar</h1></div>
                 </div>
                 
@@ -273,20 +391,237 @@
                 <a href="foodPage.html" class="booking-button">Book Now</a>
             </div>
         </div>
-        
-    
-    </div>
-    <div class="para">
+         -->
+         <!-- <img src="/img/img 1.png" alt="Hotel 1" onclick="openModal(this.src)">
+         <div class="hotel-name"><h1>The Mountain Courtyar</h1></div>
+     </div> -->
+            <img src="/img/img 1.png" alt="Hotel 1" onclick="openModal('modal1', 0)">
+            <div class="hotel-name"><h1>The Mountain Courtyar</h1></div>
+        </div>
 
-            <p>Welcome to the <strong class="str">cozy havens</strong> of hospitality where comfort meets adventure and indulgence intertwines with convenience.
-                Embark on a journey of luxury and leisure, where every room is a sanctuary, every bed a cloud, and every service a symphony of satisfaction.
-                From <strong class="str">chic boutique</strong> hideaways to towering <strong class="str">urban oases</strong>, our hotels and accommodations cater to every traveler's whims, offering a tapestry of experiences that beckon you to <strong class="str">unwind, explore</strong>, and <strong class="str">create unforgettable memories</strong>.
-                </p>
+     <div class="hotel-details">
+         <h3></h3>
+         <p><span class="fonting"><b>Description:</b></span> Experience unparalleled luxury at this award-winning property offering well-appointed rooms, incredible restaurants and easy access to IT parks and corporate hubs.
+             <br>1. Enjoy a refreshing swim in the sparkling swimming pool.
+             <br>2. Wake up to the picturesque views of the lush green valley.
+             <br>3. Relish a wide range of global and Indian delicacies at the on-site restaurants.</p>
+         <p><span class="fonting"><b>Address:</b></span>123 Main St, Anytown, USA</p>
+         <p><span class="fonting"><b>Price:</b></span> $200/night</p>
+     </div>
+     <button class="booking-button" onclick="location.href='https://www.example.com/book';">Book Now</button>
+ </div>
+
+ <div class="hotel">
+     <div class="hotel-header">
+         <!-- <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal(this.src)">
+         <div class="hotel-name"><h1>Hotel Sunshine</h1></div>
+     </div> -->
+            <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal('modal2', 1)">
+            <div class="hotel-name"><h1>Keys Prima By Lemon Tree Hotels</h1></div>
+        </div>
+
+     <div class="hotel-details">
+         <h3></h3>
+         <p><span class="fonting"><b>Description:</b></span> Enjoy a delightful stay at this hotel featuring elegant rooms and exceptional amenities, including a spa and fine dining options.</p>
+         <p><span class="fonting"><b>Address:</b></span>456 Elm St, Anytown, USA</p>
+         <p><span class="fonting"><b>Price:</b></span> $180/night</p>
+     </div>
+     <button class="booking-button" onclick="location.href='https://www.example.com/book';">Book Now</button>
+ </div>
+
+ <div class="hotel">
+     <div class="hotel-header">
+         <!-- <img src="/img/img 3.png" alt="Hotel 3" onclick="openModal(this.src)">
+         <div class="hotel-name"><h1>Beachside Resort</h1></div>
+     </div> -->
+            <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal('modal2', 1)">
+            <div class="hotel-name"><h1>Keys Prima By Lemon Tree Hotels</h1></div>
+        </div>
+
+     <div class="hotel-details">
+         <h3></h3>
+         <p><span class="fonting"><b>Description:</b></span> A beautiful resort located near the beach, offering stunning views and a wide range of activities for guests.</p>
+         <p><span class="fonting"><b>Address:</b></span>789 Ocean Blvd, Anytown, USA</p>
+         <p><span class="fonting"><b>Price:</b></span> $220/night</p>
+     </div>
+     <button class="booking-button" onclick="location.href='https://www.example.com/book';">Book Now</button>
+ </div>
+
+ <div class="hotel">
+    <div class="hotel-header">
+        <!-- <img src="/img/img 3.png" alt="Hotel 3" onclick="openModal(this.src)">
+        <div class="hotel-name"><h1>Beachside Resort</h1></div>
+    </div> -->
+           <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal('modal2', 1)">
+           <div class="hotel-name"><h1>Keys Prima By Lemon Tree Hotels</h1></div>
+       </div>
+
+    <div class="hotel-details">
+        <h3></h3>
+        <p><span class="fonting"><b>Description:</b></span> A beautiful resort located near the beach, offering stunning views and a wide range of activities for guests.</p>
+        <p><span class="fonting"><b>Address:</b></span>789 Ocean Blvd, Anytown, USA</p>
+        <p><span class="fonting"><b>Price:</b></span> $220/night</p>
     </div>
+    <button class="booking-button" onclick="location.href='https://www.example.com/book';">Book Now</button>
+</div>
+
+<div class="hotel">
+    <div class="hotel-header">
+        <!-- <img src="/img/img 3.png" alt="Hotel 3" onclick="openModal(this.src)">
+        <div class="hotel-name"><h1>Beachside Resort</h1></div>
+    </div> -->
+           <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal('modal2', 1)">
+           <div class="hotel-name"><h1>Keys Prima By Lemon Tree Hotels</h1></div>
+       </div>
+
+    <div class="hotel-details">
+        <h3></h3>
+        <p><span class="fonting"><b>Description:</b></span> A beautiful resort located near the beach, offering stunning views and a wide range of activities for guests.</p>
+        <p><span class="fonting"><b>Address:</b></span>789 Ocean Blvd, Anytown, USA</p>
+        <p><span class="fonting"><b>Price:</b></span> $220/night</p>
+    </div>
+    <button class="booking-button" onclick="location.href='https://www.example.com/book';">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- The Modal -->
+<!-- <div id="myModal" class="modal">
+<span class="close" onclick="closeModal()">&times;</span>
+<img class="modal-content" id="img01">
+<div id="caption"></div>
+</div> -->
+
+<!-- <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+
+    Left and right navigation arrows
+    <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+    <span class="next" onclick="changeImage(1)">&#10095;</span>
+</div> -->
+
+<div id="modal1" class="modal">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <img class="modal-content" id="hotelImg1">
+    <a class="prev" onclick="prevImage('modal1', 0)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal1', 0)">&#10095;</a>
+</div>
+
+<div id="modal2" class="modal">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <img class="modal-content" id="hotelImg2">
+    <a class="prev" onclick="prevImage('modal2', 1)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal2', 1)">&#10095;</a>
+</div>
+
+<div id="modal3" class="modal">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <img class="modal-content" id="hotelImg3">
+    <a class="prev" onclick="prevImage('modal3', 2)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal3', 2)">&#10095;</a>
+</div>
+
+<div id="modal4" class="modal">
+    <span class="close" onclick="closeModal('modal4')">&times;</span>
+    <img class="modal-content" id="hotelImg4">
+    <a class="prev" onclick="prevImage('modal4', 3)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal4', 3)">&#10095;</a>
+</div>
+
+<div id="modal5" class="modal">
+    <span class="close" onclick="closeModal('modal5')">&times;</span>
+    <img class="modal-content" id="hotelImg5">
+    <a class="prev" onclick="prevImage('modal5', 4)">&#10094;</a>
+    <a class="next" onclick="nextImage('modal5', 4)">&#10095;</a>
+</div>
+<!-- <script>
+function openModal(src) {
+const modal = document.getElementById("myModal");
+const img = document.getElementById("img01");
+img.src = src; // Set the source of the image
+modal.style.display = "block"; // Show the modal
+}
+
+function closeModal() {
+const modal = document.getElementById("myModal");
+modal.style.display = "none"; // Hide the modal
+}
+
+// Close modal when clicking outside of the image
+const modal = document.getElementById("myModal");
+modal.addEventListener("click", function(event) {
+if (event.target === modal) {
+ closeModal();
+}
+});
+</script> -->
+<!-- <script>
+    let currentIndex = 0;
+    const images = ["/img/img 1.png", "/img/img 2.png","/img/img 3.png"];
+
+    function openModal(index) {
+        currentIndex = index;
+        document.getElementById('myModal').style.display = "block";
+        document.getElementById('modalImage').src = images[currentIndex];
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    function changeImage(direction) {
+        currentIndex += direction;
+
+        if (currentIndex < 0) {
+            currentIndex = images.length - 1;  // Wrap around to the last image
+        } else if (currentIndex >= images.length) {
+            currentIndex = 0;  // Wrap around to the first image
+        }
+
+        document.getElementById('modalImage').src = images[currentIndex];
+    }
+</script> -->
+<script>
+    // Define an array to hold all the hotel images for each modal
+const hotelImages = [
+    ["/img/img 1.png", "/img/img 2.png", "/img/img 3.png"], // Images for Hotel 1
+    ["/img/img 2.png", "/img/img 3.png", "/img/img 4.png"],  // Images for Hotel 2
+    ["/img/img 2.png", "/img/img 3.png", "/img/img 4.png"],
+    ["/img/img 2.png", "/img/img 3.png", "/img/img 4.png"],
+    ["/img/img 2.png", "/img/img 3.png", "/img/img 4.png"]
+];
+
+let currentImageIndex = 0;
+
+function openModal(modalId, hotelIndex) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = "block";
+    document.getElementById("hotelImg" + (hotelIndex + 1)).src = hotelImages[hotelIndex][currentImageIndex];
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = "none";
+    currentImageIndex = 0; // Reset to the first image when closed
+}
+
+function prevImage(modalId, hotelIndex) {
+    currentImageIndex = (currentImageIndex - 1 + hotelImages[hotelIndex].length) % hotelImages[hotelIndex].length;
+    document.getElementById("hotelImg" + (hotelIndex + 1)).src = hotelImages[hotelIndex][currentImageIndex];
+}
+
+function nextImage(modalId, hotelIndex) {
+    currentImageIndex = (currentImageIndex + 1) % hotelImages[hotelIndex].length;
+    document.getElementById("hotelImg" + (hotelIndex + 1)).src = hotelImages[hotelIndex][currentImageIndex];
+}
+
+</script>
+    </div>
+    
 
 </div>    
    
 </body>
 </html>
-
-

@@ -243,70 +243,63 @@
             document.getElementById('locationForm').style.display = 'none';
             document.getElementById('nearbyPlaces').style.display = 'none';
         }
-
-        let selectedVehicle = null;  // Global variable to store the selected vehicle data
-
-        // Function to retrieve data from localStorage and fetch vehicle data from the server
-        function fetchVehicleData() {
-            const budget = localStorage.getItem('budget');  // Retrieve budget from localStorage
-            const days = localStorage.getItem('days');      // Retrieve number of days from localStorage
-
-            // Fetch vehicle data from the server
-            fetch('/vehicles')  // Example API endpoint to get vehicle data from the database
-                .then(response => response.json())
-                .then(vehicles => {
-                    // Filter vehicles that fit the user's budget
-                    const filteredVehicles = vehicles.filter(vehicle => {
-                        return vehicle.rent_per_day * days <= budget;
-                    });
-
-                    // Dynamically display filtered vehicles
-                    const vehicleList = document.getElementById('vehicle-list');
-                    vehicleList.innerHTML = '';  // Clear previous entries if any
-
-                    filteredVehicles.forEach(vehicle => {
-                        // Create a new vehicle strip
-                        const vehicleStrip = document.createElement('div');
-                        vehicleStrip.className = 'strip';
-                        vehicleStrip.innerHTML = `
+            let selectedVehicle = null;  // Global variable to store the selected vehicle data
+            // Function to retrieve data from localStorage and fetch vehicle data from the server
+            function fetchVehicleData() {
+                const budget = localStorage.getItem('budget');
+                console.log(budget);  // Retrieve budget from localStorage
+                const days = localStorage.getItem('days');      // Retrieve number of days from localStorage
+                // Fetch vehicle data from the server
+                fetch('/vehicles')  // Example API endpoint to get vehicle data from the database
+                    .then(response => response.json())
+                    .then(vehicles => {
+                        // Filter vehicles that fit the user's budget
+                        const filteredVehicles = vehicles.filter(vehicle => {
+                            return vehicle.rent_per_day * days <= budget;
+                        });
+                        // Dynamically display filtered vehicles
+                        const vehicleList = document.getElementById('vehicle-list');
+                        vehicleList.innerHTML = '';  // Clear previous entries if any
+                        filteredVehicles.forEach(vehicle => {
+                            // Create a new vehicle strip
+                            const vehicleStrip = document.createElement('div');
+                            vehicleStrip.className = 'strip';
+                            vehicleStrip.innerHTML = `
                     <h2>${vehicle.model}</h2>
                     <p>Number: ${vehicle.number}</p>
                     <p>Rent per day: ₹${vehicle.rent_per_day}</p>
                     <p>Total for ${days} days: ₹${vehicle.rent_per_day * days}</p>
                 `;
-                        // Add event listener for click to select the vehicle
-                        vehicleStrip.onclick = function () {
-                            selectStrip(this, vehicle);
-                        };
-                        vehicleList.appendChild(vehicleStrip);
+                            // Add event listener for click to select the vehicle
+                            vehicleStrip.onclick = function () {
+                                selectStrip(this, vehicle);
+                            };
+                            vehicleList.appendChild(vehicleStrip);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching vehicle data:', error);
                     });
-                })
-                .catch(error => {
-                    console.error('Error fetching vehicle data:', error);
-                });
-        }
+            }
+        
         function selectStrip(vehicleElement, vehicleData) {
             if (!vehicleElement || !vehicleElement.style) {
                 return;
             }
-
             const allStrips = document.querySelectorAll('.strip');
             allStrips.forEach(strip => {
                 strip.style.backgroundColor = '';
             });
-
             vehicleElement.style.backgroundColor = '#FFA500CC';
             selectedVehicle = vehicleData;
             console.log('Selected vehicle:', selectedVehicle);
         }
-
         function bookNow() {
             const token = localStorage.getItem('token');
             if (!selectedVehicle) {
                 alert('Please select a vehicle to book.');
                 return;  // Exit if no vehicle is selected
             }
-
             fetch('/vehiclebook', {
                 method: 'POST',
                 headers: {
@@ -319,19 +312,19 @@
                     rent_per_day: selectedVehicle.rent_per_day,
                     days: localStorage.getItem('days')
                 }
-
                 )  // Send the booking data in JSON format
             })
                 .then(response => {
                     if (response.ok) {
-                        return response.json();  // Parse the JSON response if booking was successful
+                        return response.json();  
+                        
                     } else {
                         throw new Error('Failed to book the vehicle.');
                     }
                 })
                 .then(data => {
                     alert(`Booking confirmed! Vehicle: ${data.model}, Total: ₹${data.total_price}`);
-
+                    window.location.href = '/food';
                 })
                 .catch(error => {
                     console.error('Error during booking:', error);
@@ -339,8 +332,6 @@
                 });
 
         }
-
-
     </script>
 </body>
 

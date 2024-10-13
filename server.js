@@ -61,6 +61,9 @@ app.get('/trip',(req, res) => {
 app.get('/contact',(req, res) => {
     res.sendFile(path.join(__dirname, 'contact.html'));
 });
+app.get('/food',(req, res) => {
+    res.sendFile(path.join(__dirname, 'foodPage.html'));
+});
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'front_page.html'));
 });

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theni Trip Itinerary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .trip-info {
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        .day-header {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+        .meal-stay {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Theni Trip Itinerary</h1>
+
+    <div class="trip-info">
+        <p><strong>Travelers:</strong> <span id="travelersInfo"></span></p>
+        <p><strong>Dates:</strong> [Dates based on your preference]</p>
+        <p><strong>Locations Include:</strong> Theni, Vaigai Dam, Kumbakkarai Falls, Kurangani Hills, Suruli Falls, Bodi
+            Mettu</p>
+    </div>
+
+    <table>
+        <tr class="day-header">
+            <th>Day</th>
+            <th>Date</th>
+            <th>Activities</th>
+            <th>Location(s)</th>
+        </tr>
+        <tr>
+            <td>Saturday</td>
+            <td>[Date]</td>
+            <td>
+                - Arrival in Theni, check-in to hotel. <br>
+                - <strong>8:30 AM</strong>: Visit sothupaarai Dam (14 km). <br>
+                - <strong>10:30 AM</strong>: Visit Kumbakkarai Falls (35 km). <br>
+                - <strong>1:30 PM</strong>: Lunch at Theni. <br>
+                - <strong>2:30 PM</strong>: Visit Kurangani Hills (25 km), trek or nature walk. <br>
+                - <strong>5:00 PM</strong>: Return to hotel. <br>
+                - <strong>7:00 PM</strong>: Dinner at Hotel Saraswathi vilas or Sivasakthi Hotel. <br>
+                - Rest for the night.
+            </td>
+            <td>Theni, Vaigai Dam, Kumbakkarai Falls, Kurangani Hills</td>
+        </tr>
+        <tr>
+            <td>Sunday</td>
+            <td>[Date]</td>
+            <td>
+                - <strong>7:30 AM</strong>: Breakfast at hotel. <br>
+                - <strong>8:30 AM</strong>: Drive to Suruli Falls (56 km). <br>
+                - <strong>11:00 AM - 12:30 PM</strong>: Explore Suruli Falls and surrounding areas. <br>
+                - <strong>1:00 PM</strong>: Lunch at Suruli or back in Theni(Based on timing). <br>
+                - <strong>2:30 PM</strong>: Drive to Bodi Mettu (40 km) for scenic views. <br>
+                - <strong>5:00 PM</strong>: Return to Theni for evening snacks. <br>
+                - <strong>6:00 PM</strong>: Departure or final rest before heading back home.
+            </td>
+            <td>Theni to Suruli Falls, Bodi Mettu</td>
+        </tr>
+    </table>
+
+    <div class="meal-stay">
+        <h2 class="section-title">Meal & Stay Recommendations</h2>
+        <p><strong>Breakfast:</strong> Local options at hotels like Saraswathi vilas,Hotel Aksayaa simple idli/dosa, or
+            packed for hill stations.</p>
+        <p><strong>Lunch:</strong> Hotel Saravana Bhavan, Sivasakthi Hotel, packed meals for nature visits.</p>
+        <p><strong>Dinner:</strong> Sivasakthi Hotel, Sri Aryas, or Saraswathi vilas.</p>
+    </div>
+
+    <div class="meal-stay">
+        <h2 class="section-title">Hotel Suggestions</h2>
+        <p><strong>Theni:</strong> Sivas regency,Hotel lemeridian,Hotel .</p>
+    </div>
+
+</body>
+
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Retrieve values from localStorage
+        const name = localStorage.getItem('Name') || 'Traveler';
+        const hotelName = localStorage.getItem('Hotel') || 'Default Hotel';
+
+        // Display the retrieved values in the appropriate places
+        document.getElementById('travelerName').textContent = name;
+        document.getElementById('hotelName').textContent = hotelName;
+    });
+</script>

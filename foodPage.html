@@ -182,7 +182,7 @@
                 <!-- Restaurant Details Will Be Added Dynamically Here -->
             </div>
             <button class="back-button" onclick="showFoodPreferences()">Back</button>
-            <button class="back-button" onclick="window.location.href = 'mod5.html'">Next</button>
+            <button class="back-button" onclick="next()">Next</button>
         </div>
     </div>
 
@@ -414,7 +414,7 @@
 
                 restaurantDiv.appendChild(img);
                 restaurantDiv.appendChild(name);
-                restaurantDiv.appendChild(description);
+                restaurantDiv.appendChild(description); 
                 restaurantDiv.appendChild(contact);
                 restaurantDiv.appendChild(closingTime);
 
@@ -432,6 +432,17 @@
 
         function changeimg(imageUrl) {
             document.body.style.backgroundImage = "url('" + imageUrl + "')";
+        }
+
+        function next(){
+            const budget = localStorage.getItem('budget');
+            if(budget > 8000){
+                window.location.href = '/3day';
+            }
+            else if(budget < 8000){
+                window.location.href = '/2day';
+            }
+
         }
     </script>
 </body>

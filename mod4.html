@@ -691,6 +691,9 @@
             const numPersons = document.getElementById('numPersons').value;
             const numDays = document.getElementById('numDays').value;
             const bookingName = document.getElementById('nameC').value; 
+            localStorage.setItem('Name',bookingName);
+            localStorage.setItem('Hotel',hotelName);
+            
             const pricePerDay = price; 
             let budget = localStorage.getItem('budget');  
 

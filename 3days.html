@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theni Trip Itinerary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .trip-info {
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .day-header {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+        .meal-stay {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        // JavaScript to retrieve and display data from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            // Retrieve values from localStorage
+            const name = localStorage.getItem('Name') || 'Traveler';
+            const hotelName = localStorage.getItem('Hotel') || 'Default Hotel';
+
+            // Display the retrieved values in the appropriate places
+            document.getElementById('travelerName').textContent = name;
+            document.getElementById('hotelName').textContent = hotelName;
+        });
+    </script>
+</head>
+<body>
+
+    <h1>Theni Trip Itinerary</h1>
+
+    <div class="trip-info">
+        <p><strong>Travelers:</strong> <span id="travelerName"></span> + Friends/Family (adjust group size as needed)</p>
+        <p><strong>Hotel:</strong> <span id="hotelName"></span></p>
+        <p><strong>Dates:</strong> [Dates based on your preference]</p>
+        <p><strong>Locations Include:</strong> Theni, Vaigai Dam, Kumbakkarai Falls, Meghamalai, Suruli Falls, Thekkady, Kurangani Hills</p>
+    </div>
+
+    <table>
+        <tr class="day-header">
+            <th>Day</th>
+            <th>Date</th>
+            <th>Activities</th>
+            <th>Location(s)</th>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+            <td>[Date]</td>
+            <td>
+                - Arrival in Theni, check-in to hotel. <br>
+                - <strong>8:30 AM</strong>: Visit Veerapandi Gowmariamman Temple (8 km). <br>
+                - <strong>10:00 AM</strong>: Visit Anaipillayar Dam and temple (14 km). <br>
+                - <strong>1:30 PM</strong>: Lunch at Hotel Saravana Bhavan or similar. <br>
+                - <strong>2:30 PM</strong>: Visit Kurangani(sight seeing and Nature walk) (35 km). <br>
+                - <strong>5:00 PM</strong>: Return to hotel. <br>
+                - <strong>7:00 PM</strong>: Dinner at Hotel Western Gatz or Sivasakthi Hotel. <br>
+                - Rest for the night.
+            </td>
+            <td>Theni, Veerapandi Temple, Vaigai Dam, Kumbakkarai Falls</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td>[Date]</td>
+            <td>
+                - <strong>7:30 AM</strong>: Breakfast at hotel. <br>
+                - <strong>8:30 AM</strong>: Drive to Meghamalai (70 km, 2.5 hrs). <br>
+                - <strong>11:00 AM - 1:30 PM</strong>: Sightseeing in Meghamalai, visit tea estates and enjoy nature. <br>
+                - <strong>1:30 PM</strong>: Packed lunch/snacks or local restaurant. <br>
+                - <strong>2:30 PM</strong>: Fishing and Animals viewing point <br>
+                - <strong>5:00 PM</strong>: Drive back to Theni and relax. <br>
+                - <strong>7:00 PM</strong>: Dinner at Sri Aryas or Sivasakthi Hotel.
+            </td>
+            <td>Theni to Meghamalai, Suruli Falls</td>
+        </tr>
+        <tr>
+            <td>Thursday</td>
+            <td>[Date]</td>
+            <td>
+                - <strong>7:00 AM</strong>: Breakfast at hotel. <br>
+                - <strong>7:30 AM</strong>: Drive to Thekkady (Periyar Wildlife Sanctuary, 60 km). <br>
+                - <strong>9:30 AM - 1:00 PM</strong>: Wildlife safari or boat ride in Periyar Lake. <br>
+                - <strong>1:30 PM</strong>: Lunch at Thekkady, try Kerala cuisine. <br>
+                - <strong>2:30 PM</strong>: Elephant safari <br>
+                - <strong>3:30 PM - 5:00 PM</strong>: visit Flower show and Traditional kathakali show <br>
+                - <strong>6:00 PM</strong>: Return to Theni. <br>
+                - <strong>8:00 PM</strong>: Final dinner in Theni.
+            </td>
+            <td>Thekkady, Periyar Lake, Kurangani Hills, Theni</td>
+        </tr>
+    </table>
+
+    <div class="meal-stay">
+        <h2 class="section-title">Meal & Stay Recommendations</h2>
+        <p><strong>Breakfast:</strong> Local options at hotels like Western Gatz, simple idli/dosa, or packed for hill stations.</p>
+        <p><strong>Lunch:</strong> Hotel Saravana Bhavan, Sivasakthi Hotel, packed meals for nature visits.</p>
+        <p><strong>Dinner:</strong> Sivasakthi Hotel, Sri Aryas, or Hotel Western Gatz.</p>
+    </div>
+
+</body>
+</html>

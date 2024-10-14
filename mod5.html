@@ -109,7 +109,7 @@
             <h1 id="vech">Vehicle Rental</h1>
             <p>Would you like to rent a vehicle?</p>
             <button class="button" onclick="showContent()">Yes</button>
-            <button class="button" onclick="showLocationForm()">No, show nearby places</button>
+            <button class="button" onclick="next()">No, show nearby places</button>
         </div>
 
         <!-- Vehicle Details Section -->
@@ -170,6 +170,9 @@
             document.getElementById('vehicleDetails').style.display = 'none';
             document.getElementById('locationForm').style.display = 'block';
             document.getElementById('nearbyPlaces').style.display = 'none';
+        }
+        function next(){
+            window.location.href = '/petrol';
         }
 
         function showNearbyPlaces() {

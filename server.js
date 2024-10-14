@@ -57,6 +57,15 @@ connect();
 app.get('/trip',(req, res) => {
     res.sendFile(path.join(__dirname, 'Trip_planner.html'));
 });
+app.get('/petrol',(req, res) => {
+    res.sendFile(path.join(__dirname, 'petrol.html'));
+});
+app.get('/3day',(req, res) => {
+    res.sendFile(path.join(__dirname, '3days.html'));
+});
+app.get('/2day',(req, res) => {
+    res.sendFile(path.join(__dirname, '2days.html'));
+});
 
 app.get('/contact',(req, res) => {
     res.sendFile(path.join(__dirname, 'contact.html'));

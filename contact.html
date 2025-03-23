@@ -218,13 +218,17 @@
             <form>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter Your name" required>
-                <label for="address">Email</label>
-                <input type="text" id="email" name=" email " placeholder="Enter valid email address">
+                
+                
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Enter valid email address" required>
+                
+                
                 <label for="message">Queries/Feedback</label>
-                <textarea id="message" name="message" placeholder="Enter your queries/feedback.." rows="2"></textarea>
+                <textarea id="message" name="message" placeholder="Enter your queries/feedback.." rows="2" required></textarea>
+                
                 <button type="submit" class="btn">Submit</button>
                 <button type="button" onclick="goBack()" class="btn-back">Back</button>
-
             </form>
     
         </div>
@@ -233,6 +237,49 @@
         function goBack() {
             window.history.back();
         }
+    
+        // Add form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault(); // Prevent default form submission
+                
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // Basic validation
+                if (!name || !email || !message) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                try {
+                    // Send data to server
+                    const response = await fetch('/submit-feedback', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ name, email, message })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        alert(data.message);
+                        form.reset(); // Clear form fields
+                    } else {
+                        alert(data.message || 'There was an error. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your feedback. Please try again.');
+                }
+            });
+        });
     </script>
     
 </body>

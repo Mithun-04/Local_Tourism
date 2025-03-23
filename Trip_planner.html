@@ -290,10 +290,14 @@
                     <label for="people">Number of People:</label>
                     <input type="number" id="nop" required placeholder="--- 3 ---">
 
-                    <label for="days">Number of Days:</label>
-                    <input type="number" id="nod" required placeholder="--- 2 ---">
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" required>
 
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" required>
 
+                    <!-- Hidden field for no_of_days to maintain compatibility -->
+                    <input type="number" id="nod" hidden>
                 </form>
             </main>
 
@@ -348,15 +352,27 @@
         };
 
         function handleFormSubmit() {
-
             const location = document.getElementById('location').value;
             const budget = document.getElementById('budget').value;
             const nop = document.getElementById('nop').value;
-            const nod = document.getElementById('nod').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            
+            // Calculate number of days
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            const timeDiff = end - start;
+            const noOfDays = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1; // +1 to include both start and end dates
 
-            const token = localStorage.getItem('token');    
-            console.log({ location, budget, nop, nod });
+            if (noOfDays <= 0) {
+                alert("End date must be after start date");
+                return;
+            }
 
+            document.getElementById('nod').value = noOfDays;
+
+            const token = localStorage.getItem('token');
+            console.log({ location, budget, nop, startDate, endDate, noOfDays });
 
             fetch('/plan', {
                 method: 'POST',
@@ -368,45 +384,38 @@
                     location: location,
                     budget: budget,
                     no_of_people: nop,
-                    no_of_days: nod
+                    no_of_days: noOfDays,
+                    start_date: startDate,
+                    end_date: endDate
                 })
             })
                 .then(response => response.json())
                 .then(data => {
-
-                    alert("The form is Saved")
-                    localStorage.setItem('budget',budget);
-                    localStorage.setItem('days', nod);
-                    localStorage.setItem('people' , nop);
+                    alert("The form is Saved");
+                    localStorage.setItem('budget', budget);
+                    localStorage.setItem('days', noOfDays);
+                    localStorage.setItem('people', nop);
+                    localStorage.setItem('startDate', startDate);
+                    localStorage.setItem('endDate', endDate);
                     console.log("Reply :", data);
                     window.location.href = "/hotels";
                 })
                 .catch(error => {
-                    alert("error in saving the form")
+                    alert("error in saving the form");
                     console.error('Error:', error);
                 });
-
-
         }
-    </script>
-    <!-- <script>
-        function validateForm() {
-            var form = document.getElementById("tripForm");
-            if (form.checkValidity()) {
-                var hotelPreference = confirm("Do you have any hotel preferences?");
-                if (hotelPreference) {
-                    // Redirect to a page where hotel preferences can be provided
-                    window.location.href = 'mod4.html';
-                } else {
-                    // Redirect to the next step of trip planning
-                    window.location.href = 'foodPage.html';
-                }
-            } else {
-                alert("Please fill in all the requirements.");
+
+        // Optional: Add date validation on change
+        document.getElementById('endDate').addEventListener('change', function () {
+            const start = new Date(document.getElementById('startDate').value);
+            const end = new Date(this.value);
+            if (end < start) {
+                alert('End date cannot be before start date');
+                this.value = '';
             }
-        }
-    </script> -->
-
+        });
+    </script>
 
 </body>
 

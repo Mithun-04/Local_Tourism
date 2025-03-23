@@ -20,8 +20,15 @@ const planner = new mongoose.Schema({
     no_of_days: {
         type: Number,
         required: true
+    },
+    start_date: {
+        type: Date,
+        required: true
+    },
+    end_date: {
+        type: Date,
+        required: true
     }
 });
 
-
-module.exports = mongoose.model('trip',planner);
+module.exports = mongoose.model('trip', planner);

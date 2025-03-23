@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-Based Tourist Spots</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f0f4f8;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        z-index: -1;
+        opacity: 0.8;
+    }
+
+    header {
+        text-align: center;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .controls {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    #search-bar {
+        padding: 10px;
+        width: 100%;
+        max-width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    #weather-info {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 18px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .spots-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        text-align: center;
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .card h3 {
+        margin: 10px 0;
+        font-size: 20px;
+    }
+
+    .card p {
+        color: #666;
+    }
+
+    .loader {
+        text-align: center;
+        font-size: 18px;
+        color: #555;
+        display: none;
+    }
+
+    .loader.active {
+        display: block;
+    }
+
+    .error-message {
+        text-align: center;
+        color: #d9534f;
+        font-size: 18px;
+        margin-top: 20px;
+        display: none;
+    }
+
+    .error-message.active {
+        display: block;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .spots-container {
+            grid-template-columns: 1fr;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        #search-bar {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <div class="bg"></div>
+    <header>
+        <h1>Weather-Based Tourist Spots</h1>
+    </header>
+    <div class="container">
+        <div class="controls">
+            <p>Trip Dates: <span id="trip-dates">Loading...</span></p>
+        </div>
+        <div id="weather-info"></div>
+        <div id="spots-container" class="spots-container"></div>
+        <div id="loader" class="loader">Loading...</div>
+        <div id="error-message" class="error-message"></div>
+    </div>
+    <script>
+        const API_KEY = "74dcf41738f5f646b2fbff6c5bb49661";
+        const CITY = 'Theni';// Replace with your target location
+ 
+        // DOM Elements
+        const tripDatesEl = document.getElementById('trip-dates');
+        const weatherInfoEl = document.getElementById('weather-info');
+        const spotsContainer = document.getElementById('spots-container');
+        const loader = document.getElementById('loader');
+        const errorMessage = document.getElementById('error-message');
+        const searchBar = document.getElementById('search-bar');
+
+        let touristSpots = [];
+        let filteredSpots = [];
+
+        // Show loader
+        function showLoader() {
+            loader.classList.add('active');
+            spotsContainer.innerHTML = '';
+            errorMessage.classList.remove('active');
+        }
+
+        // Hide loader
+        function hideLoader() {
+            loader.classList.remove('active');
+        }
+
+        // Show error
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.add('active');
+            hideLoader();
+        }
+
+        // Fetch weather data for the date range
+        async function fetchWeather(startDate, endDate) {
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${CITY}&appid=${API_KEY}&units=metric`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Weather API request failed');
+                const data = await response.json();
+
+                const start = new Date(startDate).getTime();
+                const end = new Date(endDate).getTime();
+
+                // Filter forecasts within the date range
+                const forecasts = data.list.filter(item => {
+                    const forecastTime = new Date(item.dt * 1000).getTime();
+                    return forecastTime >= start && forecastTime <= end;
+                });
+
+                if (forecasts.length === 0) {
+                    throw new Error('No weather data available for the selected date range');
+                }
+
+                // Count weather conditions
+                const weatherCounts = {};
+                forecasts.forEach(forecast => {
+                    const condition = forecast.weather[0].main.toLowerCase();
+                    weatherCounts[condition] = (weatherCounts[condition] || 0) + 1;
+                });
+
+                // Find the most frequent weather condition
+                const dominantWeather = Object.keys(weatherCounts).reduce((a, b) =>
+                    weatherCounts[a] > weatherCounts[b] ? a : b
+                );
+
+                return dominantWeather; // e.g., 'clear', 'rain', 'clouds'
+            } catch (error) {
+                throw new Error('Failed to fetch weather data: ' + error.message);
+            }
+        }
+
+        // Fetch tourist spots from JSON file
+        async function fetchTouristSpots() {
+            try {
+                const response = await fetch('/tourist-spots.json');
+                if (!response.ok) throw new Error('Failed to load tourist spots');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                throw new Error('Failed to fetch tourist spots: ' + error.message);
+            }
+        }
+
+        // Filter spots based on weather
+        function filterSpotsByWeather(spots, weather) {
+            const weatherTags = {
+                'clear': 'sunny',
+                'clouds': 'sunny',
+                'rain': 'rainy',
+                'snow': 'cold',
+                'thunderstorm': 'rainy'
+            };
+            const tag = weatherTags[weather] || 'sunny'; // Default to sunny if unknown
+            return spots.filter(spot => spot.tags.includes(tag));
+        }
+
+        // Display spots
+        function displaySpots(spots) {
+            spotsContainer.innerHTML = '';
+            if (spots.length === 0) {
+                spotsContainer.innerHTML = '<p>No spots match the current weather or search criteria.</p>';
+                return;
+            }
+            spots.forEach(spot => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+            <img src="${spot.image || 'https://via.placeholder.com/150'}" alt="${spot.name}">
+            <h3>${spot.name}</h3>
+            <p>${spot.description}</p>
+        `;
+                spotsContainer.appendChild(card);
+            });
+        }
+
+        // Handle search
+        function handleSearch() {
+            const query = searchBar.value.toLowerCase();
+            filteredSpots = touristSpots.filter(spot =>
+                spot.name.toLowerCase().includes(query) ||
+                spot.description.toLowerCase().includes(query)
+            );
+            displaySpots(filteredSpots);
+        }
+
+        // Main function
+        async function init() {
+            showLoader();
+
+            // Fetch dates from local storage
+            const startDate = localStorage.getItem('startDate');
+            const endDate = localStorage.getItem('endDate');
+            console.log("start:",startDate)
+            console.log("end:",endDate)
+
+
+            if (!startDate || !endDate) {
+                showError('Trip dates not found in local storage. Please set startDate and endDate.');
+                return;
+            }
+
+            // Validate dates
+            if (new Date(endDate) < new Date(startDate)) {
+                showError('End date cannot be before start date.');
+                return;
+            }
+
+            tripDatesEl.textContent = `${startDate} to ${endDate}`;
+
+            try {
+                // Fetch weather and tourist spots concurrently
+                const [weather, spots] = await Promise.all([
+                    fetchWeather(startDate, endDate),
+                    fetchTouristSpots()
+                ]);
+
+                // Update weather info
+                weatherInfoEl.textContent = `Dominant Weather (${startDate} to ${endDate}): ${weather}`;
+
+                // Store tourist spots globally
+                touristSpots = spots;
+
+                // Filter spots based on weather
+                filteredSpots = filterSpotsByWeather(spots, weather);
+                displaySpots(filteredSpots);
+
+                hideLoader();
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        // Event listener for search bar
+
+
+        // Initialize the page
+        window.onload = init;
+    </script>
+</body>
+
+</html>

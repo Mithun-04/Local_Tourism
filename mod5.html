@@ -250,10 +250,10 @@
             // Function to retrieve data from localStorage and fetch vehicle data from the server
             function fetchVehicleData() {
                 const budget = localStorage.getItem('budget');
-                console.log(budget);  // Retrieve budget from localStorage
+                console.log(budget);  
                 const days = localStorage.getItem('days');      // Retrieve number of days from localStorage
                 // Fetch vehicle data from the server
-                fetch('/vehicles')  // Example API endpoint to get vehicle data from the database
+                fetch('/vehicles') 
                     .then(response => response.json())
                     .then(vehicles => {
                         // Filter vehicles that fit the user's budget

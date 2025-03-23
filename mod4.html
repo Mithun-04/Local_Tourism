@@ -119,7 +119,7 @@
             animation-duration: 4s;
             animation-name: slidein;
             flex: 1;
-            padding-right: 50px;
+            padding-right: 15px;
             text-align: center;
             text-decoration: rgba(0, 0, 0, 0.8) underline;
 
@@ -385,6 +385,23 @@
             cursor: pointer;
             color: red;
         }
+        .common-rentals-button {
+            background-color: #3c7a3e; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    
+        .common-rentals-button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
@@ -396,7 +413,9 @@
         <div class="heading">
             <h1 style="color: rgb(250, 246, 246);">HOTELS & ACCOMMODATION</h1>
         </div>
-
+        <button class="common-rentals-button" onclick="window.location.href='/rentals'">
+            Go to Car-Rentals
+        </button>
     </div>
     <div class="para">
 
@@ -435,7 +454,7 @@
                         <p><span class="fonting"><b>Address:</b></span> Nullatanni, Munnar, Kerala 685612</p>
                         <p><span class="fonting"><b>Price:</b></span> ₹ 840/night</p>
                     </div>
-                    <button class="booking-button" onclick="window.location.href='https://www.google.com/travel/search?q=munnar%20cottage%20%20Old%20Munnar%20Main%20road%20NH%2049%20Munnar%20Cochin%20Road%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20near%20Govt%20High%20School%2C%20Munnar%2C%20Kerala%20685612&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72560029%2C72573224%2C72616120%2C72619927%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72808078%2C72825294%2C72827241%2C72832976%2C72852292%2C72882230%2C72885032%2C72916970&hl=en-IN&gl=in&cs=1&ssta=1&ts=CAEaHhIcEhQKBwjpDxADGBgSBwjpDxADGBkYATIECAAQACoHCgU6A0lOUg&qs=CAEyE0Nnb0k3LTdjbTUybThJUmlFQUU4CEIJEeSoyDf4IAu6QgkRzkslJG7yoDlCCRFIrt63qXrQ61r_AQgBMvoBqgH2ARABKmQiYGNvdHRhZ2Ugb2xkIG11bm5hciBtYWluIHJvYWQgbmggNDkgbXVubmFyIGNvY2hpbiByb2FkIG5lYXIgZ292dCBoaWdoIHNjaG9vbCBtdW5uYXIga2VyYWxhIDY4NTYxMigAMh8QASIbK8hrHcYQsxz9W51RidA-O47gmYNbNzcAnZXgMmsQAiJnbXVubmFyIGNvdHRhZ2Ugb2xkIG11bm5hciBtYWluIHJvYWQgbmggNDkgbXVubmFyIGNvY2hpbiByb2FkIG5lYXIgZ292dCBoaWdoIHNjaG9vbCBtdW5uYXIga2VyYWxhIDY4NTYxMmocChoNAAD6QxITCP3L5OT1n4wDFXjdcwEdPpwViQ&ap=aAG6AQZwcmljZXM&ictx=111'">
+                    <button class="booking-button" onclick="confirmBooking('https://www.google.com/travel/search?q=munnar%20cottage%20%20Old%20Munnar%20Main%20road%20NH%2049%20Munnar%20Cochin%20Road%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20near%20Govt%20High%20School%2C%20Munnar%2C%20Kerala%20685612&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72560029%2C72573224%2C72616120%2C72619927%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72808078%2C72825294%2C72827241%2C72832976%2C72852292%2C72882230%2C72885032%2C72916970&hl=en-IN&gl=in&cs=1&ssta=1&ts=CAEaHhIcEhQKBwjpDxADGBgSBwjpDxADGBkYATIECAAQACoHCgU6A0lOUg&qs=CAEyE0Nnb0k3LTdjbTUybThJUmlFQUU4CEIJEeSoyDf4IAu6QgkRzkslJG7yoDlCCRFIrt63qXrQ61r_AQgBMvoBqgH2ARABKmQiYGNvdHRhZ2Ugb2xkIG11bm5hciBtYWluIHJvYWQgbmggNDkgbXVubmFyIGNvY2hpbiByb2FkIG5lYXIgZ292dCBoaWdoIHNjaG9vbCBtdW5uYXIga2VyYWxhIDY4NTYxMigAMh8QASIbK8hrHcYQsxz9W51RidA-O47gmYNbNzcAnZXgMmsQAiJnbXVubmFyIGNvdHRhZ2Ugb2xkIG11bm5hciBtYWluIHJvYWQgbmggNDkgbXVubmFyIGNvY2hpbiByb2FkIG5lYXIgZ292dCBoaWdoIHNjaG9vbCBtdW5uYXIga2VyYWxhIDY4NTYxMmocChoNAAD6QxITCP3L5OT1n4wDFXjdcwEdPpwViQ&ap=aAG6AQZwcmljZXM&ictx=111')">
                         Book Now
                     </button>
                     
@@ -443,9 +462,7 @@
 
                 <div class="hotel">
                     <div class="hotel-header">
-                        <!-- <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal(this.src)">
-         <div class="hotel-name"><h1>Hotel Sunshine</h1></div>
-     </div> -->
+            
                         <img src="/img/2_1.jpg" alt="Hotel 2" onclick="openModal('modal2', 1)">
                         <div class="hotel-name">
                             <h1>Hotel Emerald Inn</h1>
@@ -467,7 +484,7 @@
                             685612</p>
                         <p><span class="fonting"><b>Price:</b></span> ₹ 880/night</p>
                     </div>
-                    <button class="booking-button" onclick="window.location.href='https://www.emeraldinnmunnar.com/Pages/Reservation'">
+                    <button class="booking-button" onclick="confirmBooking('https://www.emeraldinnmunnar.com/Pages/Reservation')">
                         Book Now
                     </button>
                     
@@ -496,7 +513,7 @@
                             685612</p>
                         <p><span class="fonting"><b>Price:</b></span> ₹ 820/night</p>
                     </div>
-                    <button class="booking-button" onclick="window.location.href='https://cloudfivemunnar.com/booking-form/'">
+                    <button class="booking-button" onclick="confirmBooking('https://cloudfivemunnar.com/booking-form/')">
                         Book Now
                     </button>
                     
@@ -504,9 +521,6 @@
 
                 <div class="hotel">
                     <div class="hotel-header">
-                        <!-- <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal(this.src)">
-        <div class="hotel-name"><h1>Hotel Sunshine</h1></div>
-    </div> -->
                         <img src="/img/4_1.jpg" alt="Hotel 4" onclick="openModal('modal4', 3)">
                         <div class="hotel-name">
                             <h1>Lumino Dwellings</h1>
@@ -526,7 +540,7 @@
                             Kerala 685612</p>
                         <p><span class="fonting"><b>Price:</b></span> ₹ 1000/night</p>
                     </div>
-                    <button class="booking-button" onclick="window.location.href='https://www.makemytrip.com/hotels/lumino_dwellings-details-munnar.html'">
+                    <button class="booking-button" onclick="confirmBooking('https://www.makemytrip.com/hotels/lumino_dwellings-details-munnar.html')">
                         Book Now
                     </button>
                     
@@ -534,9 +548,6 @@
 
                 <div class="hotel">
                     <div class="hotel-header">
-                        <!-- <img src="/img/img 2.png" alt="Hotel 2" onclick="openModal(this.src)">
-        <div class="hotel-name"><h1>Hotel Sunshine</h1></div>
-    </div> -->
                         <img src="/img/5_1.jpg" alt="Hotel 5" onclick="openModal('modal5', 4)">
                         <div class="hotel-name">
                             <h1>Lumino Highrange</h1>
@@ -557,7 +568,7 @@
                             near Govt High School, Munnar, Kerala 685612</p>
                         <p><span class="fonting"><b>Price:</b></span> ₹ 900/night</p>
                     </div>
-                    <button class="booking-button" onclick="window.location.href='https://www.makemytrip.com/hotels/lumino_highrange_homestay_room_guided_treks-details-munnar.html'">
+                    <button class="booking-button" onclick="confirmBooking('https://www.makemytrip.com/hotels/lumino_highrange_homestay_room_guided_treks-details-munnar.html')">
                         Book Now
                     </button>                    
                 </div>
@@ -602,23 +613,12 @@
         <a class="prev" onclick="prevImage('modal5', 4)">&#10094;</a>
         <a class="next" onclick="nextImage('modal5', 4)">&#10095;</a>
     </div>
-    o
+    
     <!-- Booking Form Modal -->
     <div id="bookingFormModal" class="booking-form-modal">
         <div class="booking-form-content">
             <span class="close-booking-form" onclick="closeBookingForm()">×</span>
             <h1 id="hotelNameDisplay"></h1>
-            <!-- <form id="bookingForm">
-            <label for="nameC">Name:</label>
-            <input type="text" id="nameC" name="nameC" required>
-            <label for="numPersons">No. of Persons:</label>
-            <input type="number" id="numPersons" name="numPersons" required>
-            <label for="numDays">No. of Days:</label>
-            <input type="number" id="numDays" name="numDays" required>
-            <label for="idProof">Upload Original ID Proof:</label>
-            <input type="file" id="idProof" name="idProof" required>
-            <button type="submit">Submit</button>
-        </form> -->
             <form id="bookingForm" method="POST" enctype="multipart/form-data">
 
                 <label for="nameC">Name:</label>
@@ -638,6 +638,14 @@
 
         </div>
     </div>
+
+    <script>
+        function confirmBooking(url) {
+            if (confirm("Do you want to proceed with the booking? If not proceed with Car-Rentals")) {
+                window.location.href = url;
+            }
+        }
+        </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -684,88 +692,6 @@
             currentImageIndex = (currentImageIndex + 1) % hotelImages[hotelIndex].length;
             document.getElementById("hotelImg" + (hotelIndex + 1)).src = hotelImages[hotelIndex][currentImageIndex];
         }
-
-    </script>
-    <script>
-        let price;
-        function openBookingForm(hotelName, Price) {
-            price = Price;
-            document.getElementById('hotelNameDisplay').innerText = hotelName;
-            document.getElementById('bookingFormModal').style.display = 'flex';
-        }
-
-        function closeBookingForm() {
-            document.getElementById('bookingFormModal').style.display = 'none';
-
-        }
-        function bookNow() {
-            const token = localStorage.getItem('token');
-
-            const hotelName = document.getElementById('hotelNameDisplay').innerText;  
-            const numPersons = document.getElementById('numPersons').value;
-            const numDays = document.getElementById('numDays').value;
-            const bookingName = document.getElementById('nameC').value; 
-            localStorage.setItem('Name',bookingName);
-            localStorage.setItem('Hotel',hotelName);
-            
-            const pricePerDay = price; 
-            let budget = localStorage.getItem('budget');  
-
-            console.log(hotelName);
-            console.log(numPersons);
-            console.log(numDays);
-            console.log(bookingName);
-
-            if (!hotelName || !numPersons || !numDays || !bookingName) {
-                alert('Please provide all booking details.');
-                return;  // Exit if any required details are missing
-            }
-
-            // Calculate total cost
-            const totalCost = pricePerDay * numDays;
-
-            // Check if the user has enough budget
-            if (budget < totalCost) {
-                alert('Insufficient budget to complete the booking.');
-                return;  // Exit if the user doesn't have enough budget
-            }
-
-            fetch('/hotelbook', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`  // Include token for authorization
-                },
-                body: JSON.stringify({
-                    bookingname: bookingName,
-                    hotelname: hotelName,
-                    no_of_peeple: numPersons,
-                    no_of_days: numDays
-                })
-            })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();  // Parse the JSON response if booking is successful
-                    } else {
-                        throw new Error('Failed to book the hotel.');
-                    }
-                })
-                .then(data => {
-                    
-                    const updatedBudget = budget - totalCost;
-                    localStorage.setItem('budget', updatedBudget);  
-
-                    alert(`Booking confirmed! Hotel: ${data.hotelname}, Total Days: ${data.no_of_days}. Updated budget: ₹${updatedBudget}`);
-                    window.location.href = '/rentals';
-                })
-                .catch(error => {
-                    console.error('Error during booking:', error);
-                    alert('There was an error while booking the hotel. Please try again later.');
-                });
-
-        }
-
-
 
     </script>
     </div>

@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Meghamalai",
+        "description": "A scenic hill station with lush greenery.",
+        "tags": ["sunny", "cold"],
+        "image": "/img/meghamalai.webp"
+    },
+    {
+        "name": "Kumbakarai Falls",
+        "description": "A refreshing waterfall perfect for a rainy day.",
+        "tags": ["rainy", "sunny"],
+        "image": "/img/Kumbakkarai-Falls.jpg"
+    },
+    {
+        "name": "Suruli Falls",
+        "description": "A serene waterfall surrounded by nature.",
+        "tags": ["rainy", "cold"],
+        "image": "/img/suruli-waterfall-02.jpg"
+    },
+    {
+        "name": "Vaigai Dam",
+        "description": "A peaceful spot for a sunny outing.",
+        "tags": ["sunny"],
+        "image": "/img/Vaigai Dam.jpg"
+    },
+    {
+        "name": "Periyar Lake",
+        "description": "A beautiful lake surrounded by wildlife and forests.",
+        "tags": ["sunny", "rainy"],
+        "image": "/img/periyar_lake.jpeg"
+    },
+    {
+        "name": "Thekkady",
+        "description": "A biodiversity hotspot with spice plantations and wildlife.",
+        "tags": ["sunny", "cold"],
+        "image": "/img/Thekkady1.jpg"
+    },
+    {
+        "name": "Anaipillayar Dam",
+        "description": "A tranquil dam ideal for a relaxing day out.",
+        "tags": ["sunny"],
+        "image": "/img/anai-pillaiyar.avif"
+    },
+    {
+        "name": "Bodi Mettu",
+        "description": "A misty hill station with breathtaking views.",
+        "tags": ["cold", "rainy"],
+        "image": "/img/bodi_mettu1.jpg"
+    },
+    {
+        "name": "Kurangani Hills",
+        "description": "A trekking paradise with cool climates.",
+        "tags": ["cold", "sunny"],
+        "image": "/img/Kurangani Hills.jpg"
+    },
+    {
+        "name": "Sothupaarai Dam",
+        "description": "A scenic dam surrounded by hills and greenery.",
+        "tags": ["sunny", "rainy"],
+        "image": "/img/Sothupaari.jpg"
+    }
+]

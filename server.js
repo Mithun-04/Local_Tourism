@@ -80,7 +80,6 @@ app.get('/3day',(req, res) => {
 app.get('/2day',(req, res) => {
     res.sendFile(path.join(__dirname, '2days.html'));
 });
-
 app.get('/contact',(req, res) => {
     res.sendFile(path.join(__dirname, 'contact.html'));
 });
@@ -105,31 +104,39 @@ app.get('/hotels', (req, res) => {
 app.get('/booknow', (req, res) => {
     res.sendFile(path.join(__dirname, 'booknow.html'));
 });
+app.get('/spots', (req, res) => {
+    res.sendFile(path.join(__dirname, 'spots.html'));
+});
 
-app.post('/plan',authenticateJWT, async (req, res) => {
+
+app.post('/plan', authenticateJWT, async (req, res) => {
     try {
-        const userId = req.user.id;
-        const {loaction , budget , no_of_people , no_of_days} = req.body
-        
+        const userId = req.user.id; // From JWT middleware
+        const { location, budget, no_of_people, no_of_days, start_date, end_date } = req.body;
+
+        // Validate required fields
+        if (!location || !budget || !no_of_people || !no_of_days || !start_date || !end_date) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+
         const data = await trip.create({
-            user_id : userId,
-            loaction,
+            user_id: userId,
+            location, // Fixed typo from 'loaction'
             budget,
             no_of_people,
-            no_of_days
-        })
-        
+            no_of_days,
+            start_date: new Date(start_date), // Convert string to Date object
+            end_date: new Date(end_date)      // Convert string to Date object
+        });
+
         console.log(data);
         res.status(200).json({ message: 'Data saved successfully', data: data });
-    }
-    catch (e) {
+    } catch (e) {
         console.log(e);
-        res.status(500).json({ message: 'error in saving the data', data: data });
+        // Use 'error' instead of 'data' in the catch block
+        res.status(500).json({ message: 'Error in saving the data', error: e.message });
     }
-
-
-})
-
+});
 
 
 app.post('/rentals', async (req, res) => {

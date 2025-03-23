@@ -14,8 +14,22 @@ const hotel = require('./models/hotelbook.js');
 const Ind = require('./index.js');
 // const Addr = require('./data/address.js');
 
+const nodemailer = require('nodemailer');
+// const Addr = require('./data/address.js');
+
+// Add Feedback schema here
+const feedbackSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    message: String,
+    date: { type: Date, default: Date.now }
+  });
+  
+  const Feedback = mongoose.model('Feedback', feedbackSchema);
+  
+
 const app = express();
-const port = 3000;
+const port = 3001;
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
@@ -248,5 +262,63 @@ app.post('/hotelbook', authenticateJWT, async (req, res) => {
         res.status(500).json({ message: 'Error booking the hotel' });
     }
 });
+
+app.post('/submit-feedback', async (req, res) => {
+    try {
+      const { name, email, message } = req.body;
+      
+      // Save to database
+      const newFeedback = new Feedback({
+        name,
+        email,
+        message
+      });
+      
+      await newFeedback.save();
+      console.log('Feedback saved to database:', newFeedback);
+      
+      // Configure email transporter
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'shananthikasenthilkumar@gmail.com', // Replace with your email
+          pass: 'lerk fjni gwpn xegk'     // Replace with your app password
+        }
+      });
+      
+      // Email content
+      const mailOptions = {
+        from: email,
+        to: 'shananthikasenthilkumar@gmail.com', // Replace with admin email
+        subject: 'New Feedback from Local Tourism Website',
+        text: `
+          Name: ${name}
+          Email: ${email}
+          Message: ${message}
+        `,
+        html: `
+          <h3>New Contact Form Submission</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong> ${message}</p>
+        `,
+        replyTo: email
+      };
+      
+      try {
+          const info = await transporter.sendMail(mailOptions);
+          console.log('Email sent: ' + info.response);
+          res.status(200).json({ success: true, message: 'Thank you for your feedback!' });
+        } catch (error) {
+          console.error('Email error:', error);
+          res.status(500).json({ success: false, message: 'Your feedback was saved but we had trouble sending the email notification.' });
+        }
+        
+      } catch (error) {
+        console.error('Server error:', error);
+        res.status(500).json({ success: false, message: 'Server error' });
+      }
+    });
+  
 
 

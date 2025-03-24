@@ -362,7 +362,12 @@
             const start = new Date(startDate);
             const end = new Date(endDate);
             const timeDiff = end - start;
-            const noOfDays = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1; // +1 to include both start and end dates
+            const noOfDays = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
+            
+            if(!location || !budget || !nop || !startDate || !endDate){
+                alert("Enter all Fields");
+                return;
+            }
 
             if (noOfDays <= 0) {
                 alert("End date must be after start date");
@@ -398,7 +403,7 @@
                     localStorage.setItem('startDate', startDate);
                     localStorage.setItem('endDate', endDate);
                     console.log("Reply :", data);
-                    window.location.href = "/hotels";
+                    window.location.href = "/spots";
                 })
                 .catch(error => {
                     alert("error in saving the form");

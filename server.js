@@ -72,7 +72,7 @@ app.get('/trip',(req, res) => {
     res.sendFile(path.join(__dirname, 'Trip_planner.html'));
 });
 app.get('/petrol',(req, res) => {
-    res.sendFile(path.join(__dirname, 'petrol.html'));
+    res.sendFile(path.join(__dirname, 'petrol1.html'));
 });
 app.get('/3day',(req, res) => {
     res.sendFile(path.join(__dirname, '3days.html'));

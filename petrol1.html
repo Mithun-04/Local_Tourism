@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrol Bunk Finder</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5024/5024263.png">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Leaflet Routing Machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #FF6B00;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h2 {
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header h2 img {
+            width: 40px;
+            height: 40px;
+        }
+
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            background-color: #FF8C00;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 17px rgba(0,0,0,0.2);
+            opacity: 0.9;
+        }
+
+        #bunk-list {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .bunk-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+            transition: all 0.3s ease;
+        }
+
+        .bunk-item:hover {
+            background-color: rgba(255,107,0,0.1);
+            transform: translateX(10px);
+        }
+
+        .bunk-details {
+            flex-grow: 1;
+        }
+
+        .bunk-distance {
+            color: #FF6B00;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .route-btn {
+            background-color: #FF8C00;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .route-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Enhanced Route Instruction Styling */
+        
+       
+
+        @media (max-width: 768px) {
+            .btn-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>
+                <img src="https://cdn-icons-png.flaticon.com/512/5024/5024263.png" alt="Petrol Bunk Icon">
+                Nearby Petrol Bunks Finder
+            </h2>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn" onclick="detectLocation()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <line x1="12" y1="2" x2="12" y2="5"></line>
+                    <line x1="12" y1="19" x2="12" y2="22"></line>
+                    <line x1="2" y1="12" x2="5" y2="12"></line>
+                    <line x1="19" y1="12" x2="22" y2="12"></line>
+                </svg>
+                Detect My Location
+            </button>
+        </div>
+
+        <div id="map"></div>
+
+        <div class="btn-container">
+            <button class="btn" onclick="toggleBunkList()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+                View Petrol Bunks
+            </button>
+        </div>
+
+        <div id="bunk-list"></div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Leaflet Routing Machine -->
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+    <script>
+        let map = L.map('map').setView([20, 78], 5);
+        let petrolBunks = [];
+        let markers = [];
+        let userMarker = null;
+        let routingControl = null;
+        let userLocation = null;
+
+        // Load OpenStreetMap Tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        function detectLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    let userLat = position.coords.latitude;
+                    let userLon = position.coords.longitude;
+                    userLocation = { lat: userLat, lon: userLon };
+
+                    // Remove previous user marker if exists
+                    if (userMarker) {
+                        map.removeLayer(userMarker);
+                    }
+
+                    // Update the map view to user's location
+                    map.setView([userLat, userLon], 14);
+
+                    // Add marker for user's location with location symbol
+                    userMarker = L.marker([userLat, userLon], {
+                        icon: L.divIcon({
+                            className: 'user-location-icon',
+                            html: `
+                                <div style="position: relative; width: 40px; height: 40px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#FF6B00" stroke="white" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10" fill="#FF6B00"/>
+                                        <circle cx="12" cy="12" r="3" fill="white"/>
+                                    </svg>
+                                </div>
+                            `,
+                            iconSize: [40, 40],
+                            iconAnchor: [20, 20]
+                        })
+                    }).addTo(map).bindPopup("Your Location").openPopup();
+
+                    // Fetch and display petrol bunks dynamically
+                    findNearbyPetrolBunks(userLat, userLon);
+                }, () => alert("Location access denied. Please enable location services."));
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Haversine Formula to calculate distance between two coordinates
+        function haversineDistance(lat1, lon1, lat2, lon2) {
+            const toRad = (x) => x * Math.PI / 180;
+            const R = 6371; // Radius of the Earth in km
+            const dLat = toRad(lat2 - lat1);
+            const dLon = toRad(lon2 - lon1);
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c; // Distance in km
+        }
+
+        function findNearbyPetrolBunks(userLat, userLon) {
+    // Clear existing markers
+    markers.forEach(marker => map.removeLayer(marker));
+    markers = [];
+    petrolBunks = [];
+
+    // Extended search radius
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=petrol+station&bounded=1&viewbox=${userLon-0.3},${userLat+0.3},${userLon+0.3},${userLat-0.3}&limit=50`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length === 0) {
+                alert("No petrol stations found nearby.");
+                return;
+            }
+
+            // Process, filter, and sort petrol bunks
+            petrolBunks = data.map(bunk => {
+                let distance = haversineDistance(userLat, userLon, parseFloat(bunk.lat), parseFloat(bunk.lon));
+                return { ...bunk, distance };
+            }).filter(bunk => bunk.distance <= 6) // Only include bunks within 6 km
+              .sort((a, b) => a.distance - b.distance);
+
+            // Add markers for each valid petrol bunk
+            petrolBunks.forEach((bunk, index) => {
+                let marker = L.marker([bunk.lat, bunk.lon], {
+                    icon: L.divIcon({
+                        className: 'petrol-bunk-icon',
+                        html: `
+                            <div style="position: relative; width: 40px; height: 40px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#FF6B00" stroke="white" stroke-width="2">
+                                    <path d="M3 22h16V7l-5-5H3v20z"/>
+                                    <path d="M8 7h3v3H8z"/>
+                                    <path d="M16 15h2v3h-2z"/>
+                                    <path d="M14 11h4v3h-4z"/>
+                                </svg>
+                            </div>
+                        `,
+                        iconSize: [40, 40],
+                        iconAnchor: [20, 20]
+                    })
+                }).addTo(map)
+                .bindPopup(`<strong>${bunk.display_name}</strong><br>Distance: ${bunk.distance.toFixed(2)} km`)
+                .on('click', () => {
+                    window.selectedBunkIndex = index;
+                });
+
+                markers.push(marker);
+            });
+
+            // Fit map to show all markers if available
+            if (markers.length > 0) {
+                const group = new L.featureGroup(markers);
+                map.fitBounds(group.getBounds().pad(0.1));
+            }
+
+            // Ensure list is hidden initially
+            document.getElementById("bunk-list").style.display = "none";
+        })
+        .catch(error => console.error("Error fetching petrol bunk data:", error));
+}
+
+function updateBunkList() {
+    let listContainer = document.getElementById("bunk-list");
+    listContainer.innerHTML = ""; // Clear previous list
+
+    petrolBunks.forEach((bunk, index) => {
+        let listItem = document.createElement("div");
+        listItem.className = "bunk-item";
+        listItem.innerHTML = `
+            <div class="bunk-details">
+                <strong>${bunk.display_name}</strong>
+                <span class="bunk-distance">${bunk.distance.toFixed(2)} km</span>
+            </div>
+            <button class="route-btn" onclick="showRoute(${index})">Get Route</button>
+        `;
+
+        listContainer.appendChild(listItem);
+    });
+}
+
+
+        function showRoute(bunkIndex) {
+            // Remove previous routing control if exists
+            if (routingControl) {
+                map.removeControl(routingControl);
+            }
+
+            // Get user's location and selected bunk location
+            let bunkLocation = markers[bunkIndex].getLatLng();
+
+            // Add routing control
+            routingControl = L.Routing.control({
+                waypoints: [
+                    L.latLng(userLocation.lat, userLocation.lon),
+                    bunkLocation
+                ],
+                routeWhileDragging: true,
+                router: L.Routing.osrmv1({
+                    serviceUrl: 'https://router.project-osrm.org/route/v1'
+                }),
+                createMarker: function(i, waypoint, n) {
+                    if (i === 0) {
+                        return L.marker(waypoint.latLng, {
+                            icon: L.divIcon({
+                                className: 'user-location-icon',
+                                html: `
+                                    <div style="position: relative; width: 40px; height: 40px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#FF6B00" stroke="white" stroke-width="2">
+                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                        </svg>
+                                    </div>
+                                `,
+                                iconSize: [40, 40],
+                                iconAnchor: [20, 20]
+                            })
+                        });
+                    } else {
+                        return L.marker(waypoint.latLng, {
+                            icon: L.divIcon({
+                                className: 'petrol-bunk-icon',
+                                html: `
+                                    <div style="position: relative; width: 40px; height: 40px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#FF6B00" stroke="white" stroke-width="2">
+                                            <path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/>
+                                        </svg>
+                                    </div>
+                                `,
+                                iconSize: [40, 40],
+                                iconAnchor: [20, 20]
+                            })
+                        });
+                    }
+                }
+            }).addTo(map);
+        }
+
+
+
+            // Zoom to route
+            routingControl.on('routesfound', function(e) {
+                const routes = e.routes;
+                const bestRoute = routes[0];
+                
+                // Fit map to the route
+                map.fitBounds(bestRoute.bounds, {
+                    padding: [50, 50]
+                });
+            });
+        
+
+        function toggleBunkList() {
+            let listContainer = document.getElementById("bunk-list");
+            if (listContainer.style.display === "none" || listContainer.innerHTML === "") {
+                updateBunkList();
+                listContainer.style.display = "block";
+            } else {
+                listContainer.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

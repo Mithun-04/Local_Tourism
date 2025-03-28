@@ -304,7 +304,7 @@ app.post('/submit-feedback', async (req, res) => {
           Message: ${message}
         `,
         html: `
-          <h3>New Contact Form Submission</h3>
+          <h3>New Feedback Submission!!!</h3>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Message:</strong> ${message}</p>

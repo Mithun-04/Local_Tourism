@@ -72,7 +72,7 @@ app.get('/trip',(req, res) => {
     res.sendFile(path.join(__dirname, 'Trip_planner.html'));
 });
 app.get('/petrol',(req, res) => {
-    res.sendFile(path.join(__dirname, 'petrol.html'));
+    res.sendFile(path.join(__dirname, 'petrol1.html'));
 });
 app.get('/3day',(req, res) => {
     res.sendFile(path.join(__dirname, '3days.html'));
@@ -304,7 +304,7 @@ app.post('/submit-feedback', async (req, res) => {
           Message: ${message}
         `,
         html: `
-          <h3>New Contact Form Submission</h3>
+          <h3>New Feedback Submission!!!</h3>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Message:</strong> ${message}</p>
